@@ -1,18 +1,18 @@
-<!-- jQuery -->
-    <script src="css/bower_components/jquery/dist/jquery.min.js"></script>
+ <!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="css/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="css/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/sb-admin-2.js"></script>
+    <script src="dist/js/sb-admin-2.js"></script>
 
     <!-- DataTables JavaScript -->
-    <script src="css/bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
-    <script src="css/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    <script src="bower_components/dataTables/media/js/jquery.dataTables.min.js"></script>
+    <script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>

@@ -10,22 +10,22 @@
     <title>Admin - SE04</title>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" />
 
     <!-- MetisMenu CSS -->
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bower_components/metisMenu/dist/metisMenu.min.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/bower_components/metisMenu/dist/metisMenu.min.css" media="screen" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/sb-admin-2.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/dist/css/sb-admin-2.css" media="screen" />
     
     <!-- Custom Fonts -->
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bower_components/font-awesome/css/font-awesome.min.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/bower_components/font-awesome/css/font-awesome.min.css" media="screen" />
     
     <!-- DataTables CSS -->
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" media="screen" />
     
     <!-- DataTables Responsive CSS -->
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bower_components/datatables-responsive/css/dataTables.responsive.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/bower_components/datatables-responsive/css/dataTables.responsive.css" media="screen" />
     
 </head>
 <body>
