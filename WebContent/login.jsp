@@ -9,6 +9,7 @@
 	    <meta name="description" content="Quản lý công ty taxi">
 	    <meta name="author" content="SE04">
 		<title>Login</title>
+		<link rel="shortcut icon" href="images/favicon.ico">
 		<!-- Bootstrap Core CSS -->
 	    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	
