@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+    <link rel="shortcut icon" href="<%=request.getContextPath()%>/public/images/favicon.ico">
+    
 	<!-- Bootstrap Core CSS -->
 	<link href="<%=request.getContextPath()%>/public/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	

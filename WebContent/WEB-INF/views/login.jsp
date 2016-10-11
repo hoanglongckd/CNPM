@@ -10,7 +10,7 @@
 	    <meta name="author" content="SE04">
 	   	
 		<title>Login</title>
-		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="shortcut icon" href="<%=request.getContextPath()%>/public/images/favicon.ico">
 		<!-- Bootstrap Core CSS -->
 	    <link href="<%=request.getContextPath()%>/public/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" Type="text/css">
 	
