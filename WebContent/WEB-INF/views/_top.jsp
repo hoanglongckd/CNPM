@@ -5,6 +5,10 @@
     
 	<!-- Bootstrap Core CSS -->
 	<link href="<%=request.getContextPath()%>/public/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<%=request.getContextPath()%>/public/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+	
+	<!--  DateTimePicker -->
+	<link href="<%=request.getContextPath()%>/public/datetimepicker/css/daterangepicker.css" rel="stylesheet">
 	
 	<!-- MetisMenu CSS -->
 	<link href="<%=request.getContextPath()%>/public/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
