@@ -18,33 +18,32 @@
 			</div>
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom:120px">
-				<form action="" method="POST">
+				<form action="${pageContext.request.contextPath}/them-xe-bao-duong" method="POST">
 					<div class="form-group">
 						<label>Biển số xe</label>
-						<select class="form-control">
-							<option value="0">Please Choose Category</option>
-							<option value="">Tin Tức</option>
+						<select class="form-control" name="idCar">
+							<option value="0">Vui lòng chọn xe</option>
+							<option value="1">43A - 4320</option>
 						</select>
 					</div>
 				<div class="form-group">
 					<label>Ngày bảo dưỡng hiện tại</label>
-					<input class="form-control" type="text" name="current-date" />
-<!-- 					<input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" /> -->
+					<input class="form-control" type="text" name="current-date"/>
 				</div>
 				<div class="form-group">
 					<label>Ngày bảo dưỡng tiếp theo</label>
 					<input class="form-control" type="text" name="next-date" />
-<!-- 					<input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" /> -->
 				</div>
 				<div class="form-group">
 					<label>Chi phí bảo dưỡng</label>
-					<input class="form-control" name="txtOrder" placeholder="Please Enter Category Keywords" />
+					<input type="number" class="form-control" name="cost" placeholder="Vui lòng nhập tổng số tiền bảo dưỡng" />
 				</div>
 				<div class="form-group">
 					<label>Chi tiết</label>
-					<textarea class="form-control" rows="3"></textarea>
+					<textarea class="form-control" rows="4" name="detail"
+					placeholder="Nhập chi tiết các phần bảo dưỡng ứng với số tiền..."></textarea>
 				</div>
-				<button type="submit" class="btn btn-default">Category Add</button>
+				<button type="submit" class="btn btn-default">Thêm</button>
 				<button type="reset" class="btn btn-default">Reset</button>
 				</form>
 			</div>

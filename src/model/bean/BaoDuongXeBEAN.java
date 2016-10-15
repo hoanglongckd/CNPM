@@ -1,13 +1,11 @@
 package model.bean;
 
-import java.sql.Date;
-
 public class BaoDuongXeBEAN {
 	private int id;
 	private String chiTiet;
-	private int soTien;
-	private Date ngayBaoDuong;
-	private Date ngayBaoDuongTiepTheo;
+	private long soTien;
+	private String ngayBaoDuong;
+	private String ngayBaoDuongTiepTheo;
 	private int idXe;
 	
 	public BaoDuongXeBEAN() {
@@ -15,7 +13,7 @@ public class BaoDuongXeBEAN {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public BaoDuongXeBEAN(int id, String chiTiet, int soTien, Date ngayBaoDuong, Date ngayBaoDuongTiepTheo, int idXe) {
+	public BaoDuongXeBEAN(int id, String chiTiet, long soTien, String ngayBaoDuong, String ngayBaoDuongTiepTheo, int idXe) {
 		super();
 		this.id = id;
 		this.chiTiet = chiTiet;
@@ -41,27 +39,27 @@ public class BaoDuongXeBEAN {
 		this.chiTiet = chiTiet;
 	}
 
-	public int getSoTien() {
+	public long getSoTien() {
 		return soTien;
 	}
 
-	public void setSoTien(int soTien) {
+	public void setSoTien(long soTien) {
 		this.soTien = soTien;
 	}
 
-	public Date getNgayBaoDuong() {
+	public String getNgayBaoDuong() {
 		return ngayBaoDuong;
 	}
 
-	public void setNgayBaoDuong(Date ngayBaoDuong) {
+	public void setNgayBaoDuong(String ngayBaoDuong) {
 		this.ngayBaoDuong = ngayBaoDuong;
 	}
 
-	public Date getNgayBaoDuongTiepTheo() {
+	public String getNgayBaoDuongTiepTheo() {
 		return ngayBaoDuongTiepTheo;
 	}
 
-	public void setNgayBaoDuongTiepTheo(Date ngayBaoDuongTiepTheo) {
+	public void setNgayBaoDuongTiepTheo(String ngayBaoDuongTiepTheo) {
 		this.ngayBaoDuongTiepTheo = ngayBaoDuongTiepTheo;
 	}
 
