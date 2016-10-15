@@ -1,6 +1,9 @@
 package model.bo;
 
+import java.util.ArrayList;
+
 import model.bean.BaoDuongXeBEAN;
+import model.bean.XeBEAN;
 import model.dao.BaoDuongXeDAO;
 
 public class BaoDuongXeBO {
@@ -9,6 +12,10 @@ public class BaoDuongXeBO {
 	
 	public static boolean themXeBaoDuong(BaoDuongXeBEAN baoDuongXeBEAN) {
 		return baoDuongXeDAO.themXeBaoDuong(baoDuongXeBEAN);
+	}
+	
+	public static ArrayList<XeBEAN> lietKeXe(){
+		return baoDuongXeDAO.lietKeXe();
 	}
 	
 }

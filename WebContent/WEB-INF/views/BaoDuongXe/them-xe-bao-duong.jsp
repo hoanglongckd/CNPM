@@ -1,3 +1,6 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="model.bean.XeBEAN"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -8,6 +11,12 @@
 <jsp:include page="../_menu.jsp" />
 
 <!-- Page Content -->
+<%
+	ArrayList<XeBEAN> listXe = null;
+	if(request.getAttribute("listXe")!=null){
+		listXe = (ArrayList<XeBEAN>)request.getAttribute("listXe");
+	}
+%>
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">
@@ -21,9 +30,24 @@
 				<form action="${pageContext.request.contextPath}/them-xe-bao-duong" method="POST">
 					<div class="form-group">
 						<label>Biển số xe</label>
+						
 						<select class="form-control" name="idCar">
 							<option value="0">Vui lòng chọn xe</option>
-							<option value="id">Ten Chuc Vu</option>
+							<% 
+								int i=1;
+								if(listXe!=null){
+									for(XeBEAN xe : listXe){
+										%>
+										<option value="<%=i%>"><%=xe.getBienSoXe() %></option>
+										<%
+										i++;
+									}
+								}else{
+									%>
+									<option value="<%=i%>">lỗi cmnr!</option>
+									<%
+								}
+							%>
 						</select>
 					</div>
 				<div class="form-group">

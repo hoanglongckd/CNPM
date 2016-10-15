@@ -2,12 +2,19 @@ package model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import model.bean.BaoDuongXeBEAN;
+import model.bean.XeBEAN;
 import utils.SQLServerConnUtils;
 
 public class BaoDuongXeDAO {
 	Connection conn = SQLServerConnUtils.getSQLServerConnection();
+	ResultSet rs;
+	Statement st;
+	
 	
 	public boolean themXeBaoDuong(BaoDuongXeBEAN baoDuongXeBEAN) {
 		try {
@@ -26,5 +33,22 @@ public class BaoDuongXeDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public ArrayList<XeBEAN> lietKeXe() {
+		ArrayList<XeBEAN> listXe = new ArrayList<>();
+		try {
+			String sql = "select * from Xe";
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()){
+				XeBEAN xe = new XeBEAN(rs.getInt("id"),rs.getString("BienSoXe"), rs.getString("Model"),
+						rs.getInt("SoCho"), rs.getString("Hang"), rs.getBoolean("TinhTrangHoatDong"));
+				listXe.add(xe);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return listXe;
 	}
 }
