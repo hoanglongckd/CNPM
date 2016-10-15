@@ -1,17 +1,17 @@
 package controller.BaoDuongXe;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.bean.BaoDuongXeBEAN;
+import model.bean.XeBEAN;
 import model.bo.BaoDuongXeBO;
-import model.dao.BaoDuongXeDAO;
 
 /**
  * Servlet implementation class AddBaoDuongXeController
@@ -32,6 +32,8 @@ public class ThemXeBaoDuongController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArrayList<XeBEAN> listXe =  BaoDuongXeBO.lietKeXe();
+		request.setAttribute("listXe", listXe);
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/BaoDuongXe/them-xe-bao-duong.jsp");
 		dispatcher.forward(request, response);
 	}
