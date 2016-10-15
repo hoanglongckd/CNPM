@@ -43,7 +43,7 @@ public class ThemNhanVienController extends HttpServlet {
 		String hoTen = request.getParameter("ho-va-ten");
 		int chucVu = Integer.parseInt(request.getParameter("chuc-vu"));
 		String ngaySinh = request.getParameter("ngay-sinh");
-		String caLamViec = request.getParameter("ca-lam-viec");
+		int caLamViec = Integer.parseInt(request.getParameter("ca-lam-viec"));
 		
 	
 		NhanVienBEAN nhanVienBEAN = new NhanVienBEAN();

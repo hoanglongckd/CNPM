@@ -6,13 +6,13 @@ public class NhanVienBEAN {
 	private String hoTen;
 	private String ngaySinh;
 	private int chucVu;
-	private String caLamViec;
+	private int caLamViec;
 	
 	public NhanVienBEAN() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public NhanVienBEAN(int id, String maNhanVien, String hoTen, String ngaySinh, int chucVu, String caLamViec) {
+	public NhanVienBEAN(int id, String maNhanVien, String hoTen, String ngaySinh, int chucVu, int caLamViec) {
 	
 		super();
 		this.id = id;
@@ -63,11 +63,11 @@ public class NhanVienBEAN {
 		this.chucVu = chucVu ;
 	}
 	
-	public String getCaLamViec() {
+	public int getCaLamViec() {
 		return caLamViec;
 	}
 
-	public void setCaLamViec(String caLamViec) {
+	public void setCaLamViec(int caLamViec) {
 		this.caLamViec = caLamViec ;
 	}
 
