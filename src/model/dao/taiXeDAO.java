@@ -6,7 +6,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import connection.sqlserver.ConnectionUtils;
 import model.bean.TaiXe;
 import utils.SQLServerConnUtils;
 

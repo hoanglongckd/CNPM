@@ -3,7 +3,6 @@ package model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import connection.sqlserver.ConnectionUtils;
 import utils.SQLServerConnUtils;
 
 
