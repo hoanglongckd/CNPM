@@ -1,4 +1,4 @@
-package controller;
+package controller.BaoDuongXe;
 
 import java.io.IOException;
 
@@ -32,7 +32,7 @@ public class ThemXeBaoDuongController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/them-xe-bao-duong.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/BaoDuongXe/them-xe-bao-duong.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -40,6 +40,8 @@ public class ThemXeBaoDuongController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
 		int idXe = Integer.parseInt(request.getParameter("idCar"));
 		String ngayBaoDuongHienTai = request.getParameter("current-date");
 		String ngayBaoDuongTiepTheo = request.getParameter("next-date");

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<jsp:include page="_header.jsp" />
+<jsp:include page="../_header.jsp" />
 <%-- <%@include file="header.jsp" %> --%>
 	<title>Thêm xe bảo dưỡng</title>
-<jsp:include page="_top.jsp" />
-<jsp:include page="_menu.jsp" />
+<jsp:include page="../_top.jsp" />
+<jsp:include page="../_menu.jsp" />
 
 <!-- Page Content -->
 <div id="page-wrapper">
@@ -23,7 +23,7 @@
 						<label>Biển số xe</label>
 						<select class="form-control" name="idCar">
 							<option value="0">Vui lòng chọn xe</option>
-							<option value="1">43A - 4320</option>
+							<option value="id">Ten Chuc Vu</option>
 						</select>
 					</div>
 				<div class="form-group">
@@ -54,7 +54,7 @@
 </div>
 <!-- /#page-wrapper -->
 
-<jsp:include page="_footer-start.jsp" />
+<jsp:include page="../_footer-start.jsp" />
 
 <script type="text/javascript">
 	$(function() {
@@ -70,4 +70,4 @@
 </script>
 
 
-<jsp:include page="_footer-end.jsp" />
+<jsp:include page="../_footer-end.jsp" />

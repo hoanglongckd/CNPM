@@ -12,12 +12,13 @@ public class BaoDuongXeDAO {
 	public boolean themXeBaoDuong(BaoDuongXeBEAN baoDuongXeBEAN) {
 		try {
 			String sql = "INSERT INTO BAODUONGXE(SoTien, NgayBaoDuong, NgayBaoDuongTiepTheo, ChiTiet, idXe) "
-					+ "VALUES(?, ?, ?, ?, ?)";
+					+ "VALUES (?, ?, ?, ?, ?)";
+			System.out.println(baoDuongXeBEAN.getChiTiet());
 			PreparedStatement pre = conn.prepareStatement(sql);
 			pre.setLong(1, baoDuongXeBEAN.getSoTien());
 			pre.setString(2, baoDuongXeBEAN.getNgayBaoDuong());
 			pre.setString(3, baoDuongXeBEAN.getNgayBaoDuongTiepTheo());
-			pre.setString(4, baoDuongXeBEAN.getChiTiet());
+			pre.setNString(4, baoDuongXeBEAN.getChiTiet());
 			pre.setInt(5, baoDuongXeBEAN.getIdXe());
 			int rowEffect = pre.executeUpdate();
 			if (rowEffect != 0) return true; 
