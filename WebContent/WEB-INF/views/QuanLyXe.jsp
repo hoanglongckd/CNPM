@@ -33,7 +33,7 @@ if (request.getAttribute("listMaTX")!=null){
 							  <%if (listMaTX!=null) for(TaiXe item:listMaTX){ %>
 							  <option value="<%=item.getId()%>"><%=item.getMaTaiXe()%></option>
 							  <%} else { %>
-							  <option value="">Chưa có tài xế nào</option> <% }%>
+							  <option value="">Chưa có tài xế</option> <% }%>
 							</select>
 					</div>
 				<div class="form-group">
