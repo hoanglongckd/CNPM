@@ -9,7 +9,11 @@
 <jsp:include page="_top.jsp" />
 <jsp:include page="_menu.jsp" />
 
-<% ArrayList<TaiXe> listMaTX = (ArrayList<TaiXe>) request.getAttribute("listMaTX"); %>
+<% 
+ArrayList<TaiXe> listMaTX =null;
+if (request.getAttribute("listMaTX")!=null){
+ listMaTX = (ArrayList<TaiXe>) request.getAttribute("listMaTX");
+ } %>
 
 <!-- Page Content -->
 <div id="page-wrapper">
@@ -26,9 +30,10 @@
 					<div class="form-group">
 						<label>Mã tài xế</label>
 						<select class="form-control" name="matx" id="matx">
-							  <%for(TaiXe item:listMaTX){ %>
+							  <%if (listMaTX!=null) for(TaiXe item:listMaTX){ %>
 							  <option value="<%=item.getId()%>"><%=item.getMaTaiXe()%></option>
-							  <%} %>
+							  <%} else { %>
+							  <option value="">nothing</option> <% }%>
 							</select>
 					</div>
 				<div class="form-group">
