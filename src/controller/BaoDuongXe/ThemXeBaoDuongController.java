@@ -16,7 +16,7 @@ import model.dao.BaoDuongXeDAO;
 /**
  * Servlet implementation class AddBaoDuongXeController
  */
-@WebServlet("/them-xe-bao-duong")
+//@WebServlet("/them-xe-bao-duong")
 public class ThemXeBaoDuongController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
