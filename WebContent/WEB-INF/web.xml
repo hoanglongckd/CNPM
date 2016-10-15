@@ -2,11 +2,20 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>DA-CNPM</display-name>
   <servlet>
-  	<servlet-name>ThemXeBaoDuongController</servlet-name>
-  	<servlet-class>controller.BaoDuongXe.ThemXeBaoDuongController</servlet-class>
+    <servlet-name>ThemXeBaoDuongController</servlet-name>
+    <servlet-class>controller.BaoDuongXe.ThemXeBaoDuongController</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>ThemXeBaoDuongController</servlet-name>
-  	<url-pattern>/them-xe-bao-duong</url-pattern>
+    <servlet-name>ThemXeBaoDuongController</servlet-name>
+    <url-pattern>/them-xe-bao-duong</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>BaoCaoXeBaoDuongController</servlet-name>
+    <servlet-class>controller.BaoDuongXe.BaoCaoXeBaoDuongController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaoCaoXeBaoDuongController</servlet-name>
+    <url-pattern>/bao-cao-xe-bao-duong</url-pattern>
   </servlet-mapping>
 </web-app>
