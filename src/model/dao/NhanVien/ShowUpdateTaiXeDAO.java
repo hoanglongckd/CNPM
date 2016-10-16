@@ -8,25 +8,24 @@ import java.util.ArrayList;
 import model.bean.NhanVien.NhanVienBEAN;
 import utils.SQLServerConnUtils;
 
-public class DanhSachNhanVienDAO {
+public class ShowUpdateTaiXeDAO {
 	Connection conn = SQLServerConnUtils.getSQLServerConnection();
 	ResultSet rs;
 	Statement st;
+	NhanVienBEAN taiXe = new NhanVienBEAN();
 	
-	public ArrayList<NhanVienBEAN> getDanhSachNhanVien() {
-		ArrayList<NhanVienBEAN> listNhanVien = new ArrayList<>();
+	public NhanVienBEAN getTaiXe(String idTaiXe) {
 		try {
-			String sql = "select * from NHANVIEN";
+			String sql = "select * from TAIXE where Id="+idTaiXe;
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()){
-				NhanVienBEAN nhanVien = new NhanVienBEAN(rs.getInt("id"),rs.getString("MaNV"), rs.getString("Ten"), rs.getString("NgaySinh"),1,1);
-				listNhanVien.add(nhanVien);
+				 taiXe = new NhanVienBEAN(rs.getInt("id"),rs.getString("MaTX"), rs.getString("Ten"), rs.getString("NgaySinh"),2,1);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		return listNhanVien;
+		return taiXe;
 	}
 
 }

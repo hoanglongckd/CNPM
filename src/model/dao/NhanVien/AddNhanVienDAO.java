@@ -9,12 +9,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class ThemNhanVienDAO {
+public class AddNhanVienDAO {
 
-	public static boolean themNhanVien(NhanVienBEAN nhanVienBEAN) {
+	public static boolean addNhanVien(NhanVienBEAN nhanVienBEAN) {
 		Connection conn = SQLServerConnUtils.getSQLServerConnection();
 		try {
-				System.out.print("aaaaaaaaaaaaa");
 				int chucVu = nhanVienBEAN.getChucVu();
 				// Them nhan vien
 				if (chucVu == 1) {

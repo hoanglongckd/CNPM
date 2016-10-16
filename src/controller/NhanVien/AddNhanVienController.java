@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.bean.NhanVien.NhanVienBEAN;
-import model.bo.NhanVien.ThemNhanVienBO;
-import model.dao.NhanVien.ThemNhanVienDAO;
+import model.bo.NhanVien.AddNhanVienBO;
+import model.dao.NhanVien.AddNhanVienDAO;
 
 /**
  * Servlet implementation class AddBaoDuongXeController
  */
 @WebServlet("/them-nhan-vien")
-public class ThemNhanVienController extends HttpServlet {
+public class AddNhanVienController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ThemNhanVienController() {
+    public AddNhanVienController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -54,7 +54,7 @@ public class ThemNhanVienController extends HttpServlet {
 		nhanVienBEAN.setNgaySinh(ngaySinh);
 		nhanVienBEAN.setCaLamViec(caLamViec);
 		
-		if (ThemNhanVienBO.themNhanVien(nhanVienBEAN)) {
+		if (AddNhanVienBO.addNhanVien(nhanVienBEAN)) {
 			doGet(request, response);
 		}
 		else {

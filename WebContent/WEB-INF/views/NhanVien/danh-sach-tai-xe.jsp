@@ -57,8 +57,8 @@
 									
 									<td><%=listTaiXe.get(i).getNgaySinh()%></td>
 									<td>1</td>
-									<td><a href="showUpdateServlet?maNhanVien=<%=listTaiXe.get(i).getId()%>" class = "btn btn-danger">Update</a> </td>
-									<td><a href="deleteServlet?maNhanVien=<%=listTaiXe.get(i).getMaNhanVien() %>" class = "btn btn-info">Delete</a></td>
+									<td><a href="ShowUpdateTaiXeController?idTaiXe=<%=listTaiXe.get(i).getId()%>" class = "btn btn-danger">Update</a> </td>
+									<td><a href="DeleteTaiXeController?idTaiXe=<%=listTaiXe.get(i).getId() %>" class = "btn btn-info">Delete</a></td>
 								</tr>
 						 <% }else{%>
 								<tr class="odd gradeX" align="center">
@@ -67,8 +67,8 @@
 									<td><%=listTaiXe.get(i).getHoTen()%></td>
 									<td><%=listTaiXe.get(i).getNgaySinh()%></td>
 									<td>1</td>
-									<td><a href="showUpdateServlet?maNhanVien=<%=listTaiXe.get(i).getId() %>" class = "btn btn-danger">Update</a> </td>
-									<td><a href="deleteServlet?maNhanVien=<%=listTaiXe.get(i).getMaNhanVien() %>" class = "btn btn-info">Delete</a></td>
+									<td><a href="ShowUpdateTaiXeController?idTaiXe=<%=listTaiXe.get(i).getId()%>" class = "btn btn-danger">Update</a> </td>
+									<td><a href="DeleteTaiXeController?idTaiXe=<%=listTaiXe.get(i).getId() %>" class = "btn btn-info">Delete</a></td>
 								</tr>
 						 <%}}%>
 					</tbody>

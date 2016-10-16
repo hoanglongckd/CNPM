@@ -10,21 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.util.ArrayList;
 import model.bean.NhanVien.NhanVienBEAN;
-import model.bo.NhanVien.DanhSachNhanVienBO;
-import model.bo.NhanVien.ThemNhanVienBO;
-import model.dao.NhanVien.ThemNhanVienDAO;
+import model.bo.NhanVien.ShowDanhSachNhanVienBO;
+import model.bo.NhanVien.AddNhanVienBO;
+import model.dao.NhanVien.AddNhanVienDAO;
 
 /**
  * Servlet implementation class AddBaoDuongXeController
  */
 @WebServlet("/danh-sach-nhan-vien")
-public class DanhSachNhanVienController extends HttpServlet {
+public class ShowDanhSachNhanVienController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public DanhSachNhanVienController() {
+	public ShowDanhSachNhanVienController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -44,9 +44,9 @@ public class DanhSachNhanVienController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		DanhSachNhanVienBO danhSachNhanVienBO = new DanhSachNhanVienBO();
+		ShowDanhSachNhanVienBO danhSachNhanVienBO = new ShowDanhSachNhanVienBO();
 
-		ArrayList<NhanVienBEAN> listNhanVien = DanhSachNhanVienBO.getDanhSachNhanVien();
+		ArrayList<NhanVienBEAN> listNhanVien = ShowDanhSachNhanVienBO.getDanhSachNhanVien();
 		request.setAttribute("listNhanVien", listNhanVien);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/NhanVien/danh-sach-nhan-vien.jsp");
 		rd.forward(request, response);

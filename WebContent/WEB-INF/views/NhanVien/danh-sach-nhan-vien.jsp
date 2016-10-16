@@ -57,8 +57,8 @@
 									
 									<td><%=listNhanVien.get(i).getNgaySinh()%></td>
 									<td>1</td>
-									<td><a href="showUpdateServlet?maNhanVien=<%=listNhanVien.get(i).getId()%>" class = "btn btn-danger">Update</a> </td>
-									<td><a href="deleteServlet?maNhanVien=<%=listNhanVien.get(i).getMaNhanVien() %>" class = "btn btn-info">Delete</a></td>
+									<td><a href="ShowUpdateNhanVienController?idNhanVien=<%=listNhanVien.get(i).getId()%>" class = "btn btn-danger">Update</a> </td>
+									<td><a href="DeleteNhanVienController?idNhanVien=<%=listNhanVien.get(i).getId() %>" class = "btn btn-info">Delete</a></td>
 								</tr>
 						 <% }else{%>
 								<tr class="odd gradeX" align="center">
@@ -67,8 +67,8 @@
 									<td><%=listNhanVien.get(i).getHoTen()%></td>
 									<td><%=listNhanVien.get(i).getNgaySinh()%></td>
 									<td>1</td>
-									<td><a href="showUpdateServlet?maNhanVien=<%=listNhanVien.get(i).getId() %>" class = "btn btn-danger">Update</a> </td>
-									<td><a href="deleteServlet?maNhanVien=<%=listNhanVien.get(i).getMaNhanVien() %>" class = "btn btn-info">Delete</a></td>
+									<td><a href="ShowUpdateNhanVienController?idNhanVien=<%=listNhanVien.get(i).getId() %>" class = "btn btn-danger">Update</a> </td>
+									<td><a href="DeleteNhanVienController?idNhanVien=<%=listNhanVien.get(i).getId() %>" class = "btn btn-info">Delete</a></td>
 								</tr>
 						 <%}}%>
 					</tbody>
