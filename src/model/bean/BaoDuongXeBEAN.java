@@ -7,10 +7,16 @@ public class BaoDuongXeBEAN {
 	private String ngayBaoDuong;
 	private String ngayBaoDuongTiepTheo;
 	private int idXe;
+	private String bienSoXe;
+	private String model;
 	
 	public BaoDuongXeBEAN() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public String getBienSoXe() {
+		return bienSoXe;
 	}
 	
 	public BaoDuongXeBEAN(int id, String chiTiet, long soTien, String ngayBaoDuong, String ngayBaoDuongTiepTheo, int idXe) {
@@ -21,6 +27,29 @@ public class BaoDuongXeBEAN {
 		this.ngayBaoDuong = ngayBaoDuong;
 		this.ngayBaoDuongTiepTheo = ngayBaoDuongTiepTheo;
 		this.idXe = idXe;
+	}
+
+	public BaoDuongXeBEAN(int id, long soTien, String ngayBaoDuong, String ngayBaoDuongTiepTheo, String bienSoXe,
+			String model) {
+		super();
+		this.id = id;
+		this.soTien = soTien;
+		this.ngayBaoDuong = ngayBaoDuong;
+		this.ngayBaoDuongTiepTheo = ngayBaoDuongTiepTheo;
+		this.bienSoXe = bienSoXe;
+		this.model = model;
+	}
+
+	public void setBienSoXe(String bienSoXe) {
+		this.bienSoXe = bienSoXe;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
 	}
 
 	public int getId() {

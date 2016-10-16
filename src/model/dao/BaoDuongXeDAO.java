@@ -51,4 +51,29 @@ public class BaoDuongXeDAO {
 		}
 		return listXe;
 	}
+	
+	public ArrayList<BaoDuongXeBEAN> lietKeDanhSachBaoDuong() {
+		ArrayList<BaoDuongXeBEAN> baoDuongXeBEANs = new ArrayList<>();
+		try {
+			String sql = "SELECT XE.BienSoXe, XE.Model, BAODUONGXE.id, "
+					+ "BAODUONGXE.NgayBaoDuong, BAODUONGXE.NgayBaoDuongTiepTheo, BAODUONGXE.SoTien "
+					+ "FROM XE, BAODUONGXE "
+					+ "WHERE BAODUONGXE.idXe = XE.id;";
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				BaoDuongXeBEAN baoDuongXeBEAN = new BaoDuongXeBEAN(
+						rs.getInt("id"), 
+						rs.getLong("soTien"), 
+						rs.getString("ngayBaoDuong"), 
+						rs.getString("ngayBaoDuongTiepTheo"), 
+						rs.getString("bienSoXe"), 
+						rs.getString("model"));
+				baoDuongXeBEANs.add(baoDuongXeBEAN);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return baoDuongXeBEANs;
+	}
 }

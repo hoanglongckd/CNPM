@@ -18,4 +18,7 @@ public class BaoDuongXeBO {
 		return baoDuongXeDAO.lietKeXe();
 	}
 	
+	public static ArrayList<BaoDuongXeBEAN> lietKeDanhSachBaoDuong() {
+		return baoDuongXeDAO.lietKeDanhSachBaoDuong();
+	}
 }
