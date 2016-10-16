@@ -46,7 +46,7 @@
 					<a href="#"><i class="fa fa-wrench"></i> Bảo dưỡng xe<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li><a href="<%=request.getContextPath()%>/them-xe-bao-duong">Thêm xe bảo dưỡng</a></li>
-							<li><a href="#">Báo cáo bảo dưỡng</a></li>
+							<li><a href="<%=request.getContextPath()%>/bao-cao-xe-bao-duong">Báo cáo bảo dưỡng</a></li>
 						</ul>
 					<!-- /.nav-second-level -->
 				</li>
