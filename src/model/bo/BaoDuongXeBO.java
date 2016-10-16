@@ -21,4 +21,8 @@ public class BaoDuongXeBO {
 	public static ArrayList<BaoDuongXeBEAN> lietKeDanhSachBaoDuong() {
 		return baoDuongXeDAO.lietKeDanhSachBaoDuong();
 	}
+	
+	public static BaoDuongXeBEAN chiTietXeBaoDuong(int id) {
+		return baoDuongXeDAO.chiTietXeBaoDuong(id);
+	}
 }

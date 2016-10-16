@@ -76,4 +76,29 @@ public class BaoDuongXeDAO {
 		}
 		return baoDuongXeBEANs;
 	}
+	
+	public BaoDuongXeBEAN chiTietXeBaoDuong(int id) {
+		BaoDuongXeBEAN baoDuongXeBEAN = null;
+		try {
+			String sql = "SELECT XE.BienSoXe, XE.Model, XE.SoCho, "
+					+ "BAODUONGXE.id, BAODUONGXE.SoTien, BAODUONGXE.ChiTiet "
+					+ "FROM BAODUONGXE JOIN XE "
+					+ "ON BAODUONGXE.idXe = XE.id "
+					+ "WHERE BAODUONGXE.id = " + id;
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				baoDuongXeBEAN = new BaoDuongXeBEAN(
+						rs.getInt("id"),
+						rs.getString("chiTiet"), 
+						rs.getLong("soTien"), 
+						rs.getInt("soCho"), 
+						rs.getString("bienSoXe"), 
+						rs.getString("model"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return baoDuongXeBEAN;
+	}
 }

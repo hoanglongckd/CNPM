@@ -10,13 +10,13 @@
 <jsp:include page="../_top.jsp" />
 <jsp:include page="../_menu.jsp" />
 
-<!-- Page Content -->
 <%
 	ArrayList<XeBEAN> listXe = null;
 	if(request.getAttribute("listXe")!=null){
 		listXe = (ArrayList<XeBEAN>)request.getAttribute("listXe");
 	}
 %>
+<!-- Page Content -->
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">

@@ -5,7 +5,7 @@
     
 <jsp:include page="../_header.jsp" />
 <%-- <%@include file="header.jsp" %> --%>
-	<title>Thêm xe bảo dưỡng</title>
+	<title>Báo cáo xe bảo dưỡng</title>
 <jsp:include page="../_top.jsp" />
 <jsp:include page="../_menu.jsp" />
 
@@ -21,8 +21,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Category
-                    <small>List</small>
+                <h1 class="page-header">Báo Cáo
+                    <small>Xe Bảo Dưỡng</small>
                 </h1>
             </div>
             <!-- /.col-lg-12 -->
@@ -53,8 +53,11 @@
                         <td><%=xeBaoDuong.getNgayBaoDuong()%></td>
                         <td><%=xeBaoDuong.getNgayBaoDuongTiepTheo()%></td>
                         <td><%=xeBaoDuong.getSoTien()%></td>
-                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                        <td class="center">
+                        	<i class="fa fa-eye fa-fw"></i>
+                        	<a href="<%=request.getContextPath()%>/chi-tiet-bao-duong?id=<%=xeBaoDuong.getId()%>"> Xem</a>
+                       	</td>
+                        <td class="center"><i class="fa fa-trash-o fa-fw"></i> <a href="#"> Xóa</a></td>
                     </tr>
                 <%
                 		}

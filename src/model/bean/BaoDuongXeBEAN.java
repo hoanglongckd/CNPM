@@ -9,7 +9,8 @@ public class BaoDuongXeBEAN {
 	private int idXe;
 	private String bienSoXe;
 	private String model;
-	
+	private int soCho;
+
 	public BaoDuongXeBEAN() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -38,6 +39,16 @@ public class BaoDuongXeBEAN {
 		this.ngayBaoDuongTiepTheo = ngayBaoDuongTiepTheo;
 		this.bienSoXe = bienSoXe;
 		this.model = model;
+	}
+
+	public BaoDuongXeBEAN(int id, String chiTiet, long soTien, int soCho, String bienSoXe, String model) {
+		super();
+		this.id = id;
+		this.chiTiet = chiTiet;
+		this.soTien = soTien;
+		this.bienSoXe = bienSoXe;
+		this.model = model;
+		this.soCho = soCho;
 	}
 
 	public void setBienSoXe(String bienSoXe) {
@@ -98,6 +109,14 @@ public class BaoDuongXeBEAN {
 
 	public void setIdXe(int idXe) {
 		this.idXe = idXe;
+	}
+	
+	public int getSoCho() {
+		return soCho;
+	}
+
+	public void setSoCho(int soCho) {
+		this.soCho = soCho;
 	}
 	
 }
