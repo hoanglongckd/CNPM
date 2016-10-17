@@ -33,4 +33,12 @@
     <servlet-name>XoaXeBaoDuongController</servlet-name>
     <url-pattern>/xoa-xe-bao-duong</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>SuaXeBaoDuongController</servlet-name>
+    <servlet-class>controller.BaoDuongXe.SuaXeBaoDuongController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SuaXeBaoDuongController</servlet-name>
+    <url-pattern>/sua-xe-bao-duong</url-pattern>
+  </servlet-mapping>
 </web-app>
