@@ -101,4 +101,16 @@ public class BaoDuongXeDAO {
 		}
 		return baoDuongXeBEAN;
 	}
+	
+	public boolean xoaXeBaoDuong(int id) {
+		try {
+			String sql = "DELETE FROM BAODUONGXE WHERE id = " + id;
+			st = conn.createStatement();
+			int rowEffect = st.executeUpdate(sql);
+			if (rowEffect != 0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

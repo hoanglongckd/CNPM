@@ -57,7 +57,10 @@
                         	<i class="fa fa-eye fa-fw"></i>
                         	<a href="<%=request.getContextPath()%>/chi-tiet-bao-duong?id=<%=xeBaoDuong.getId()%>"> Xem</a>
                        	</td>
-                        <td class="center"><i class="fa fa-trash-o fa-fw"></i> <a href="#"> Xóa</a></td>
+                        <td class="center">
+                        	<i class="fa fa-trash-o fa-fw"></i> 
+                        	<a href="<%=request.getContextPath()%>/xoa-xe-bao-duong?id=<%=xeBaoDuong.getId()%>"> Xóa</a>
+                       	</td>
                     </tr>
                 <%
                 		}

@@ -25,4 +25,8 @@ public class BaoDuongXeBO {
 	public static BaoDuongXeBEAN chiTietXeBaoDuong(int id) {
 		return baoDuongXeDAO.chiTietXeBaoDuong(id);
 	}
+	
+	public static boolean xoaXeBaoDuong(int id) {
+		return baoDuongXeDAO.xoaXeBaoDuong(id);
+	}
 }
