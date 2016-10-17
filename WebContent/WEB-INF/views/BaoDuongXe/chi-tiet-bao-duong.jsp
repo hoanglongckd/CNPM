@@ -51,7 +51,7 @@
 						<textarea class="form-control" rows="4" name="detail"
 						><%=chiTietBaoDuong.getChiTiet()%></textarea>
 					</div>
-					<button type="submit" class="btn btn-default">Sửa</button>
+					<a href="<%=request.getContextPath()%>/sua-xe-bao-duong?id=<%=chiTietBaoDuong.getId()%>" class="btn btn-default">Sửa</a>
 					<a href="<%=request.getContextPath()%>/bao-cao-xe-bao-duong" class="btn btn-default">Back</a>
 				</form>
 			</div>

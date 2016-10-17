@@ -51,6 +51,17 @@ public class BaoDuongXeBEAN {
 		this.soCho = soCho;
 	}
 
+	public BaoDuongXeBEAN(int id, String chiTiet, long soTien, String ngayBaoDuong, String ngayBaoDuongTiepTheo,
+			String bienSoXe) {
+		super();
+		this.id = id;
+		this.chiTiet = chiTiet;
+		this.soTien = soTien;
+		this.ngayBaoDuong = ngayBaoDuong;
+		this.ngayBaoDuongTiepTheo = ngayBaoDuongTiepTheo;
+		this.bienSoXe = bienSoXe;
+	}
+
 	public void setBienSoXe(String bienSoXe) {
 		this.bienSoXe = bienSoXe;
 	}

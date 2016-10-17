@@ -113,4 +113,32 @@ public class BaoDuongXeDAO {
 		}
 		return false;
 	}
+	
+	public BaoDuongXeBEAN getSuaXe(int id) {
+		BaoDuongXeBEAN baoDuongXeBEAN = null;
+		try {
+			String sql = "SELECT BAODUONGXE.id, XE.BienSoXe, BAODUONGXE.NgayBaoDuong, "
+					+ "BAODUONGXE.NgayBaoDuongTiepTheo, BAODUONGXE.SoTien, BAODUONGXE.ChiTiet "
+					+ "FROM BAODUONGXE "
+					+ "JOIN XE "
+					+ "ON BAODUONGXE.idXe = XE.id "
+					+ "WHERE BAODUONGXE.id = " + id;
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				baoDuongXeBEAN = new BaoDuongXeBEAN(
+						rs.getInt("id"), 
+						rs.getString("ChiTiet"), 
+						rs.getLong("SoTien"), 
+						rs.getString("NgayBaoDuong"), 
+						rs.getString("NgayBaoDuongTiepTheo"), 
+						rs.getString("BienSoXe"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+//		System.out.println("baoDuongXeBEAN in DAO");
+//		System.out.println(baoDuongXeBEAN.getBienSoXe());
+		return baoDuongXeBEAN;
+	}
 }
