@@ -25,4 +25,12 @@
     <servlet-name>ChiTietBaoDuongController</servlet-name>
     <url-pattern>/chi-tiet-bao-duong</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>XoaXeBaoDuongController</servlet-name>
+    <servlet-class>controller.BaoDuongXe.XoaXeBaoDuongController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>XoaXeBaoDuongController</servlet-name>
+    <url-pattern>/xoa-xe-bao-duong</url-pattern>
+  </servlet-mapping>
 </web-app>

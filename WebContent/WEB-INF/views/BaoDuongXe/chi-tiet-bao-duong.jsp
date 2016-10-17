@@ -4,7 +4,7 @@
     
 <jsp:include page="../_header.jsp" />
 <%-- <%@include file="header.jsp" %> --%>
-	<title>Chi tiết bảo dưỡng</title>
+	<title>Chi tiết xe bảo dưỡng</title>
 <jsp:include page="../_top.jsp" />
 <jsp:include page="../_menu.jsp" />
 
