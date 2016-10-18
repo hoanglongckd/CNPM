@@ -20,7 +20,6 @@ public class BaoDuongXeDAO {
 		try {
 			String sql = "INSERT INTO BAODUONGXE(SoTien, NgayBaoDuong, NgayBaoDuongTiepTheo, ChiTiet, idXe) "
 					+ "VALUES (?, ?, ?, ?, ?)";
-			System.out.println(baoDuongXeBEAN.getChiTiet());
 			PreparedStatement pre = conn.prepareStatement(sql);
 			pre.setLong(1, baoDuongXeBEAN.getSoTien());
 			pre.setString(2, baoDuongXeBEAN.getNgayBaoDuong());
@@ -137,8 +136,24 @@ public class BaoDuongXeDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		System.out.println("baoDuongXeBEAN in DAO");
-//		System.out.println(baoDuongXeBEAN.getBienSoXe());
 		return baoDuongXeBEAN;
+	}
+	
+	public boolean setSuaXe(BaoDuongXeBEAN baoDuongXeBean) {
+		String sql = "UPDATE BAODUONGXE SET "
+				+ "NgayBaoDuong = ?, NgayBaoDuongTiepTheo = ?, SoTien = ?"
+				+ ", ChiTiet = N'" + baoDuongXeBean.getChiTiet() + "' WHERE id = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, baoDuongXeBean.getNgayBaoDuong());
+			ps.setString(2, baoDuongXeBean.getNgayBaoDuongTiepTheo());
+			ps.setLong(3, baoDuongXeBean.getSoTien());
+			ps.setInt(4, baoDuongXeBean.getId());
+			int rowEffect = ps.executeUpdate();
+			if (rowEffect != 0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

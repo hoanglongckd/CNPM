@@ -38,11 +38,7 @@ public class SuaXeBaoDuongController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		System.out.println("id: ");
-//		System.out.println(id);
 		BaoDuongXeBEAN baoDuongXeBEAN = BaoDuongXeBO.getSuaXe(id);
-//		System.out.println("baoDuongXeBEAN");
-//		System.out.println(baoDuongXeBEAN.getBienSoXe());
 		request.setAttribute("xeDaBaoDuong", baoDuongXeBEAN);
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/BaoDuongXe/sua-xe-bao-duong.jsp");
 		dispatcher.forward(request, response);
@@ -52,8 +48,37 @@ public class SuaXeBaoDuongController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		
+		String param = request.getParameter("id");
+		int id = 0;
+		try {
+			id = Integer.parseInt(param);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String ngayBaoDuongHienTai = request.getParameter("current-date");
+		String ngayBaoDuongTiepTheo = request.getParameter("next-date");
+		long chiPhiBaoDuong = 0;
+		try {
+			chiPhiBaoDuong = Long.parseLong(request.getParameter("cost"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String chiTiet = request.getParameter("detail");
+		
+		BaoDuongXeBEAN baoDuongXeBEAN = new BaoDuongXeBEAN();
+		baoDuongXeBEAN.setId(id);
+		baoDuongXeBEAN.setNgayBaoDuong(ngayBaoDuongHienTai);
+		baoDuongXeBEAN.setNgayBaoDuongTiepTheo(ngayBaoDuongTiepTheo);
+		baoDuongXeBEAN.setSoTien(chiPhiBaoDuong);
+		baoDuongXeBEAN.setChiTiet(chiTiet);
+		if (BaoDuongXeBO.setSuaXe(baoDuongXeBEAN)) {
+			response.sendRedirect(request.getContextPath() + "/bao-cao-xe-bao-duong");
+		} 
+		else {
+			System.out.println("Fail");
+		}
 	}
 
 }

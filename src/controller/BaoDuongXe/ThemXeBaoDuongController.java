@@ -64,13 +64,11 @@ public class ThemXeBaoDuongController extends HttpServlet {
 		baoDuongXeBEAN.setChiTiet(chiTiet);
 		
 		if (BaoDuongXeBO.themXeBaoDuong(baoDuongXeBEAN)) {
-			doGet(request, response);
+			response.sendRedirect(request.getContextPath() + "/bao-cao-xe-bao-duong");
 		}
 		else {
 			System.out.println("Fail");
 		}
-		
-		System.out.println(idXe + "|" + ngayBaoDuongHienTai + "|" + ngayBaoDuongTiepTheo + "|" + chiPhiBaoDuong + "|" + chiTiet);
 	}
 
 }

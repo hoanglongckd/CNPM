@@ -33,4 +33,8 @@ public class BaoDuongXeBO {
 	public static BaoDuongXeBEAN getSuaXe(int id) {
 		return baoDuongXeDAO.getSuaXe(id);
 	}
+	
+	public static boolean setSuaXe(BaoDuongXeBEAN baoDuongXeBean) {
+		return baoDuongXeDAO.setSuaXe(baoDuongXeBean);
+	}
 }

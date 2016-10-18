@@ -29,26 +29,26 @@
 					<div class="form-group">
 						<label>Biển số xe</label>
 						<input class="form-control" type="text" name="current-date" 
-						value="<%=chiTietBaoDuong.getBienSoXe()%>"/>
+						value="<%=chiTietBaoDuong.getBienSoXe()%>" readonly />
 					</div>
 					<div class="form-group">
 						<label>Model</label>
 						<input class="form-control" type="text" name="current-date"
-						value="<%=chiTietBaoDuong.getModel()%>"/>
+						value="<%=chiTietBaoDuong.getModel()%>" readonly/>
 					</div>
 					<div class="form-group">
 						<label>Số chỗ</label>
 						<input class="form-control" type="text" name="next-date" 
-						value="<%=chiTietBaoDuong.getSoCho()%>"/>
+						value="<%=chiTietBaoDuong.getSoCho()%>" readonly />
 					</div>
 					<div class="form-group">
 						<label>Tổng chi phí</label>
 						<input type="number" class="form-control" name="cost"
-						value="<%=chiTietBaoDuong.getSoCho()%>" />
+						value="<%=chiTietBaoDuong.getSoTien()%>" readonly />
 					</div>
 					<div class="form-group">
 						<label>Chi tiết</label>
-						<textarea class="form-control" rows="4" name="detail"
+						<textarea class="form-control" rows="4" name="detail" readonly
 						><%=chiTietBaoDuong.getChiTiet()%></textarea>
 					</div>
 					<a href="<%=request.getContextPath()%>/sua-xe-bao-duong?id=<%=chiTietBaoDuong.getId()%>" class="btn btn-default">Sửa</a>

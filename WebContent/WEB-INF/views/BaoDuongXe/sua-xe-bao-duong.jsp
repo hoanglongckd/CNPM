@@ -26,10 +26,11 @@
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom:120px">
 				<form action="${pageContext.request.contextPath}/sua-xe-bao-duong" method="POST">
+					<input type="hidden" name="id" id="id" value="<%=xeDaBaoDuong.getId()%>">
 					<div class="form-group">
 						<label for="bien-so-xe">Biển số xe</label>
 						<input class="form-control" type="text" name="bien-so-xe" 
-						id="bien-so-xe" value="<%=xeDaBaoDuong.getBienSoXe()%>" />
+						id="bien-so-xe" value="<%=xeDaBaoDuong.getBienSoXe()%>" readonly />
 					</div>
 					<div class="form-group">
 						<label for="current-date">Ngày bảo dưỡng hiện tại</label>
