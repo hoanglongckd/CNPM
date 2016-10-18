@@ -142,13 +142,14 @@ public class BaoDuongXeDAO {
 	public boolean setSuaXe(BaoDuongXeBEAN baoDuongXeBean) {
 		String sql = "UPDATE BAODUONGXE SET "
 				+ "NgayBaoDuong = ?, NgayBaoDuongTiepTheo = ?, SoTien = ?"
-				+ ", ChiTiet = N'" + baoDuongXeBean.getChiTiet() + "' WHERE id = ?";
+				+ ", ChiTiet = ? WHERE id = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, baoDuongXeBean.getNgayBaoDuong());
 			ps.setString(2, baoDuongXeBean.getNgayBaoDuongTiepTheo());
 			ps.setLong(3, baoDuongXeBean.getSoTien());
-			ps.setInt(4, baoDuongXeBean.getId());
+			ps.setNString(4, baoDuongXeBean.getChiTiet());
+			ps.setInt(5, baoDuongXeBean.getId());
 			int rowEffect = ps.executeUpdate();
 			if (rowEffect != 0) return true;
 		} catch (Exception e) {
