@@ -25,10 +25,4 @@
 	    <script src="<%=request.getContextPath()%>/public/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 	
 	    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-	    <script>
-	    $(document).ready(function() {
-	        $('#dataTables-example').DataTable({
-	                responsive: true
-	        });
-	    });
-	    </script>
+	    <script src="<%=request.getContextPath()%>/public/js/main.js"></script>

@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.bean.BaoDuongXeBEAN;
 import model.bean.XeBEAN;
@@ -63,8 +64,11 @@ public class ThemXeBaoDuongController extends HttpServlet {
 		baoDuongXeBEAN.setSoTien(chiPhiBaoDuong);
 		baoDuongXeBEAN.setChiTiet(chiTiet);
 		
+		HttpSession msg = request.getSession();
 		if (BaoDuongXeBO.themXeBaoDuong(baoDuongXeBEAN)) {
+			msg.setAttribute("messages", "Thêm thành công!");
 			response.sendRedirect(request.getContextPath() + "/bao-cao-xe-bao-duong");
+			
 		}
 		else {
 			System.out.println("Fail");
