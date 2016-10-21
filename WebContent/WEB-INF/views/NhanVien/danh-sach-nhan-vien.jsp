@@ -1,4 +1,4 @@
-<%@page import="model.bean.NhanVien.NhanVienBEAN"%>
+<%@page import="model.bean.NhanVienBEAN"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -41,6 +41,7 @@
 						</tr>
 					</thead>
 					<tbody>
+					
 						<% for (int i=0;i<listNhanVien.size();i++){
 							if(listNhanVien.get(i).getCaLamViec()==1){
 								 String ca = "Ca 1";

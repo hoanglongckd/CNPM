@@ -10,16 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.NhanVien.NhanVienBEAN;
-import model.bo.NhanVien.ShowDanhSachNhanVienBO;
-import model.bo.NhanVien.ShowDanhSachTaiXeBO;
-import model.bo.NhanVien.AddNhanVienBO;
-import model.dao.NhanVien.AddNhanVienDAO;
-
+import model.bo.NhanVienBO;
+import model.bean.NhanVienBEAN;
 /**
  * Servlet implementation class AddBaoDuongXeController
  */
-@WebServlet("/danh-sach-tai-xe")
+
 public class ShowDanhSachTaiXeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,7 +32,12 @@ public class ShowDanhSachTaiXeController extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doPost(request, response);
+    	NhanVienBO nhanVienBO = new NhanVienBO();
+
+		ArrayList<NhanVienBEAN> listTaiXe = nhanVienBO.getDanhSachTaiXe();
+		request.setAttribute("listTaiXe", listTaiXe);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/NhanVien/danh-sach-tai-xe.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -45,12 +46,7 @@ public class ShowDanhSachTaiXeController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ShowDanhSachTaiXeBO danhSachTaiXeBO = new ShowDanhSachTaiXeBO();
-
-		ArrayList<NhanVienBEAN> listTaiXe = ShowDanhSachTaiXeBO.listTaiXe();
-		request.setAttribute("listTaiXe", listTaiXe);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/NhanVien/danh-sach-tai-xe.jsp");
-		rd.forward(request, response);
-	}
+		doGet(request,response);
+		}
 
 }

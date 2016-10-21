@@ -1,4 +1,4 @@
-package model.bean.NhanVien;
+package model.bean;
 
 public class NhanVienBEAN {
 	private int id;
