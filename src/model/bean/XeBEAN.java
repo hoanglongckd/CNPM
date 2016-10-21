@@ -7,6 +7,8 @@ public class XeBEAN {
 	private int soCho;
 	private String hang;
 	private boolean tinhTrangHoatDong;
+	private String ghiChu;
+	private String taiXe;
 	
 	public XeBEAN() {
 		super();
@@ -21,6 +23,27 @@ public class XeBEAN {
 		this.soCho = soCho;
 		this.hang = hang;
 		this.tinhTrangHoatDong = tinhTrangHoatDong;
+	}
+	
+	public XeBEAN(int id, String bienSoXe, String model, String taiXe, int soCho, String hang){
+		super();
+		this.id = id;
+		this.bienSoXe = bienSoXe;
+		this.model = model;
+		this.taiXe = taiXe;
+		this.soCho = soCho;
+		this.hang = hang;
+	}
+	
+	public XeBEAN(int id, String bienSoXe, String taiXe, String model, int soCho, String hang, String ghiChu){
+		super();
+		this.id = id;
+		this.bienSoXe = bienSoXe;
+		this.model = model;
+		this.taiXe = taiXe;
+		this.soCho = soCho;
+		this.hang = hang;
+		this.ghiChu = ghiChu;
 	}
 
 	public int getId() {
@@ -69,6 +92,22 @@ public class XeBEAN {
 
 	public void setTinhTrangHoatDong(boolean tinhTrangHoatDong) {
 		this.tinhTrangHoatDong = tinhTrangHoatDong;
+	}
+
+	public String getTaiXe() {
+		return taiXe;
+	}
+
+	public void setTaiXe(String taiXe) {
+		this.taiXe = taiXe;
+	}
+
+	public String getGhiChu() {
+		return ghiChu;
+	}
+
+	public void setGhiChu(String ghiChu) {
+		this.ghiChu = ghiChu;
 	}
 	
 }

@@ -12,6 +12,11 @@ public class taiXeBO {
 		return taiXedao.getAllMaTX();
 	}
 
+	public List<TaiXe> getAllTenTX() {
+		
+		return taiXedao.getAllTenTX();
+	}
+
 
 	
 }
