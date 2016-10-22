@@ -9,6 +9,7 @@ public class XeBEAN {
 	private boolean tinhTrangHoatDong;
 	private String ghiChu;
 	private String taiXe;
+	private int idTX;
 	
 	public XeBEAN() {
 		super();
@@ -35,7 +36,7 @@ public class XeBEAN {
 		this.hang = hang;
 	}
 	
-	public XeBEAN(int id, String bienSoXe, String taiXe, String model, int soCho, String hang, String ghiChu){
+	public XeBEAN(int id, String bienSoXe, String taiXe, String model, int soCho, String hang, String ghiChu, int idTX){
 		super();
 		this.id = id;
 		this.bienSoXe = bienSoXe;
@@ -44,6 +45,7 @@ public class XeBEAN {
 		this.soCho = soCho;
 		this.hang = hang;
 		this.ghiChu = ghiChu;
+		this.idTX = idTX;
 	}
 
 	public int getId() {
@@ -108,6 +110,14 @@ public class XeBEAN {
 
 	public void setGhiChu(String ghiChu) {
 		this.ghiChu = ghiChu;
+	}
+
+	public int getIdTX() {
+		return idTX;
+	}
+
+	public void setIdTX(int idTX) {
+		this.idTX = idTX;
 	}
 	
 }

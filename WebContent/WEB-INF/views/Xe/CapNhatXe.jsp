@@ -32,6 +32,7 @@
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom: 120px">
 				<form action="<%=request.getContextPath()%>/cap-nhat-xe" method="POST">
+					<input type="hidden" name="id" value="<%=xe.getId() %>">
 					<div class="form-group">
 						<label>Biển số xe</label> <input class="form-control"
 							name="biensoxe" id="biensoxe" value="<%=xe.getBienSoXe()%>" readonly/>
@@ -40,7 +41,7 @@
 						<label>Tên tài xế</label> 
 						<select class="form-control" name="tentx"
 							id="tentx">
-							<option value="0"><%=xe.getTaiXe()%></option>
+							<option value="<%=xe.getIdTX()%>"><%=xe.getTaiXe()%></option>
 							<%
 								if (listTX != null)
 									for (TaiXe item : listTX) {
@@ -64,7 +65,7 @@
 					<div class="form-group">
 						<label>Số chổ ngồi</label> <select class="form-control"
 							name="sochongoi" id="sochongoi" >
-							<option value="0"><%=xe.getSoCho()%></option>
+							<option value="<%=xe.getSoCho()%>"><%=xe.getSoCho()%></option>
 							<option value="4">4</option>
 							<option value="5">5</option>
 							<option value="7">7</option>

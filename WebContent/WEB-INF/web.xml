@@ -110,11 +110,11 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>XoaXe</servlet-name>
-		<servlet-class>controller.QuanLyXe.XoaXe</servlet-class>
+		<servlet-name>DeleteXeServlet</servlet-name>
+		<servlet-class>controller.QuanLyXe.DeleteXeServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>XoaXe</servlet-name>
+		<servlet-name>DeleteXeServlet</servlet-name>
 		<url-pattern>/xoa-xe</url-pattern>
 	</servlet-mapping>
 </web-app>

@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,6 +34,7 @@ public class UpdateXeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String param = request.getParameter("id");
+//		System.out.println(param);
 		int id = 0;
 		try {
 			id = Integer.parseInt(param);
@@ -58,13 +58,12 @@ public class UpdateXeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-
+		
 		String param = request.getParameter("id");
-		System.out.println(param);
+		
 		int id = 0;
 		try {
 			id = Integer.parseInt(param);
-	//		System.out.println(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -74,14 +73,20 @@ public class UpdateXeServlet extends HttpServlet {
 		taixe.setId(Integer.parseInt(request.getParameter("tentx")));
 		
 		xe.setId(id);
-		xe.setTaiXe(request.getParameter("tentx"));
+//		xe.setTaiXe(request.getParameter("tentx"));
 		xe.setModel(request.getParameter("model"));
 		xe.setSoCho(Integer.parseInt(request.getParameter("sochongoi")));
 		xe.setHang(request.getParameter("hang"));
 		xe.setGhiChu(request.getParameter("ghichu"));
-	
-		if (xeBO.setCapNhatXe(xe)) {
-			if (xeBO.setCapNhatPhanCongTX(taixe, xe))
+		
+//		System.out.println(id);
+//		System.out.println(request.getParameter("tentx"));
+		
+		boolean check = xeBO.setCapNhatXe(xe);
+		boolean check2 = xeBO.setCapNhatPhanCongTX(taixe, xe);
+		
+		if (check) {
+			if (check2)
 			response.sendRedirect(request.getContextPath() + "/list-xe");
 		} else {
 			System.out.println("Fail");

@@ -55,7 +55,7 @@
                         <td><%=item.getHang()%></td>
                         <td class="center">
                         	<i class="fa fa-eye fa-fw"></i>
-                        	<a href="<%=request.getContextPath()%>/cap-nhat?id=<%=item.getId()%>"> Cập nhật</a>
+                        	<a href="<%=request.getContextPath()%>/cap-nhat-xe?id=<%=item.getId()%>"> Cập nhật</a>
                        	</td>
                         <td class="center">
                         	<i class="fa fa-trash-o fa-fw"></i> 

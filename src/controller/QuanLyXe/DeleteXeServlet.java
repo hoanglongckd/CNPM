@@ -2,25 +2,23 @@ package controller.QuanLyXe;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bo.BaoDuongXeBO;
 import model.bo.xeBO;
 
 /**
  * Servlet implementation class XoaXe
  */
 //@WebServlet("/xoa-xe")
-public class XoaXe extends HttpServlet {
+public class DeleteXeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public XoaXe() {
+    public DeleteXeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,7 +42,7 @@ public class XoaXe extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		boolean valid = xeBO.xoaXe(id);
+		xeBO.xoaXe(id);
 		response.sendRedirect(request.getContextPath() + "/list-xe");
 	}
 

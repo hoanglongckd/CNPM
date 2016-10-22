@@ -106,14 +106,15 @@ public class xeDao {
 	public XeBEAN getCapNhatXe(int id) {
 		XeBEAN xebean = null;
 		try {
-			String sql = "SELECT XE.id, XE.BienSoXe, TAIXE.Ten, XE.Model, XE.SoCho, XE.hang, XE.GhiChu "
+			String sql = "SELECT XE.id, XE.BienSoXe, TAIXE.Ten, XE.Model, XE.SoCho, XE.hang, XE.GhiChu, TAIXE.id "
 					+ "FROM PHANCONGTX " + "JOIN TAIXE " + "ON TAIXE.id = PHANCONGTX.idTaiXe " + "JOIN XE "
 					+ "ON PHANCONGTX.idXe = XE.id " + "WHERE XE.id = " + id;
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while (rs.next()) {
 				xebean = new XeBEAN(rs.getInt("id"), rs.getString("BienSoXe"), rs.getString("Ten"),
-						rs.getString("Model"), rs.getInt("SoCho"), rs.getString("Hang"), rs.getString("GhiChu"));
+						rs.getString("Model"), rs.getInt("SoCho"), rs.getString("Hang"), rs.getString("GhiChu"), rs.getInt(8));
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
