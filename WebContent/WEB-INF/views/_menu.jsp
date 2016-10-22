@@ -19,23 +19,23 @@
 					<a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
 				</li>
 				<li>
-					<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
+					<a href="#"><i class="fa fa-user"></i> Quản lý nhân viên<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="#">List Category</a></li>
-						<li><a href="#">Add Category</a></li>
+						<li><a href="#">Thêm nhân viên</a></li>
+						<li><a href="<%=request.getContextPath()%>/danh-sach-nhan-vien">Danh sách nhân viên</a></li>
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>
 				<li>
-					<a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
+					<a href="#"><i class="fa fa-users"></i> Quản lý tài xế<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="#">List Product</a></li>
-						<li><a href="#">Add Product</a></li>
+						<li><a href="#">Thêm tài xế</a></li>
+						<li><a href="<%=request.getContextPath()%>/danh-sach-tai-xe">Danh sách tài xế</a></li>
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>
 				<li>
-					<a href="#"><i class="fa fa-car"></i> Quản lý xe<span class="fa arrow"></span></a>
+					<a href="#"><i class="fa fa-taxi"></i> Quản lý xe<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li><a href="<%=request.getContextPath()%>/them-xe">Thêm xe mới</a></li>
 							<li><a href="<%=request.getContextPath()%>/list-xe">Danh sách xe</a></li>
