@@ -1,6 +1,7 @@
 package model.bo;
 
 import java.util.ArrayList;
+
 import model.bean.NhanVienBEAN;
 import model.dao.NhanVienDAO;
 
@@ -34,5 +35,13 @@ public class NhanVienBO {
 
 	public NhanVienBEAN getTaiXe(String idTaiXe) {
 		return nhanVienDAO.getTaiXe(idTaiXe);
+	}
+	public boolean editNhanVien(NhanVienBEAN nhanVien){
+		return nhanVienDAO.suaNhanVien(nhanVien);
+	}
+
+	public NhanVienBEAN getNhanVienByMaNV(String maNV) {
+		// TODO Auto-generated method stub
+		return nhanVienDAO.getNhanVienByMaNV(maNV);
 	}
 }

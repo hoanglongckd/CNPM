@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import model.bean.BaoDuongXeBEAN;
 import model.bean.NhanVienBEAN;
 import utils.SQLServerConnUtils;
 
@@ -25,7 +24,7 @@ public class NhanVienDAO {
 							+ "VALUES(?, ?, ?, ?,?)";
 					PreparedStatement pre = conn.prepareStatement(sqlThemNhanVien);
 					pre.setString(1, nhanVienBEAN.getMaNhanVien());
-					pre.setString(2, "123456"); // Mat khau mac dinh
+					pre.setString(2, nhanVienBEAN.getPassword()); // Mat khau mac dinh
 					pre.setString(3, nhanVienBEAN.getHoTen());
 					pre.setString(4, nhanVienBEAN.getNgaySinh());
 					pre.setInt(5, nhanVienBEAN.getChucVu());
@@ -58,7 +57,8 @@ public class NhanVienDAO {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()){
-				NhanVienBEAN nhanVien = new NhanVienBEAN(rs.getInt("id"),rs.getString("MaNV"), rs.getString("Ten"), rs.getString("NgaySinh"),1,1);
+				NhanVienBEAN nhanVien = new NhanVienBEAN(rs.getInt("id"),rs.getString("MaNV"), rs.getString("Ten"),
+						rs.getString("NgaySinh"), rs.getInt("idChucVu") ,rs.getString("Password"));
 				listNhanVien.add(nhanVien);
 			}
 		} catch(Exception e) {
@@ -74,7 +74,8 @@ public class NhanVienDAO {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()){
-				NhanVienBEAN taiXe = new NhanVienBEAN(rs.getInt("id"),rs.getString("MaTX"), rs.getString("Ten"), rs.getString("NgaySinh"),2,1);
+				NhanVienBEAN taiXe = new NhanVienBEAN(rs.getInt("id"),rs.getString("MaNV"), rs.getString("Ten"),
+						rs.getString("NgaySinh"), rs.getInt("idChucVu") ,rs.getString("Password"));
 				listTaiXe.add(taiXe);
 			}
 		} catch(Exception e) {
@@ -109,12 +110,29 @@ public class NhanVienDAO {
 	public NhanVienBEAN getNhanVien(String idNhanVien) {
 		NhanVienBEAN nhanVien = new NhanVienBEAN();
 		try {
-			String sql = "select * from NHANVIEN where Id="+idNhanVien;
+			String sql = "select * from NHANVIEN where id="+idNhanVien;
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()){
-				 nhanVien = new NhanVienBEAN(rs.getInt("id"),rs.getString("MaNV"), rs.getString("Ten"), rs.getString("NgaySinh"),1,1);
-			}
+				 nhanVien = new NhanVienBEAN(rs.getInt("id"),rs.getString("MaNV"), rs.getString("Ten"),
+							rs.getString("NgaySinh"), rs.getInt("idChucVu") ,rs.getString("Password"));
+			}	
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return nhanVien;
+	}
+	
+	public NhanVienBEAN getNhanVienByMaNV(String maNV) {
+		NhanVienBEAN nhanVien = null;
+		try {
+			String sql = "select * from NHANVIEN where MaNV='"+maNV+"'";
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()){
+				 nhanVien = new NhanVienBEAN(rs.getInt("id"),rs.getString("MaNV"), rs.getString("Ten"),
+							rs.getString("NgaySinh"), rs.getInt("idChucVu") ,rs.getString("Password"));
+			}	
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -124,5 +142,38 @@ public class NhanVienDAO {
 	public NhanVienBEAN getTaiXe(String idTaiXe) {
 		
 		return null;
+	}
+	
+	public ArrayList<NhanVienBEAN> listNhanVien() {
+		ArrayList<NhanVienBEAN> listNhanVien = new ArrayList<>();
+		try {
+			String sql = "select * from NhanVien";
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()){
+				NhanVienBEAN item = new NhanVienBEAN(rs.getInt("id"),rs.getString("MaNV"), rs.getString("Ten"),
+						rs.getString("NgaySinh"), rs.getInt("idChucVu") ,rs.getString("Password"));
+				listNhanVien.add(item);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return listNhanVien;
+	}
+
+	public boolean suaNhanVien(NhanVienBEAN nhanvien) {
+		try {
+			String sql = "Update NhanVien Set  Ten=?, NgaySinh=?"
+					+ " where MaNV =? ";
+			PreparedStatement pre = conn.prepareStatement(sql);
+			pre.setString(1, nhanvien.getHoTen());
+			pre.setString(2, nhanvien.getNgaySinh());
+			pre.setString(3, nhanvien.getMaNhanVien());
+			int rowEffect = pre.executeUpdate();
+			if (rowEffect != 0) return true; 
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }
