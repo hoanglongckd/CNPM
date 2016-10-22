@@ -1,7 +1,6 @@
 package controller.NhanVien;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,12 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bo.NhanVien.DeleteNhanVienBO;
+import model.bo.NhanVienBO;
 
 /**
  * Servlet implementation class DeleteNhanVienController
  */
-@WebServlet("/DeleteNhanVienController")
+//@WebServlet("/DeleteNhanVienController")
 public class DeleteNhanVienController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -39,15 +38,12 @@ public class DeleteNhanVienController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		DeleteNhanVienBO deleteNhanVienBO = new DeleteNhanVienBO();
+		NhanVienBO nhanVienBO = new NhanVienBO();
 		
 		String idNhanVien= request.getParameter("idNhanVien");
 		
-		if(deleteNhanVienBO.isDeleted(idNhanVien)){
-			
-			//Chua goi bang servlet
-			  RequestDispatcher rd = request.getRequestDispatcher("");
-		      rd.forward(request, response);
+		if(nhanVienBO.isNhanVienDeleted(idNhanVien)){
+			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");
 		}
 		else{
 			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/NhanVien/Error-delete-page.jsp");

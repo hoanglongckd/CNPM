@@ -8,9 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.NhanVien.NhanVienBEAN;
-import model.bo.NhanVien.AddNhanVienBO;
-import model.dao.NhanVien.AddNhanVienDAO;
+import model.bean.NhanVienBEAN;
+import model.bo.NhanVienBO;
 
 /**
  * Servlet implementation class AddBaoDuongXeController
@@ -54,7 +53,7 @@ public class AddNhanVienController extends HttpServlet {
 		nhanVienBEAN.setNgaySinh(ngaySinh);
 		nhanVienBEAN.setCaLamViec(caLamViec);
 		
-		if (AddNhanVienBO.addNhanVien(nhanVienBEAN)) {
+		if (NhanVienBO.addNhanVien(nhanVienBEAN)) {
 			doGet(request, response);
 		}
 		else {

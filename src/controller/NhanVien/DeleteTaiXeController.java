@@ -9,13 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bo.NhanVien.DeleteNhanVienBO;
-import model.bo.NhanVien.DeleteTaiXeBO;
+import model.bo.NhanVienBO;
 
 /**
  * Servlet implementation class DeleteTaiXeController
  */
-@WebServlet("/DeleteTaiXeController")
+//@WebServlet("/DeleteTaiXeController")
 public class DeleteTaiXeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -40,20 +39,19 @@ public class DeleteTaiXeController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		DeleteTaiXeBO deleteTaiXeBO = new DeleteTaiXeBO();
+		NhanVienBO nhanVienBO = new NhanVienBO();
 		
 		String idTaiXe= request.getParameter("idTaiXe");
 		
-		if(deleteTaiXeBO.isDeleted(idTaiXe)){
-			
-			//Chua goi bang sevlet
-			  RequestDispatcher rd = request.getRequestDispatcher("");
-		      rd.forward(request, response);
-		}
-		else{
-			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/NhanVien/Error-delete-page.jsp");
-			dispatcher.forward(request, response);
-		}
+		if(nhanVienBO.isTaiXeDeleted(idTaiXe)){
+			if(nhanVienBO.isNhanVienDeleted(idTaiXe)){
+				response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");
+			}
+			else{
+				RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/NhanVien/Error-delete-page.jsp");
+				dispatcher.forward(request, response);
+			}
+		}		
 	}
 
 }
