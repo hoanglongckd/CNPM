@@ -30,8 +30,7 @@ public class BaoDuongXeBEAN {
 		this.idXe = idXe;
 	}
 
-	public BaoDuongXeBEAN(int id, long soTien, String ngayBaoDuong, String ngayBaoDuongTiepTheo, String bienSoXe,
-			String model) {
+	public BaoDuongXeBEAN(int id, long soTien, String ngayBaoDuong, String ngayBaoDuongTiepTheo, String bienSoXe) {
 		super();
 		this.id = id;
 		this.soTien = soTien;

@@ -37,12 +37,13 @@ public class BaoDuongXeDAO {
 	public ArrayList<XeBEAN> lietKeXe() {
 		ArrayList<XeBEAN> listXe = new ArrayList<>();
 		try {
-			String sql = "select * from Xe";
+			String sql = "select id, BienSoXe from XE";
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()){
-				XeBEAN xe = new XeBEAN(rs.getInt("id"),rs.getString("BienSoXe"), rs.getString("Model"),
-						rs.getInt("SoCho"), rs.getString("Hang"), rs.getBoolean("TinhTrangHoatDong"));
+				XeBEAN xe = new XeBEAN();
+				xe.setId(rs.getInt("id"));
+				xe.setBienSoXe(rs.getString("BienSoXe"));
 				listXe.add(xe);
 			}
 		} catch(Exception e) {
@@ -54,20 +55,19 @@ public class BaoDuongXeDAO {
 	public ArrayList<BaoDuongXeBEAN> lietKeDanhSachBaoDuong() {
 		ArrayList<BaoDuongXeBEAN> baoDuongXeBEANs = new ArrayList<>();
 		try {
-			String sql = "SELECT XE.BienSoXe, XE.Model, BAODUONGXE.id, "
+			String sql = "SELECT XE.BienSoXe, BAODUONGXE.id, "
 					+ "BAODUONGXE.NgayBaoDuong, BAODUONGXE.NgayBaoDuongTiepTheo, BAODUONGXE.SoTien "
 					+ "FROM XE, BAODUONGXE "
-					+ "WHERE BAODUONGXE.idXe = XE.id;";
+					+ "WHERE BAODUONGXE.idXe = XE.id order by BAODUONGXE.NgayBaoDuongTiepTheo";
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
 				BaoDuongXeBEAN baoDuongXeBEAN = new BaoDuongXeBEAN(
 						rs.getInt("id"), 
-						rs.getLong("soTien"), 
-						rs.getString("ngayBaoDuong"), 
-						rs.getString("ngayBaoDuongTiepTheo"), 
-						rs.getString("bienSoXe"), 
-						rs.getString("model"));
+						rs.getLong("SoTien"), 
+						rs.getString("NgayBaoDuong"), 
+						rs.getString("NgayBaoDuongTiepTheo"), 
+						rs.getString("BienSoXe"));
 				baoDuongXeBEANs.add(baoDuongXeBEAN);
 			}
 		} catch(Exception e) {

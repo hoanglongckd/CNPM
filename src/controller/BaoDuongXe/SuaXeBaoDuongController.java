@@ -1,6 +1,8 @@
 package controller.BaoDuongXe;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,6 +41,19 @@ public class SuaXeBaoDuongController extends HttpServlet {
 			e.printStackTrace();
 		}
 		BaoDuongXeBEAN baoDuongXeBEAN = BaoDuongXeBO.getSuaXe(id);
+		SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			Date date1 = simpleDateFormat1.parse(baoDuongXeBEAN.getNgayBaoDuong());
+			SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
+			baoDuongXeBEAN.setNgayBaoDuong(simpleDateFormat2.format(date1));
+			System.out.println(baoDuongXeBEAN.getNgayBaoDuong());
+			
+			Date date2 = simpleDateFormat1.parse(baoDuongXeBEAN.getNgayBaoDuongTiepTheo());
+			baoDuongXeBEAN.setNgayBaoDuongTiepTheo(simpleDateFormat2.format(date2));
+			System.out.println(baoDuongXeBEAN.getNgayBaoDuongTiepTheo());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		request.setAttribute("xeDaBaoDuong", baoDuongXeBEAN);
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/BaoDuongXe/sua-xe-bao-duong.jsp");
 		dispatcher.forward(request, response);
@@ -67,17 +82,32 @@ public class SuaXeBaoDuongController extends HttpServlet {
 		}
 		String chiTiet = request.getParameter("detail");
 		
-		BaoDuongXeBEAN baoDuongXeBEAN = new BaoDuongXeBEAN();
-		baoDuongXeBEAN.setId(id);
-		baoDuongXeBEAN.setNgayBaoDuong(ngayBaoDuongHienTai);
-		baoDuongXeBEAN.setNgayBaoDuongTiepTheo(ngayBaoDuongTiepTheo);
-		baoDuongXeBEAN.setSoTien(chiPhiBaoDuong);
-		baoDuongXeBEAN.setChiTiet(chiTiet);
-		if (BaoDuongXeBO.setSuaXe(baoDuongXeBEAN)) {
-			response.sendRedirect(request.getContextPath() + "/bao-cao-xe-bao-duong");
-		} 
-		else {
-			System.out.println("Fail");
+		SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("dd/MM/yyyy");
+		
+		try {
+			Date date1 = simpleDateFormat1.parse(ngayBaoDuongHienTai);
+			SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy/MM/dd");
+			ngayBaoDuongHienTai = simpleDateFormat2.format(date1);
+			Date date11 = simpleDateFormat2.parse(ngayBaoDuongHienTai);
+			
+			Date date2 = simpleDateFormat1.parse(ngayBaoDuongTiepTheo);
+			ngayBaoDuongTiepTheo = simpleDateFormat2.format(date2);
+			Date date22 = simpleDateFormat2.parse(ngayBaoDuongTiepTheo);
+		
+			BaoDuongXeBEAN baoDuongXeBEAN = new BaoDuongXeBEAN();
+			baoDuongXeBEAN.setId(id);
+			baoDuongXeBEAN.setNgayBaoDuong(ngayBaoDuongHienTai);
+			baoDuongXeBEAN.setNgayBaoDuongTiepTheo(ngayBaoDuongTiepTheo);
+			baoDuongXeBEAN.setSoTien(chiPhiBaoDuong);
+			baoDuongXeBEAN.setChiTiet(chiTiet);
+			if (BaoDuongXeBO.setSuaXe(baoDuongXeBEAN)) {
+				response.sendRedirect(request.getContextPath() + "/bao-cao-xe-bao-duong");
+			} 
+			else {
+				System.out.println("Fail");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

@@ -34,7 +34,6 @@
                     <tr align="center">
                         <th>STT</th>
                         <th>Biển số xe</th>
-                        <th>Model</th>
                         <th>BD gần đây</th>
                         <th>BD tiếp theo</th>
                         <th>Chi phí</th>
@@ -52,7 +51,6 @@
                 	<tr class="odd gradeX" align="center">
                         <td><%=stt%></td>
                         <td><%=xeBaoDuong.getBienSoXe()%></td>
-                        <td><%=xeBaoDuong.getModel()%></td>
                         <td><%=xeBaoDuong.getNgayBaoDuong()%></td>
                         <td><%=xeBaoDuong.getNgayBaoDuongTiepTheo()%></td>
                         <td><%=xeBaoDuong.getSoTien()%></td>

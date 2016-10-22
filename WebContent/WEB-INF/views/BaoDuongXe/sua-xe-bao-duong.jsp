@@ -36,6 +36,7 @@
 						<label for="current-date">Ngày bảo dưỡng hiện tại</label>
 						<input class="form-control" type="text" name="current-date" 
 						id="current-date" value="<%=xeDaBaoDuong.getNgayBaoDuong()%>" />
+						<p><%=xeDaBaoDuong.getNgayBaoDuong()%></p>
 					</div>
 					<div class="form-group">
 						<label for="next-date">Ngày bảo dưỡng tiếp theo</label>
@@ -70,7 +71,7 @@
 	    $('input[name="current-date"]').daterangepicker({
 	    	locale: 
 	    	{
-    	    	format: 'YYYY-MM-DD'
+    	    	format: 'DD/MM/YYYY'
     	    },
 	        singleDatePicker: true,
 	        showDropdowns: true
@@ -78,7 +79,7 @@
 	    $('input[name="next-date"]').daterangepicker({
 	    	locale: 
 	    	{
-    	    	format: 'YYYY-MM-DD'
+	    		format: 'DD/MM/YYYY'
     	    },
 	        singleDatePicker: true,
 	        showDropdowns: true

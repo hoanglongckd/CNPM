@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.bean.BaoDuongXeBEAN;
 import model.bo.BaoDuongXeBO;
@@ -31,6 +32,7 @@ public class XoaXeBaoDuongController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession msg = request.getSession();
 		String param = request.getParameter("id");
 		int id = 0;
 		try {
@@ -39,6 +41,11 @@ public class XoaXeBaoDuongController extends HttpServlet {
 			e.printStackTrace();
 		}
 		boolean valid = BaoDuongXeBO.xoaXeBaoDuong(id);
+		if (valid) {
+			msg.setAttribute("messages", "<ul><li>Xóa xe bảo dưỡng thành công!</li></ul>");
+		} else {
+			msg.setAttribute("errors", "<ul><li>Có lỗi xảy ra! Vui lòng liên hệ với nhà cung cấp dịch vụ!</li></ul>");
+		}
 		response.sendRedirect(request.getContextPath() + "/bao-cao-xe-bao-duong");
 	}
 
