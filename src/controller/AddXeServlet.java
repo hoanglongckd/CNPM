@@ -49,7 +49,7 @@ public class AddXeServlet extends HttpServlet {
 //		try{
 			// add into Xe Table
 		    xeBO xebo = new xeBO();
-		    xebo.addXe(bienSoXe,model,soChoNgoi,hang,tinhTrang,ghiChu);
+//		    xebo.addXe(bienSoXe,model,soChoNgoi,hang,tinhTrang,ghiChu);
 		    //------------------------------------
 		   		   
 		    response.sendRedirect(request.getContextPath() + "/listXe");
