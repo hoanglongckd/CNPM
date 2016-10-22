@@ -42,10 +42,10 @@ public class QuanLyTaiKhoanController extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+"/login");
 		}else {
 			maNV = (String) session.getAttribute("maNV");
-			NhanVienBEAN nhanVien = nhanVienBO.getNhanVien(maNV);
+			NhanVienBEAN nhanVien = nhanVienBO.getNhanVienByMaNV(maNV);
 			if(nhanVien==null)System.out.println("null");
 			// ---kiem tra chucvu cua nhan vien---
-			if(nhanVien.getId()==1){
+			if(nhanVien.getChucVu()==1){
 				ArrayList<NhanVienBEAN> listNhanVien = nhanVienBO.getDanhSachNhanVien();
 				request.setAttribute("listNhanVien", listNhanVien);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/QuanLyTaiKhoan/quanlytaikhoan.jsp");

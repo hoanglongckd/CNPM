@@ -19,7 +19,7 @@
 					<a href="<%=request.getContextPath() %>/login"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
 				</li>
 				<li>
-					<a href="<%=request.getContextPath() %>/quan-ly-tai-khoan"><i class="fa fa-bar-chart-o fa-fw"></i> Quản lí tài khoản<span class="fa arrow"></span></a>
+					<a href="<%=request.getContextPath() %>/quan-ly-tai-khoan"><i class="fa fa-bar-chart-o fa-fw"></i> Quản lí tài khoản<span class=""></span></a>
 				</li>
 				<li>
 					<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
