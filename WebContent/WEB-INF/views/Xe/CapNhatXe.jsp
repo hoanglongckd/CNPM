@@ -31,7 +31,7 @@
 			</div>
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom: 120px">
-				<form action="<%=request.getContextPath()%>/UpdateXeServlet" method="POST">
+				<form action="<%=request.getContextPath()%>/cap-nhat-xe" method="POST">
 					<div class="form-group">
 						<label>Biển số xe</label> <input class="form-control"
 							name="biensoxe" id="biensoxe" value="<%=xe.getBienSoXe()%>" readonly/>

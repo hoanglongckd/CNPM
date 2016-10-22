@@ -1,6 +1,9 @@
 package controller.QuanLyXe;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,12 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.bean.TaiXe;
 import model.bean.XeBEAN;
+import model.bo.taiXeBO;
 import model.bo.xeBO;
 
 /**
  * Servlet implementation class AddXeServlet
  */
-@WebServlet("/AddXeServlet")
+//@WebServlet("/AddXeServlet")
 public class AddXeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,7 +34,21 @@ public class AddXeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+//		try {
+
+			// get List Name Of Class present
+			taiXeBO taiXebo = new taiXeBO();
+			List<TaiXe> listMaTX = null;
+			listMaTX = taiXebo.getAllTenTX();
+			request.setAttribute("listMaTX", listMaTX);
+//			System.out.println(listMaTX.get(0));
+			RequestDispatcher dispatcher = request.getServletContext()
+					.getRequestDispatcher("/WEB-INF/views/Xe/QuanLyXe.jsp");
+			dispatcher.forward(request, response);
+
+//		} catch (Exception e) {
+//			response.sendRedirect(request.getContextPath() + "/listXe");
+//		}
 	}
 
 	/**

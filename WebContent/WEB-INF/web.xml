@@ -80,5 +80,41 @@
 		<servlet-name>DeleteTaiXeController</servlet-name>
 		<url-pattern>/xoa-tai-xe</url-pattern>
 	</servlet-mapping>
-
+	
+	
+	<servlet>
+		<servlet-name>AddXeServlet</servlet-name>
+		<servlet-class>controller.QuanLyXe.AddXeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddXeServlet</servlet-name>
+		<url-pattern>/them-xe</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ShowListXeServlet</servlet-name>
+		<servlet-class>controller.QuanLyXe.ShowListXeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowListXeServlet</servlet-name>
+		<url-pattern>/list-xe</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UpdateXeServlet</servlet-name>
+		<servlet-class>controller.QuanLyXe.UpdateXeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateXeServlet</servlet-name>
+		<url-pattern>/cap-nhat-xe</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>XoaXe</servlet-name>
+		<servlet-class>controller.QuanLyXe.XoaXe</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>XoaXe</servlet-name>
+		<url-pattern>/xoa-xe</url-pattern>
+	</servlet-mapping>
 </web-app>

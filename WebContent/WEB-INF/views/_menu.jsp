@@ -35,10 +35,10 @@
 					<!-- /.nav-second-level -->
 				</li>
 				<li>
-					<a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
+					<a href="#"><i class="fa fa-car"></i> Quản lý xe<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
-							<li><a href="#">List User</a></li>
-							<li><a href="#">Add User</a></li>
+							<li><a href="<%=request.getContextPath()%>/them-xe">Thêm xe mới</a></li>
+							<li><a href="<%=request.getContextPath()%>/list-xe">Danh sách xe</a></li>
 						</ul>
 					<!-- /.nav-second-level -->
 				</li>

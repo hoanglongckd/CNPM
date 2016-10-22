@@ -16,7 +16,7 @@ import model.bo.xeBO;
 /**
  * Servlet implementation class ShowListXeServlet
  */
-@WebServlet("/list-xe")
+//@WebServlet("/list-xe")
 public class ShowListXeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

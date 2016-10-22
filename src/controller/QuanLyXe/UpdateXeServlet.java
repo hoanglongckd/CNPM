@@ -1,6 +1,9 @@
 package controller.QuanLyXe;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,12 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.bean.TaiXe;
 import model.bean.XeBEAN;
+import model.bo.taiXeBO;
 import model.bo.xeBO;
 
 /**
  * Servlet implementation class UpdateXeServlet
  */
-@WebServlet("/UpdateXeServlet")
+//@WebServlet("/UpdateXeServlet")
 public class UpdateXeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,7 +34,23 @@ public class UpdateXeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		String param = request.getParameter("id");
+		int id = 0;
+		try {
+			id = Integer.parseInt(param);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		XeBEAN xebean = xeBO.getCapNhatXe(id);
+		request.setAttribute("xeduocchon", xebean);
+
+		taiXeBO taiXebo = new taiXeBO();
+		List<TaiXe> listTX = null;
+		listTX = taiXebo.getAllTenTX();
+		request.setAttribute("listTX", listTX);
+
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/Xe/CapNhatXe.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**

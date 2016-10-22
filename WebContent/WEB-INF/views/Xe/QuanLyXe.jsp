@@ -27,7 +27,7 @@
 			</div>
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom: 120px">
-				<form action="<%=request.getContextPath()%>/AddXeServlet"
+				<form action="<%=request.getContextPath()%>/them-xe"
 					method="POST">
 					<div class="form-group">
 						<label>Tên tài xế</label> <select class="form-control" name="tentx"

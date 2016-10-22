@@ -13,7 +13,7 @@ import model.bo.xeBO;
 /**
  * Servlet implementation class XoaXe
  */
-@WebServlet("/xoa-xe")
+//@WebServlet("/xoa-xe")
 public class XoaXe extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
