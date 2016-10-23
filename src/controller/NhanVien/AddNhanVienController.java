@@ -14,14 +14,14 @@ import model.bo.NhanVienBO;
 /**
  * Servlet implementation class AddBaoDuongXeController
  */
-@WebServlet("/them-nhan-vien")
+//@WebServlet("/them-nhan-vien")
 public class AddNhanVienController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddNhanVienController() {
+    public AddNhanVienController() { 	
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,26 +40,24 @@ public class AddNhanVienController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String maNV = request.getParameter("ma-nhan-vien");
 		String hoTen = request.getParameter("ho-va-ten");
-		int chucVu = Integer.parseInt(request.getParameter("chuc-vu"));
+		int idChucVu = 3; //nhan vien la 3, admin la 1
 		String ngaySinh = request.getParameter("ngay-sinh");
-		int caLamViec = Integer.parseInt(request.getParameter("ca-lam-viec"));
+		String password = "123456"; //Mat khau mac dinh la 123456
 		
-	
 		NhanVienBEAN nhanVienBEAN = new NhanVienBEAN();
 		
 		nhanVienBEAN.setMaNhanVien(maNV);
-		nhanVienBEAN.setChucVu(chucVu);
 		nhanVienBEAN.setHoTen(hoTen);
 		nhanVienBEAN.setNgaySinh(ngaySinh);
-		nhanVienBEAN.setCaLamViec(caLamViec);
+		nhanVienBEAN.setPassword(password);
+		nhanVienBEAN.setIdChucVu(idChucVu);
 		
 		if (NhanVienBO.addNhanVien(nhanVienBEAN)) {
-			doGet(request, response);
-		}
+			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");		}
 		else {
 			System.out.println("Fail");
 		}
-		System.out.println(maNV + "|" + hoTen + "|" + ngaySinh + "|" + chucVu + "|" + caLamViec);
+		System.out.println(nhanVienBEAN.getHoTen() + "|" + hoTen + "|" + ngaySinh + "|" + idChucVu +"|"+ password );
 	}
 
 }
