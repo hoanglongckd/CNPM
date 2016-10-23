@@ -13,31 +13,39 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					Thêm mới nhân viên vắng nghỉ
+					Thêm mới 
+					<small>nhân viên vắng nghỉ</small>
 				</h1>
 			</div>
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom: 120px">
-				<form action="<%=request.getContextPath() %>/Add-Theo-Doi-Nhan-Vien"
+				<form action="<%=request.getContextPath() %>/them-nhan-vien-nghi"
 					method="POST">
 					<div class="form-group">
 						<label>Mã nhân viên: </label> <input class="form-control"
 							type="text" name="ma-nhan-vien" />
 					</div>
 					<div class="form-group">
-						<label>Ngày Nghỉ: </label> <input class="form-control" type="text"
-							name="ngay-nghi" />
+						<label>Ngày Nghỉ: </label> 
+						<input class="form-control" type="text" name="ngay-nghi" />
 					</div>
 					<div class="form-group">
-						<label>Phép: </label>
-						 <input type="radio" name="rdPhep" value="Yes" > Có 
-  						<input type="radio" name="rdPhep" value="No" checked> Không<br>
-  						
+						<label>Phép: </label><br>
+						<div class="radio-inline">
+							<label>
+						 		<input type="radio" name="rdPhep" value="Yes" > Có 
+						 	</label>
+					 	</div>
+					 	<div class="radio-inline">
+						 	<label>
+  								<input type="radio" name="rdPhep" value="No" checked> Không
+  							</label>
+  						</div>
 					</div>
 					<div class="form-group">
 						<label>Lý do: </label><br>
-						<textarea placeholder="Describe yourself here..."
-						name="lydo" ></textarea>
+						<textarea class="form-control" placeholder="Describe yourself here..."
+						name="lydo" rows="4"></textarea>
 					</div>
 					<button type="submit"  name="btnAdd"  value="Thêm" class="btn btn-default">Thêm</button>
 					<button type="reset" name="btnReset"  value="Reset" class="btn btn-default">Reset</button>

@@ -24,6 +24,9 @@
 				</h1>
 			</div>
 			<!-- /.col-lg-12 -->
+			
+			<jsp:include page="../_message-block.jsp" />
+			
 			<div class="col-lg-7" style="padding-bottom:120px">
 				<form action="${pageContext.request.contextPath}/sua-xe-bao-duong" method="POST">
 					<input type="hidden" name="id" id="id" value="<%=xeDaBaoDuong.getId()%>">
@@ -36,7 +39,6 @@
 						<label for="current-date">Ngày bảo dưỡng hiện tại</label>
 						<input class="form-control" type="text" name="current-date" 
 						id="current-date" value="<%=xeDaBaoDuong.getNgayBaoDuong()%>" />
-						<p><%=xeDaBaoDuong.getNgayBaoDuong()%></p>
 					</div>
 					<div class="form-group">
 						<label for="next-date">Ngày bảo dưỡng tiếp theo</label>

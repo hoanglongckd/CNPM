@@ -43,6 +43,14 @@
 					<!-- /.nav-second-level -->
 				</li>
 				<li>
+					<a href="#"><i class="fa fa-calendar"></i> Quản lý vắng nghỉ<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a href="<%=request.getContextPath()%>/them-nhan-vien-nghi">Thêm nhân viên vắng</a></li>
+							<li><a href="<%=request.getContextPath()%>/danh-sach-vang-nghi">Báo cáo tình hình vắng</a></li>
+						</ul>
+					<!-- /.nav-second-level -->
+				</li>
+				<li>
 					<a href="#"><i class="fa fa-wrench"></i> Bảo dưỡng xe<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li><a href="<%=request.getContextPath()%>/them-xe-bao-duong">Thêm xe bảo dưỡng</a></li>

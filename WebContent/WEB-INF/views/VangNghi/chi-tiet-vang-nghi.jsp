@@ -60,7 +60,7 @@
                         <td><%=listVN.get(i).getLydo()%></td>
                	
                         <td>
-							<a href="<%=request.getContextPath()%>/update-vang-nghi?id=<%=listVN.get(i).getId()%>" class = "btn btn-danger">Sửa</a> </td>
+							<a href="<%=request.getContextPath()%>/cap-nhat-vang-nghi?id=<%=listVN.get(i).getId()%>" class = "btn btn-danger">Sửa</a> </td>
 								
                         <td class="center"><i class="fa fa-trash-o fa-fw"></i> <a href="<%=request.getContextPath()%>/chi-tiet-vang-nghi?delete=<%=listVN.get(i).getId()%>,<%=listVN.get(i).getIdNhanVien()%>" > Xóa</a></td>
                     </tr>

@@ -28,7 +28,7 @@
 			</div>
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom: 120px">
-				<form action="<%=request.getContextPath() %>/update-vang-nghi" method="POST">
+				<form action="<%=request.getContextPath() %>/cap-nhat-vang-nghi" method="POST">
 					<div class="form-group">
 						<label>Mã nhân viên: </label>  <%=nv.getIdNhanVien() %>
 					</div>
@@ -43,7 +43,7 @@
 					</div>
 					<div class="form-group">
 						<label>Lý do: </label><br>
-						<textarea placeholder="Describe yourself here..."
+						<textarea class="form-control" placeholder="Describe yourself here..."
 						name="lydo" ><%=nv.getLydo() %></textarea>
 					</div>
 					<input type="hidden" name="action" value="<%=nv.getId() %>" >

@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.bean.BaoDuongXeBEAN;
 import model.bo.BaoDuongXeBO;
@@ -44,11 +45,9 @@ public class SuaXeBaoDuongController extends HttpServlet {
 			Date date1 = simpleDateFormat1.parse(baoDuongXeBEAN.getNgayBaoDuong());
 			SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
 			baoDuongXeBEAN.setNgayBaoDuong(simpleDateFormat2.format(date1));
-			System.out.println(baoDuongXeBEAN.getNgayBaoDuong());
 			
 			Date date2 = simpleDateFormat1.parse(baoDuongXeBEAN.getNgayBaoDuongTiepTheo());
 			baoDuongXeBEAN.setNgayBaoDuongTiepTheo(simpleDateFormat2.format(date2));
-			System.out.println(baoDuongXeBEAN.getNgayBaoDuongTiepTheo());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -62,7 +61,7 @@ public class SuaXeBaoDuongController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+		HttpSession msg = request.getSession();
 		String param = request.getParameter("id");
 		int id = 0;
 		try {
@@ -91,18 +90,24 @@ public class SuaXeBaoDuongController extends HttpServlet {
 			Date date2 = simpleDateFormat1.parse(ngayBaoDuongTiepTheo);
 			ngayBaoDuongTiepTheo = simpleDateFormat2.format(date2);
 			Date date22 = simpleDateFormat2.parse(ngayBaoDuongTiepTheo);
-		
-			BaoDuongXeBEAN baoDuongXeBEAN = new BaoDuongXeBEAN();
-			baoDuongXeBEAN.setId(id);
-			baoDuongXeBEAN.setNgayBaoDuong(ngayBaoDuongHienTai);
-			baoDuongXeBEAN.setNgayBaoDuongTiepTheo(ngayBaoDuongTiepTheo);
-			baoDuongXeBEAN.setSoTien(chiPhiBaoDuong);
-			baoDuongXeBEAN.setChiTiet(chiTiet);
-			if (BaoDuongXeBO.setSuaXe(baoDuongXeBEAN)) {
-				response.sendRedirect(request.getContextPath() + "/bao-cao-xe-bao-duong");
-			} 
-			else {
-				System.out.println("Fail");
+			if (date22.after(date11)) {
+				BaoDuongXeBEAN baoDuongXeBEAN = new BaoDuongXeBEAN();
+				baoDuongXeBEAN.setId(id);
+				baoDuongXeBEAN.setNgayBaoDuong(ngayBaoDuongHienTai);
+				baoDuongXeBEAN.setNgayBaoDuongTiepTheo(ngayBaoDuongTiepTheo);
+				baoDuongXeBEAN.setSoTien(chiPhiBaoDuong);
+				baoDuongXeBEAN.setChiTiet(chiTiet);
+				if (BaoDuongXeBO.setSuaXe(baoDuongXeBEAN)) {
+					msg.setAttribute("messages", "<ul><li>Thêm xe bảo dưỡng thành công!</li></ul>");
+					response.sendRedirect(request.getContextPath() + "/bao-cao-xe-bao-duong");
+				} 
+				else {
+					msg.setAttribute("errors", "<ul><li>Có lỗi xảy ra! Vui lòng liên hệ với nhà cung cấp dịch vụ!</li></ul>");
+					response.sendRedirect(request.getContextPath() + "/bao-cao-bao-duong");
+				}
+			} else {
+				msg.setAttribute("errors", "<ul><li><b>Ngày bảo dưỡng tiếp theo</b> phải xảy ra sau <b>Ngày bảo dưỡng hiện tại</b>.</li></ul>");
+				response.sendRedirect(request.getContextPath() + "/sua-xe-bao-duong?id=" + id);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

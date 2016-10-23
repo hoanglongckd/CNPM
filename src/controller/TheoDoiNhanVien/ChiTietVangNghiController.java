@@ -16,7 +16,7 @@ import model.bo.TheoDoiNhanVienBO;
 /**
  * Servlet implementation class ChiTietVangNghiController
  */
-@WebServlet("/chi-tiet-vang-nghi")
+//@WebServlet("/chi-tiet-vang-nghi")
 public class ChiTietVangNghiController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
