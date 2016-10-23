@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bo.xeBO;
+import model.bo.XeBO;
 
 /**
  * Servlet implementation class XoaXe
@@ -42,7 +42,7 @@ public class DeleteXeServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		xeBO.xoaXe(id);
+		XeBO.xoaXe(id);
 		response.sendRedirect(request.getContextPath() + "/list-xe");
 	}
 

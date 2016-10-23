@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.bean.TaiXe;
 import model.bean.XeBEAN;
-import model.bo.taiXeBO;
-import model.bo.xeBO;
+import model.bo.TaiXeBO;
+import model.bo.XeBO;
 
 /**
  * Servlet implementation class AddXeServlet
@@ -36,7 +36,7 @@ public class AddXeServlet extends HttpServlet {
 //		try {
 
 			// get List Name Of Class present
-			taiXeBO taiXebo = new taiXeBO();
+			TaiXeBO taiXebo = new TaiXeBO();
 			List<TaiXe> listMaTX = null;
 			listMaTX = taiXebo.getAllTenTX();
 			request.setAttribute("listMaTX", listMaTX);
@@ -65,10 +65,10 @@ public class AddXeServlet extends HttpServlet {
 		xe.setGhiChu(request.getParameter("ghichu"));
 		xe.setTinhTrangHoatDong(false);
 				
-		boolean check = xeBO.themXe(xe);
+		boolean check = XeBO.themXe(xe);
 		
-		xe.setId(xeBO.getMaxXeId());
-		boolean check2 = xeBO.themPhanCongTX(taixe,xe);
+		xe.setId(XeBO.getMaxXeId());
+		boolean check2 = XeBO.themPhanCongTX(taixe,xe);
 		
 		if (check) {
 			if (check2)	

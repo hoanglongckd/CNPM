@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.bean.TaiXe;
 import model.bean.XeBEAN;
-import model.bo.taiXeBO;
-import model.bo.xeBO;
+import model.bo.TaiXeBO;
+import model.bo.XeBO;
 
 /**
  * Servlet implementation class UpdateXeServlet
@@ -41,10 +41,10 @@ public class UpdateXeServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		XeBEAN xebean = xeBO.getCapNhatXe(id);
+		XeBEAN xebean = XeBO.getCapNhatXe(id);
 		request.setAttribute("xeduocchon", xebean);
 
-		taiXeBO taiXebo = new taiXeBO();
+		TaiXeBO taiXebo = new TaiXeBO();
 		List<TaiXe> listTX = null;
 		listTX = taiXebo.getAllTenTX();
 		request.setAttribute("listTX", listTX);
@@ -82,8 +82,8 @@ public class UpdateXeServlet extends HttpServlet {
 //		System.out.println(id);
 //		System.out.println(request.getParameter("tentx"));
 		
-		boolean check = xeBO.setCapNhatXe(xe);
-		boolean check2 = xeBO.setCapNhatPhanCongTX(taixe, xe);
+		boolean check = XeBO.setCapNhatXe(xe);
+		boolean check2 = XeBO.setCapNhatPhanCongTX(taixe, xe);
 		
 		if (check) {
 			if (check2)
