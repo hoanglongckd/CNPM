@@ -1,4 +1,4 @@
-<%@page import="model.bean.TaiXe"%>
+<%@page import="model.bean.TaiXeBEAN"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -10,9 +10,9 @@
 <jsp:include page="../_menu.jsp" />
 
 <%
-	ArrayList<TaiXe> listMaTX = null;
+	ArrayList<TaiXeBEAN> listMaTX = null;
 	if (request.getAttribute("listMaTX") != null) {
-		listMaTX = (ArrayList<TaiXe>) request.getAttribute("listMaTX");
+		listMaTX = (ArrayList<TaiXeBEAN>) request.getAttribute("listMaTX");
 	}
 %>
 
@@ -34,7 +34,7 @@
 							id="tentx">
 							<%
 								if (listMaTX != null)
-									for (TaiXe item : listMaTX) {
+									for (TaiXeBEAN item : listMaTX) {
 							%>
 							<option value="<%=item.getId()%>"><%=item.getMaTaiXe()%></option>
 							<%

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.TaiXe;
+import model.bean.TaiXeBEAN;
 import model.bean.XeBEAN;
 import model.bo.TaiXeBO;
 import model.bo.XeBO;
@@ -37,7 +37,7 @@ public class AddXeServlet extends HttpServlet {
 
 			// get List Name Of Class present
 			TaiXeBO taiXebo = new TaiXeBO();
-			List<TaiXe> listMaTX = null;
+			List<TaiXeBEAN> listMaTX = null;
 			listMaTX = taiXebo.getAllTenTX();
 			request.setAttribute("listMaTX", listMaTX);
 //			System.out.println(listMaTX.get(0));
@@ -56,7 +56,7 @@ public class AddXeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		XeBEAN xe = new XeBEAN();
-		TaiXe taixe = new TaiXe();
+		TaiXeBEAN taixe = new TaiXeBEAN();
 		taixe.setId(Integer.parseInt(request.getParameter("tentx")));
 		xe.setBienSoXe(request.getParameter("biensoxe"));
 		xe.setModel(request.getParameter("model"));

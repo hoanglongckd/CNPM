@@ -1,5 +1,5 @@
 <%@page import="model.bean.XeBEAN"%>
-<%@page import="model.bean.TaiXe"%>
+<%@page import="model.bean.TaiXeBEAN"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -16,9 +16,9 @@
 		xe = (XeBEAN) request.getAttribute("xeduocchon");
 	}
 	
-	ArrayList<TaiXe> listTX = null;
+	ArrayList<TaiXeBEAN> listTX = null;
 	if (request.getAttribute("listTX") != null) {
-		listTX = (ArrayList<TaiXe>) request.getAttribute("listTX");
+		listTX = (ArrayList<TaiXeBEAN>) request.getAttribute("listTX");
 	}
 %>
 
@@ -44,7 +44,7 @@
 							<option value="<%=xe.getIdTX()%>"><%=xe.getTaiXe()%></option>
 							<%
 								if (listTX != null)
-									for (TaiXe item : listTX) {
+									for (TaiXeBEAN item : listTX) {
 							%>
 							<option value="<%=item.getId()%>"><%=item.getMaTaiXe()%></option>
 							<%

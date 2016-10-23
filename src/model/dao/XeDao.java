@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import model.bean.TaiXe;
+import model.bean.TaiXeBEAN;
 import model.bean.XeBEAN;
 import utils.SQLServerConnUtils;
 
@@ -36,7 +36,7 @@ public class XeDao {
 		return false;
 	}
 
-	public boolean themPhanCongTX(TaiXe taixe, XeBEAN xe) {
+	public boolean themPhanCongTX(TaiXeBEAN taixe, XeBEAN xe) {
 		String sql = "insert into phancongtx(idTaiXe, idXe) values(?,?)";
 		try {
 			PreparedStatement pstm = conn.prepareStatement(sql);
@@ -142,7 +142,7 @@ public class XeDao {
 		return false;
 	}
 
-	public boolean setCapNhatPhanCongTX(TaiXe taixe, XeBEAN xe) {
+	public boolean setCapNhatPhanCongTX(TaiXeBEAN taixe, XeBEAN xe) {
 		String sql = "UPDATE PHANCONGTX SET idTaiXe = ? WHERE idXe = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);

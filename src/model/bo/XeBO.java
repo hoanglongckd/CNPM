@@ -2,7 +2,7 @@ package model.bo;
 
 import java.util.ArrayList;
 
-import model.bean.TaiXe;
+import model.bean.TaiXeBEAN;
 import model.bean.XeBEAN;
 import model.dao.XeDao;
 
@@ -32,7 +32,7 @@ public class XeBO {
 	}
 
 
-	public static boolean setCapNhatPhanCongTX(TaiXe taixe, XeBEAN xe) {
+	public static boolean setCapNhatPhanCongTX(TaiXeBEAN taixe, XeBEAN xe) {
 		
 		return XeDao.setCapNhatPhanCongTX(taixe, xe);
 	}
@@ -43,7 +43,7 @@ public class XeBO {
 	}
 
 
-	public static boolean themPhanCongTX(TaiXe taixe, XeBEAN xe) {
+	public static boolean themPhanCongTX(TaiXeBEAN taixe, XeBEAN xe) {
 		
 		return XeDao.themPhanCongTX(taixe, xe);
 	}

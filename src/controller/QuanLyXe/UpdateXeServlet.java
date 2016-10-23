@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.TaiXe;
+import model.bean.TaiXeBEAN;
 import model.bean.XeBEAN;
 import model.bo.TaiXeBO;
 import model.bo.XeBO;
@@ -45,7 +45,7 @@ public class UpdateXeServlet extends HttpServlet {
 		request.setAttribute("xeduocchon", xebean);
 
 		TaiXeBO taiXebo = new TaiXeBO();
-		List<TaiXe> listTX = null;
+		List<TaiXeBEAN> listTX = null;
 		listTX = taiXebo.getAllTenTX();
 		request.setAttribute("listTX", listTX);
 
@@ -69,7 +69,7 @@ public class UpdateXeServlet extends HttpServlet {
 		}
 
 		XeBEAN xe = new XeBEAN();
-		TaiXe taixe = new TaiXe();
+		TaiXeBEAN taixe = new TaiXeBEAN();
 		taixe.setId(Integer.parseInt(request.getParameter("tentx")));
 		
 		xe.setId(id);

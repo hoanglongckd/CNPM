@@ -1,47 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>DA-CNPM</display-name>
-  <servlet>
-    <servlet-name>ThemXeBaoDuongController</servlet-name>
-    <servlet-class>controller.BaoDuongXe.ThemXeBaoDuongController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ThemXeBaoDuongController</servlet-name>
-    <url-pattern>/them-xe-bao-duong</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>BaoCaoXeBaoDuongController</servlet-name>
-    <servlet-class>controller.BaoDuongXe.BaoCaoXeBaoDuongController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>BaoCaoXeBaoDuongController</servlet-name>
-    <url-pattern>/bao-cao-xe-bao-duong</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>ChiTietBaoDuongController</servlet-name>
-    <servlet-class>controller.BaoDuongXe.ChiTietBaoDuongController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ChiTietBaoDuongController</servlet-name>
-    <url-pattern>/chi-tiet-bao-duong</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>XoaXeBaoDuongController</servlet-name>
-    <servlet-class>controller.BaoDuongXe.XoaXeBaoDuongController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>XoaXeBaoDuongController</servlet-name>
-    <url-pattern>/xoa-xe-bao-duong</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>SuaXeBaoDuongController</servlet-name>
-    <servlet-class>controller.BaoDuongXe.SuaXeBaoDuongController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SuaXeBaoDuongController</servlet-name>
-    <url-pattern>/sua-xe-bao-duong</url-pattern>
-  </servlet-mapping>
-<servlet>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>DA-CNPM</display-name>
+	<servlet>
+		<servlet-name>ThemXeBaoDuongController</servlet-name>
+		<servlet-class>controller.BaoDuongXe.ThemXeBaoDuongController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ThemXeBaoDuongController</servlet-name>
+		<url-pattern>/them-xe-bao-duong</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>BaoCaoXeBaoDuongController</servlet-name>
+		<servlet-class>controller.BaoDuongXe.BaoCaoXeBaoDuongController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BaoCaoXeBaoDuongController</servlet-name>
+		<url-pattern>/bao-cao-xe-bao-duong</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ChiTietBaoDuongController</servlet-name>
+		<servlet-class>controller.BaoDuongXe.ChiTietBaoDuongController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChiTietBaoDuongController</servlet-name>
+		<url-pattern>/chi-tiet-bao-duong</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>XoaXeBaoDuongController</servlet-name>
+		<servlet-class>controller.BaoDuongXe.XoaXeBaoDuongController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>XoaXeBaoDuongController</servlet-name>
+		<url-pattern>/xoa-xe-bao-duong</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>SuaXeBaoDuongController</servlet-name>
+		<servlet-class>controller.BaoDuongXe.SuaXeBaoDuongController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SuaXeBaoDuongController</servlet-name>
+		<url-pattern>/sua-xe-bao-duong</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
 		<servlet-name>AddNhanVienController</servlet-name>
 		<servlet-class>controller.NhanVien.AddNhanVienController</servlet-class>
 	</servlet>
@@ -49,7 +54,6 @@
 		<servlet-name>AddNhanVienController</servlet-name>
 		<url-pattern>/them-nhan-vien</url-pattern>
 	</servlet-mapping>
-
 	<servlet>
 		<servlet-name>AddTaiXeController</servlet-name>
 		<servlet-class>controller.TaiXe.AddTaiXeController</servlet-class>
@@ -58,7 +62,6 @@
 		<servlet-name>AddTaiXeController</servlet-name>
 		<url-pattern>/them-tai-xe</url-pattern>
 	</servlet-mapping>
-
 	<servlet>
 		<servlet-name>ShowDanhSachNhanVienController</servlet-name>
 		<servlet-class>controller.NhanVien.ShowDanhSachNhanVienController</servlet-class>
@@ -67,7 +70,6 @@
 		<servlet-name>ShowDanhSachNhanVienController</servlet-name>
 		<url-pattern>/danh-sach-nhan-vien</url-pattern>
 	</servlet-mapping>
-
 	<servlet>
 		<servlet-name>ShowDanhSachTaiXeController</servlet-name>
 		<servlet-class>controller.TaiXe.ShowDanhSachTaiXeController</servlet-class>
@@ -76,7 +78,6 @@
 		<servlet-name>ShowDanhSachTaiXeController</servlet-name>
 		<url-pattern>/danh-sach-tai-xe</url-pattern>
 	</servlet-mapping>
-
 	<servlet>
 		<servlet-name>DeleteNhanVienController</servlet-name>
 		<servlet-class>controller.NhanVien.DeleteNhanVienController</servlet-class>
@@ -85,7 +86,6 @@
 		<servlet-name>DeleteNhanVienController</servlet-name>
 		<url-pattern>/xoa-nhan-vien</url-pattern>
 	</servlet-mapping>
-
 	<servlet>
 		<servlet-name>DeleteTaiXeController</servlet-name>
 		<servlet-class>controller.TaiXe.DeleteTaiXeController</servlet-class>
@@ -94,7 +94,6 @@
 		<servlet-name>DeleteTaiXeController</servlet-name>
 		<url-pattern>/xoa-tai-xe</url-pattern>
 	</servlet-mapping>
-	
 	<servlet>
 		<servlet-name>EditNhanVienController</servlet-name>
 		<servlet-class>controller.NhanVien.EditNhanVienController</servlet-class>
@@ -103,7 +102,6 @@
 		<servlet-name>EditNhanVienController</servlet-name>
 		<url-pattern>/chinh-sua-nhan-vien</url-pattern>
 	</servlet-mapping>
-	
 	<servlet>
 		<servlet-name>EditTaiXeController</servlet-name>
 		<servlet-class>controller.TaiXe.EditTaiXeController</servlet-class>
@@ -112,84 +110,86 @@
 		<servlet-name>EditTaiXeController</servlet-name>
 		<url-pattern>/chinh-sua-tai-xe</url-pattern>
 	</servlet-mapping>
-  <servlet>
-    <servlet-name>AddXeServlet</servlet-name>
-    <servlet-class>controller.QuanLyXe.AddXeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AddXeServlet</servlet-name>
-    <url-pattern>/them-xe</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>ShowListXeServlet</servlet-name>
-    <servlet-class>controller.QuanLyXe.ShowListXeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ShowListXeServlet</servlet-name>
-    <url-pattern>/list-xe</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>UpdateXeServlet</servlet-name>
-    <servlet-class>controller.QuanLyXe.UpdateXeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UpdateXeServlet</servlet-name>
-    <url-pattern>/cap-nhat-xe</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>DeleteXeServlet</servlet-name>
-    <servlet-class>controller.QuanLyXe.DeleteXeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DeleteXeServlet</servlet-name>
-    <url-pattern>/xoa-xe</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>AddTheoDoiNhanVienController</servlet-name>
-    <servlet-class>controller.TheoDoiNhanVien.AddTheoDoiNhanVienController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AddTheoDoiNhanVienController</servlet-name>
-    <url-pattern>/them-nhan-vien-nghi</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>ChiTietVangNghiController</servlet-name>
-    <servlet-class>controller.TheoDoiNhanVien.ChiTietVangNghiController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ChiTietVangNghiController</servlet-name>
-    <url-pattern>/chi-tiet-vang-nghi</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>DanhSachVangNghiController</servlet-name>
-    <servlet-class>controller.TheoDoiNhanVien.DanhSachVangNghiController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DanhSachVangNghiController</servlet-name>
-    <url-pattern>/danh-sach-vang-nghi</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>UpdateVangNghiController</servlet-name>
-    <servlet-class>controller.TheoDoiNhanVien.UpdateVangNghiController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UpdateVangNghiController</servlet-name>
-    <url-pattern>/cap-nhat-vang-nghi</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>TheoThangController</servlet-name>
-    <servlet-class>controller.ThongKeLoiNhuan.TheoThangController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TheoThangController</servlet-name>
-    <url-pattern>/thong-ke-theo-thang</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>TheoNamController</servlet-name>
-    <servlet-class>controller.ThongKeLoiNhuan.TheoNamController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TheoNamController</servlet-name>
-    <url-pattern>/thong-ke-theo-nam</url-pattern>
-  </servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>AddXeServlet</servlet-name>
+		<servlet-class>controller.QuanLyXe.AddXeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddXeServlet</servlet-name>
+		<url-pattern>/them-xe</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ShowListXeServlet</servlet-name>
+		<servlet-class>controller.QuanLyXe.ShowListXeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowListXeServlet</servlet-name>
+		<url-pattern>/list-xe</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>UpdateXeServlet</servlet-name>
+		<servlet-class>controller.QuanLyXe.UpdateXeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateXeServlet</servlet-name>
+		<url-pattern>/cap-nhat-xe</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>DeleteXeServlet</servlet-name>
+		<servlet-class>controller.QuanLyXe.DeleteXeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteXeServlet</servlet-name>
+		<url-pattern>/xoa-xe</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AddTheoDoiNhanVienController</servlet-name>
+		<servlet-class>controller.TheoDoiNhanVien.AddTheoDoiNhanVienController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddTheoDoiNhanVienController</servlet-name>
+		<url-pattern>/them-nhan-vien-nghi</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ChiTietVangNghiController</servlet-name>
+		<servlet-class>controller.TheoDoiNhanVien.ChiTietVangNghiController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChiTietVangNghiController</servlet-name>
+		<url-pattern>/chi-tiet-vang-nghi</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>DanhSachVangNghiController</servlet-name>
+		<servlet-class>controller.TheoDoiNhanVien.DanhSachVangNghiController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DanhSachVangNghiController</servlet-name>
+		<url-pattern>/danh-sach-vang-nghi</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>UpdateVangNghiController</servlet-name>
+		<servlet-class>controller.TheoDoiNhanVien.UpdateVangNghiController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateVangNghiController</servlet-name>
+		<url-pattern>/cap-nhat-vang-nghi</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>TheoThangController</servlet-name>
+		<servlet-class>controller.ThongKeLoiNhuan.TheoThangController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TheoThangController</servlet-name>
+		<url-pattern>/thong-ke-theo-thang</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>TheoNamController</servlet-name>
+		<servlet-class>controller.ThongKeLoiNhuan.TheoNamController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TheoNamController</servlet-name>
+		<url-pattern>/thong-ke-theo-nam</url-pattern>
+	</servlet-mapping>
 </web-app>
