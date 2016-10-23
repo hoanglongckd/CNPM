@@ -58,6 +58,14 @@
 						</ul>
 					<!-- /.nav-second-level -->
 				</li>
+				<li>
+					<a href="#"><i class="fa fa-usd"></i> Thống kê lợi nhuận<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a href="<%=request.getContextPath()%>/thong-ke-theo-thang">Theo tháng</a></li>
+							<li><a href="<%=request.getContextPath()%>/thong-ke-theo-nam">Theo năm</a></li>
+						</ul>
+					<!-- /.nav-second-level -->
+				</li>
 			</ul>
 		</div>
 	<!-- /.sidebar-collapse -->
