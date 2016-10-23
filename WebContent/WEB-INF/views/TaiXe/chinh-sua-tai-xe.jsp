@@ -24,6 +24,7 @@
 					Chỉnh sửa <small>Thông tin tài xế</small>
 				</h1>
 			</div>
+			<jsp:include page="../_message-block.jsp" />
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom: 120px">
 				<form action="${pageContext.request.contextPath}/chinh-sua-tai-xe"
@@ -42,7 +43,7 @@
 							name="ngay-sinh"  value=<%=taiXe.getNgaySinh()%>/> 
 					</div>
 					<button type="submit" class="btn btn-default">Save</button>
-					<a href="<%=request.getContextPath()%>/danh-sach-nhan-vien" class = "btn btn-default">Cancel</a>
+					<a href="<%=request.getContextPath()%>/danh-sach-tai-xe" class = "btn btn-default">Cancel</a>
 					<button type="reset" class="btn btn-default">Reset</button>
 				</form>
 			</div>

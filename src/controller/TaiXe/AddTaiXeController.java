@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.bean.TaiXeBEAN;
 import model.bo.TaiXeBO;
@@ -37,6 +38,8 @@ public class AddTaiXeController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		HttpSession msg = request.getSession();
 		String maTX = request.getParameter("ma-tai-xe");
 		String hoTen = request.getParameter("ho-va-ten");
 		String ngaySinh = request.getParameter("ngay-sinh");
@@ -48,9 +51,12 @@ public class AddTaiXeController extends HttpServlet {
 		taiXeBEAN.setNgaySinh(ngaySinh);
 		
 		if (TaiXeBO.addTaiXe(taiXeBEAN)) {
-			response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");		}
+			msg.setAttribute("messages", "<ul><li>Thêm tài xế thành công!</li></ul>");
+			response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");		
+		}
 		else {
-			System.out.println("Fail");
+			msg.setAttribute("messages", "<ul><li>Thêm tài xế không thành công!</li></ul>");
+			response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");		
 		}
 	}
 

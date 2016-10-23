@@ -24,6 +24,7 @@
 					Chỉnh sửa <small>Thông tin nhân viên</small>
 				</h1>
 			</div>
+			<jsp:include page="../_message-block.jsp" />
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom: 120px">
 				<form action="${pageContext.request.contextPath}/chinh-sua-nhan-vien"

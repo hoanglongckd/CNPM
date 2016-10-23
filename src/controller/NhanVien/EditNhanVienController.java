@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.bean.BaoDuongXeBEAN;
 import model.bean.NhanVienBEAN;
@@ -55,6 +56,8 @@ public class EditNhanVienController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		HttpSession msg = request.getSession();
 		String param = request.getParameter("id");
 		System.out.println(param);
 		int id = 0;
@@ -79,10 +82,12 @@ public class EditNhanVienController extends HttpServlet {
 			nhanVienBEAN.setNgaySinh(ngaySinh);
 			nhanVienBEAN.setHoTen(hoTen);
 			if (NhanVienBO.setSuaNhanVien(nhanVienBEAN)) {
+				msg.setAttribute("messages", "<ul><li>Chỉnh sửa nhân viên thành công!</li></ul>");
 				response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");
 			} 
 			else {
-				System.out.println("Fail");
+				msg.setAttribute("errors", "<ul><li>Chỉnh sửa nhân viên không thành công!</li></ul>");
+				response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

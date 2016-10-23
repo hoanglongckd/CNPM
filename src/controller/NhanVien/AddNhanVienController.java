@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.bean.NhanVienBEAN;
 import model.bo.NhanVienBO;
@@ -37,7 +38,9 @@ public class AddNhanVienController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		request.setCharacterEncoding("UTF-8");
+		HttpSession msg = request.getSession();
 		String maNV = request.getParameter("ma-nhan-vien");
 		String hoTen = request.getParameter("ho-va-ten");
 		int idChucVu = 3; //nhan vien la 3, admin la 1
@@ -53,11 +56,14 @@ public class AddNhanVienController extends HttpServlet {
 		nhanVienBEAN.setIdChucVu(idChucVu);
 		
 		if (NhanVienBO.addNhanVien(nhanVienBEAN)) {
-			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");		}
+			msg.setAttribute("messages", "<ul><li>Thêm nhân viên thành công!</li></ul>");
+			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");		
+			}
 		else {
-			System.out.println("Fail");
+			msg.setAttribute("errors", "<ul><li>Thêm nhân viên không thành công!</li></ul>");
+			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");
 		}
-		System.out.println(nhanVienBEAN.getHoTen() + "|" + hoTen + "|" + ngaySinh + "|" + idChucVu +"|"+ password );
+		
 	}
 
 }
