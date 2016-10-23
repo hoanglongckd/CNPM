@@ -5,22 +5,22 @@ public class NhanVienBEAN {
 	private String maNhanVien;
 	private String hoTen;
 	private String ngaySinh;
-	private int chucVu;
-	private int caLamViec;
+	private int idChucVu;
+	private String password;
 	
 	public NhanVienBEAN() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public NhanVienBEAN(int id, String maNhanVien, String hoTen, String ngaySinh, int chucVu, int caLamViec) {
+	public NhanVienBEAN(int id, String maNhanVien, String hoTen, String ngaySinh, int idChucVu, String password ) {
 	
 		super();
 		this.id = id;
 		this.maNhanVien = maNhanVien;
 		this.hoTen = hoTen;
 		this.ngaySinh = ngaySinh;
-		this.chucVu = chucVu;
-		this.caLamViec = caLamViec;
+		this.idChucVu = idChucVu;
+		this.password = password;
 	}
 
 	public int getId() {
@@ -55,21 +55,19 @@ public class NhanVienBEAN {
 		this.ngaySinh = ngaySinh;
 	}
 
-	public int getChucVu() {
-		return chucVu;
+	public int getIdChucVu() {
+		return idChucVu;
 	}
 
-	public void setChucVu(int chucVu) {
-		this.chucVu = chucVu ;
+	public void setIdChucVu(int idChucVu) {
+		this.idChucVu = idChucVu ;
 	}
 	
-	public int getCaLamViec() {
-		return caLamViec;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setCaLamViec(int caLamViec) {
-		this.caLamViec = caLamViec ;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-
-	
 }

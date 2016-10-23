@@ -41,38 +41,77 @@
     <servlet-name>SuaXeBaoDuongController</servlet-name>
     <url-pattern>/sua-xe-bao-duong</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>ShowDanhSachNhanVienController</servlet-name>
-    <servlet-class>controller.NhanVien.ShowDanhSachNhanVienController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ShowDanhSachNhanVienController</servlet-name>
-    <url-pattern>/danh-sach-nhan-vien</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>ShowDanhSachTaiXeController</servlet-name>
-    <servlet-class>controller.NhanVien.ShowDanhSachTaiXeController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ShowDanhSachTaiXeController</servlet-name>
-    <url-pattern>/danh-sach-tai-xe</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>DeleteNhanVienController</servlet-name>
-    <servlet-class>controller.NhanVien.DeleteNhanVienController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DeleteNhanVienController</servlet-name>
-    <url-pattern>/xoa-nhan-vien</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>DeleteTaiXeController</servlet-name>
-    <servlet-class>controller.NhanVien.DeleteTaiXeController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DeleteTaiXeController</servlet-name>
-    <url-pattern>/xoa-tai-xe</url-pattern>
-  </servlet-mapping>
+<servlet>
+		<servlet-name>AddNhanVienController</servlet-name>
+		<servlet-class>controller.NhanVien.AddNhanVienController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddNhanVienController</servlet-name>
+		<url-pattern>/them-nhan-vien</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AddTaiXeController</servlet-name>
+		<servlet-class>controller.TaiXe.AddTaiXeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddTaiXeController</servlet-name>
+		<url-pattern>/them-tai-xe</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ShowDanhSachNhanVienController</servlet-name>
+		<servlet-class>controller.NhanVien.ShowDanhSachNhanVienController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowDanhSachNhanVienController</servlet-name>
+		<url-pattern>/danh-sach-nhan-vien</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ShowDanhSachTaiXeController</servlet-name>
+		<servlet-class>controller.TaiXe.ShowDanhSachTaiXeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowDanhSachTaiXeController</servlet-name>
+		<url-pattern>/danh-sach-tai-xe</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DeleteNhanVienController</servlet-name>
+		<servlet-class>controller.NhanVien.DeleteNhanVienController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteNhanVienController</servlet-name>
+		<url-pattern>/xoa-nhan-vien</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DeleteTaiXeController</servlet-name>
+		<servlet-class>controller.TaiXe.DeleteTaiXeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteTaiXeController</servlet-name>
+		<url-pattern>/xoa-tai-xe</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>EditNhanVienController</servlet-name>
+		<servlet-class>controller.NhanVien.EditNhanVienController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditNhanVienController</servlet-name>
+		<url-pattern>/chinh-sua-nhan-vien</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>EditTaiXeController</servlet-name>
+		<servlet-class>controller.TaiXe.EditTaiXeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditTaiXeController</servlet-name>
+		<url-pattern>/chinh-sua-tai-xe</url-pattern>
+	</servlet-mapping>
   <servlet>
     <servlet-name>AddXeServlet</servlet-name>
     <servlet-class>controller.QuanLyXe.AddXeServlet</servlet-class>

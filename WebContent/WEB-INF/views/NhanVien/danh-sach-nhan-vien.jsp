@@ -43,12 +43,6 @@
 					<tbody>
 					
 						<% for (int i=0;i<listNhanVien.size();i++){
-							if(listNhanVien.get(i).getCaLamViec()==1){
-								 String ca = "Ca 1";
-							} else if (listNhanVien.get(i).getCaLamViec()==2) {
-								String ca = "Ca 2";
-							} else {String ca = "Ca 3";}
-							
 							 if(i%2==0){%>
 								<tr class="odd gradeX" align="center">
 									<td><%=i+1%></td>
@@ -58,8 +52,8 @@
 									
 									<td><%=listNhanVien.get(i).getNgaySinh()%></td>
 									<td>1</td>
-									<td><a href="ShowUpdateNhanVienController?idNhanVien=<%=listNhanVien.get(i).getId()%>" class = "btn btn-danger">Update</a> </td>
-									<td><a href="DeleteNhanVienController?idNhanVien=<%=listNhanVien.get(i).getId() %>" class = "btn btn-info">Delete</a></td>
+									<td><a href="<%=request.getContextPath()%>/chinh-sua-nhan-vien?idNhanVien=<%=listNhanVien.get(i).getId()%>" class = "btn btn-danger">Update</a> </td>
+									<td><a href="<%=request.getContextPath()%>/xoa-nhan-vien?idNhanVien=<%=listNhanVien.get(i).getId() %>" class = "btn btn-info">Delete</a></td>
 								</tr>
 						 <% }else{%>
 								<tr class="odd gradeX" align="center">
@@ -68,8 +62,8 @@
 									<td><%=listNhanVien.get(i).getHoTen()%></td>
 									<td><%=listNhanVien.get(i).getNgaySinh()%></td>
 									<td>1</td>
-									<td><a href="ShowUpdateNhanVienController?idNhanVien=<%=listNhanVien.get(i).getId() %>" class = "btn btn-danger">Update</a> </td>
-									<td><a href="DeleteNhanVienController?idNhanVien=<%=listNhanVien.get(i).getId() %>" class = "btn btn-info">Delete</a></td>
+									<td><a href="<%=request.getContextPath()%>/chinh-sua-nhan-vien?idNhanVien=<%=listNhanVien.get(i).getId() %>" class = "btn btn-danger">Update</a> </td>
+									<td><a href="<%=request.getContextPath()%>/xoa-nhan-vien?idNhanVien=<%=listNhanVien.get(i).getId() %>" class = "btn btn-info">Delete</a></td>
 								</tr>
 						 <%}}%>
 					</tbody>
