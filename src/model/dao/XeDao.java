@@ -10,7 +10,7 @@ import model.bean.TaiXe;
 import model.bean.XeBEAN;
 import utils.SQLServerConnUtils;
 
-public class xeDao {
+public class XeDao {
 
 	// Connection conn = ConnectionUtils.getConnection();
 	Connection conn = SQLServerConnUtils.getSQLServerConnection();

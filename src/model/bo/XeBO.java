@@ -4,52 +4,52 @@ import java.util.ArrayList;
 
 import model.bean.TaiXe;
 import model.bean.XeBEAN;
-import model.dao.xeDao;
+import model.dao.XeDao;
 
-public class xeBO {
+public class XeBO {
 
-	static xeDao xeDao = new xeDao();
+	static XeDao XeDao = new XeDao();
 	
 	
 	public static ArrayList<XeBEAN> lietKeListXe() {
 		
-		return xeDao.lietKeListXe();
+		return XeDao.lietKeListXe();
 	}
 
 
 	public static boolean xoaXe(int id) {
-		return xeDao.xoaXe(id);
+		return XeDao.xoaXe(id);
 	}
 
 
 	public static XeBEAN getCapNhatXe(int id) {
-		return xeDao.getCapNhatXe(id);
+		return XeDao.getCapNhatXe(id);
 	}
 
 
 	public static boolean setCapNhatXe(XeBEAN xe) {
-		return xeDao.setCapNhatXe(xe);
+		return XeDao.setCapNhatXe(xe);
 	}
 
 
 	public static boolean setCapNhatPhanCongTX(TaiXe taixe, XeBEAN xe) {
 		
-		return xeDao.setCapNhatPhanCongTX(taixe, xe);
+		return XeDao.setCapNhatPhanCongTX(taixe, xe);
 	}
 
 
 	public static boolean themXe(XeBEAN xe) {
-		return xeDao.themXe(xe);
+		return XeDao.themXe(xe);
 	}
 
 
 	public static boolean themPhanCongTX(TaiXe taixe, XeBEAN xe) {
 		
-		return xeDao.themPhanCongTX(taixe, xe);
+		return XeDao.themPhanCongTX(taixe, xe);
 	}
 
 	public static int getMaxXeId() {
-		return xeDao.getMaxXeId();
+		return XeDao.getMaxXeId();
 	}
 	
 

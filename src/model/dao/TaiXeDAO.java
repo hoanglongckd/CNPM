@@ -9,7 +9,7 @@ import java.util.List;
 import model.bean.TaiXe;
 import utils.SQLServerConnUtils;
 
-public class taiXeDAO {
+public class TaiXeDAO {
 //	Connection conn = ConnectionUtils.getConnection();
 	Connection conn = SQLServerConnUtils.getSQLServerConnection();
 	
