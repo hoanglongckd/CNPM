@@ -21,7 +21,7 @@
 				<li>
 					<a href="#"><i class="fa fa-user"></i> Quản lý nhân viên<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="#">Thêm nhân viên</a></li>
+						<li><a href="<%=request.getContextPath()%>/them-nhan-vien">Thêm nhân viên</a></li>
 						<li><a href="<%=request.getContextPath()%>/danh-sach-nhan-vien">Danh sách nhân viên</a></li>
 					</ul>
 					<!-- /.nav-second-level -->
@@ -29,7 +29,7 @@
 				<li>
 					<a href="#"><i class="fa fa-users"></i> Quản lý tài xế<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="#">Thêm tài xế</a></li>
+						<li><a href="<%=request.getContextPath()%>/them-tai-xe">Thêm tài xế</a></li>
 						<li><a href="<%=request.getContextPath()%>/danh-sach-tai-xe">Danh sách tài xế</a></li>
 					</ul>
 					<!-- /.nav-second-level -->

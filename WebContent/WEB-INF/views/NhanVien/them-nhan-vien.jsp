@@ -32,21 +32,9 @@
 						<label>Ngày sinh: </label> <input class="form-control" type="text"
 							name="ngay-sinh" />
 					</div>
-					<div class="form-group">
-						<select class="form-control" name="chuc-vu">
-							<option value="1">Nhân viên</option>
-							<option value="2">Tài xế</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<select class="form-control" name="ca-lam-viec">
-							<option value="1">Ca 1</option>
-							<option value="2">Ca 2</option>
-							<option value="3">Ca 3</option>
-						</select>
-					</div>
+					<br>
 					<button type="submit" class="btn btn-default">Thêm</button>
-					<button type="submit" class="btn btn-default">Cancel</button>
+					<a href="<%=request.getContextPath()%>/danh-sach-nhan-vien" class = "btn btn-default">Cancel</a>
 					<button type="reset" class="btn btn-default">Reset</button>
 				</form>
 			</div>

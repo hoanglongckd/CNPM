@@ -16,23 +16,16 @@ public class NhanVienBO {
 		return nhanVienDAO.getDanhSachNhanVien();
 	}
 
-	public ArrayList<NhanVienBEAN> getDanhSachTaiXe() {
-		return nhanVienDAO.getDanhSachTaiXe();
-	}
-
 	public boolean isNhanVienDeleted(String idNhanVien) {
 		return nhanVienDAO.isNhanVienDeleted(idNhanVien);
-	}
-
-	public boolean isTaiXeDeleted(String idTaiXe) {
-		return nhanVienDAO.isTaiXeDeleted(idTaiXe);
 	}
 
 	public static NhanVienBEAN getNhanVien(String idNhanVien) {
 		return nhanVienDAO.getNhanVien(idNhanVien);
 	}
 
-	public NhanVienBEAN getTaiXe(String idTaiXe) {
-		return nhanVienDAO.getTaiXe(idTaiXe);
+	public static boolean setSuaNhanVien(NhanVienBEAN nhanVienBEAN) {
+		return nhanVienDAO.setSuaNhanVien(nhanVienBEAN);
 	}
+
 }
