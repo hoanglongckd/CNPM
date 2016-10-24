@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
 import model.bean.TaiXeBEAN;
 import model.bean.XeBEAN;
 import utils.SQLServerConnUtils;
@@ -156,5 +157,6 @@ public class XeDAO {
 		}
 		return false;
 	}
+
 
 }

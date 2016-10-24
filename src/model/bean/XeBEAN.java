@@ -48,6 +48,14 @@ public class XeBEAN {
 		this.idTX = idTX;
 	}
 
+	public XeBEAN(int id, String taiXe, String bienSoXe, int soCho) {
+		super();
+		this.id = id;
+		this.bienSoXe = bienSoXe;
+		this.taiXe = taiXe;
+		this.soCho = soCho;
+	}
+
 	public int getId() {
 		return id;
 	}

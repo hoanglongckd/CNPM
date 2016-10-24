@@ -2,6 +2,7 @@ package model.bo;
 
 import java.util.ArrayList;
 
+
 import model.bean.TaiXeBEAN;
 import model.bean.XeBEAN;
 import model.dao.XeDAO;
@@ -51,9 +52,6 @@ public class XeBO {
 	public static int getMaxXeId() {
 		return xeDAO.getMaxXeId();
 	}
-	
-
-
 
 
 }
