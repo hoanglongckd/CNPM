@@ -25,12 +25,12 @@
 					
 					<div class="form-group">
 						<label>Địa điểm</label>
-						<textarea class="form-control" name="diadiem" id="diadiem" rows="4"></textarea>
+						<textarea class="form-control" name="diadiem" id="diadiem" rows="4" required></textarea>
 					</div>
 					
 					<div class="form-group">
 						<label>Loại xe</label> <select class="form-control"
-							name="loaixe" id="loaixe">
+							name="loaixe" id="loaixe" required>
 							<option value="4">4 chổ</option>
 							<option value="5">5 chổ</option>
 							<option value="7">7 chổ</option>

@@ -20,7 +20,7 @@ public class DieuPhoiDAO {
 		String sql = "insert into dieuphoi(DiaChiNhanKhach,LoaiXe) values(?,?)";
 		try {
 			PreparedStatement pstm = conn.prepareStatement(sql);
-			pstm.setString(1, dieuphoi.getDiaChi());
+			pstm.setNString(1, dieuphoi.getDiaChi());
 			pstm.setInt(2, dieuphoi.getLoaiXe());
 			
 			int rowEffect = pstm.executeUpdate();

@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.bean.DieuPhoiBEAN;
 import model.bean.XeBEAN;
@@ -52,6 +53,9 @@ public class ChonXeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+	
+		HttpSession msg = request.getSession();
+		
 		String param = request.getParameter("accept");
 //		System.out.println(param);
 		int id = 0;
@@ -67,9 +71,11 @@ public class ChonXeServlet extends HttpServlet {
 		
 		boolean check = DieuPhoiBO.updateIDPhanCong(dieuphoi);
 		if (check) {
+			msg.setAttribute("messages", "<ul><li>Điều phối xe thành công!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/list-xe");
 		} else {
-			System.out.println("Fail");
+			msg.setAttribute("errors", "<ul><li>Lỗi cơ sở dữ liệu!</li></ul>");
+			response.sendRedirect(request.getContextPath() + "/dieu-phoi");
 		}
 	}
 

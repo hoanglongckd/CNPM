@@ -1,11 +1,11 @@
 <%@page import="model.bean.TaiXeBEAN"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+	pageEncoding="UTF-8"%>
+
 <jsp:include page="../_header.jsp" />
 <%-- <%@include file="header.jsp" %> --%>
-	<title>Thêm mới xe</title>
+<title>Thêm mới xe</title>
 <jsp:include page="../_top.jsp" />
 <jsp:include page="../_menu.jsp" />
 
@@ -27,11 +27,10 @@
 			</div>
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom: 120px">
-				<form action="<%=request.getContextPath()%>/them-xe"
-					method="POST">
+				<form action="<%=request.getContextPath()%>/them-xe" method="POST">
 					<div class="form-group">
-						<label>Tên tài xế</label> <select class="form-control" name="tentx"
-							id="tentx">
+						<label>Tên tài xế</label> <select class="form-control"
+							name="tentx" id="tentx" required>
 							<%
 								if (listMaTX != null)
 									for (TaiXeBEAN item : listMaTX) {
@@ -49,16 +48,16 @@
 					</div>
 					<div class="form-group">
 						<label>Biển số xe</label> <input class="form-control"
-							name="biensoxe" id="biensoxe" placeholder="Nhập biển số xe" />
+							name="biensoxe" id="biensoxe" placeholder="Nhập biển số xe" required/>
 					</div>
 					<div class="form-group">
 						<label>Model</label> <input class="form-control" name="model"
-							id="model" placeholder="Nhập model xe" />
+							id="model" placeholder="Nhập model xe" required/>
 					</div>
 					<div class="form-group">
 						<label>Số chổ ngồi</label> <select class="form-control"
-							name="sochongoi" id="sochongoi">
-							<option value="0">0</option>
+							name="sochongoi" id="sochongoi" required>
+							
 							<option value="4">4</option>
 							<option value="5">5</option>
 							<option value="7">7</option>
@@ -67,7 +66,7 @@
 					</div>
 					<div class="form-group">
 						<label>Hãng</label> <input class="form-control" name="hang"
-							id="hang" placeholder="Nhập hãng xe" />
+							id="hang" placeholder="Nhập hãng xe" required/>
 					</div>
 					<div class="form-group">
 						<label>Ghi chú</label>
@@ -84,6 +83,7 @@
 	<!-- /.container-fluid -->
 </div>
 <!-- /#page-wrapper -->
+
 
 <jsp:include page="../_footer-start.jsp" />
 <jsp:include page="../_footer-end.jsp" />

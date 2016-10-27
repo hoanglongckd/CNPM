@@ -23,11 +23,11 @@ public class XeDAO {
 		try {
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setString(1, xe.getBienSoXe());
-			pstm.setString(2, xe.getModel());
+			pstm.setNString(2, xe.getModel());
 			pstm.setInt(3, xe.getSoCho());
-			pstm.setString(4, xe.getHang());
+			pstm.setNString(4, xe.getHang());
 			pstm.setString(5, String.valueOf(xe.isTinhTrangHoatDong()));
-			pstm.setString(6, xe.getGhiChu());
+			pstm.setNString(6, xe.getGhiChu());
 			int rowEffect = pstm.executeUpdate();
 			if (rowEffect != 0)
 				return true;
@@ -128,9 +128,9 @@ public class XeDAO {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 
-			ps.setString(1, xe.getModel());
+			ps.setNString(1, xe.getModel());
 			ps.setInt(2, xe.getSoCho());
-			ps.setString(3, xe.getHang());
+			ps.setNString(3, xe.getHang());
 			ps.setNString(4, xe.getGhiChu());
 			ps.setInt(5, xe.getId());
 

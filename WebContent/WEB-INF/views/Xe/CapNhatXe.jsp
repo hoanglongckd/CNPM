@@ -40,7 +40,7 @@
 					<div class="form-group">
 						<label>Tên tài xế</label> 
 						<select class="form-control" name="tentx"
-							id="tentx">
+							id="tentx" required>
 							<option value="<%=xe.getIdTX()%>"><%=xe.getTaiXe()%></option>
 							<%
 								if (listTX != null)
@@ -60,11 +60,11 @@
 
 					<div class="form-group">
 						<label>Model</label> <input class="form-control" name="model"
-							id="model" value="<%=xe.getModel()%>" />
+							id="model" value="<%=xe.getModel()%>" required/>
 					</div>
 					<div class="form-group">
 						<label>Số chổ ngồi</label> <select class="form-control"
-							name="sochongoi" id="sochongoi" >
+							name="sochongoi" id="sochongoi" required>
 							<option value="<%=xe.getSoCho()%>"><%=xe.getSoCho()%></option>
 							<option value="4">4</option>
 							<option value="5">5</option>
@@ -74,7 +74,7 @@
 					</div>
 					<div class="form-group">
 						<label>Hãng</label> <input class="form-control" name="hang"
-							id="hang" value="<%=xe.getHang()%>" />
+							id="hang" value="<%=xe.getHang()%>" required/>
 					</div>
 					<div class="form-group">
 						<label>Ghi chú</label>
