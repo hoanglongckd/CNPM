@@ -25,6 +25,7 @@
                    
                 </h1>
             </div>
+            <jsp:include page="../_message-block.jsp" />
             <!-- /.col-lg-12 -->
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>

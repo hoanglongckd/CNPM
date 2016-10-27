@@ -23,6 +23,7 @@
 			<div class="col-lg-12">
 				<h1 class="page-header">Danh sách xe taxi</h1>
 			</div>
+			<jsp:include page="../_message-block.jsp" />
 			<!-- /.col-lg-12 -->
 			<form action="<%=request.getContextPath()%>/chon-xe" method="POST">
 			<table class="table table-striped table-bordered table-hover"

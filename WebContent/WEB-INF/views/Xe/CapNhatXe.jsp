@@ -29,6 +29,7 @@
 			<div class="col-lg-12">
 				<h1 class="page-header">Cập nhật phương tiện</h1>
 			</div>
+			<jsp:include page="../_message-block.jsp" />
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom: 120px">
 				<form action="<%=request.getContextPath()%>/cap-nhat-xe" method="POST">
