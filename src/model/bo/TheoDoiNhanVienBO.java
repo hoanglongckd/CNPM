@@ -2,7 +2,9 @@ package model.bo;
 
 import java.util.ArrayList;
 
+import model.bean.NhanVienBEAN;
 import model.bean.TheoDoiNhanVienBEAN;
+import model.dao.NhanVienDAO;
 import model.dao.TheoDoiNhanVienDAO;
 
 public class TheoDoiNhanVienBO {
@@ -51,4 +53,10 @@ public class TheoDoiNhanVienBO {
 	public boolean suaTheoDoiNhanVien(TheoDoiNhanVienBEAN nv){
 		return dao.suaTheoDoiNhanVien(nv);
 	}
+	
+	public ArrayList<NhanVienBEAN> getListNhanVien(){
+		NhanVienDAO dao = new NhanVienDAO();
+		return dao.getDanhSachNhanVien();
+	}
+	
 }

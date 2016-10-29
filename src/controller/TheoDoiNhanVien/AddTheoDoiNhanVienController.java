@@ -1,6 +1,7 @@
 package controller.TheoDoiNhanVien;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.bean.NhanVienBEAN;
 import model.bean.TheoDoiNhanVienBEAN;
+import model.bo.NhanVienBO;
 import model.bo.TheoDoiNhanVienBO;
 
 /**
@@ -31,6 +34,8 @@ public class AddTheoDoiNhanVienController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		ArrayList<NhanVienBEAN> listnv = TheoDoiNhanVienBO.getInstance().getListNhanVien();
+		request.setAttribute("listNV", listnv);
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/VangNghi/them-vang-nghi.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -41,6 +46,8 @@ public class AddTheoDoiNhanVienController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(request.getParameter("btnAdd")!=null){
+			ArrayList<NhanVienBEAN> listNV  = TheoDoiNhanVienBO.getInstance().getListNhanVien();
+			
 			
 			String phep = request.getParameter("rdPhep");
 			boolean p;
@@ -52,10 +59,10 @@ public class AddTheoDoiNhanVienController extends HttpServlet {
 				p = false;
 			}
 			
+			
 			TheoDoiNhanVienBEAN vn = new TheoDoiNhanVienBEAN(request.getParameter("ngay-nghi"),p,
 					request.getParameter("lydo"),
-					Integer.parseInt(request.getParameter("ma-nhan-vien"))
-					);
+					listNV.get(Integer.parseInt(request.getParameter("idNV"))-1).getId());
 			
 			if(TheoDoiNhanVienBO.getInstance().themVangNghi(vn)){
 				doGet(request,response);

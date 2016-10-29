@@ -1,3 +1,5 @@
+<%@page import="model.bean.NhanVienBEAN"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -7,6 +9,12 @@
 <jsp:include page="../_top.jsp" />
 <jsp:include page="../_menu.jsp" />
 
+<%
+	ArrayList<NhanVienBEAN> listNV = null;
+	if(request.getAttribute("listNV")!=null){
+		listNV = (ArrayList<NhanVienBEAN>)request.getAttribute("listNV");
+	}
+%>
 <!-- Page Content -->
 <div id="page-wrapper">
 	<div class="container-fluid">
@@ -22,8 +30,25 @@
 				<form action="<%=request.getContextPath() %>/them-nhan-vien-nghi"
 					method="POST">
 					<div class="form-group">
-						<label>Mã nhân viên: </label> <input class="form-control"
-							type="text" name="ma-nhan-vien" />
+						<label>Mã nhân viên: </label>
+						<select class="form-control" name="idNV" required>
+							<option value="">Vui lòng Id Nhân Viên</option>
+							<% 
+								int i=1;
+								if(listNV!=null){
+									for(NhanVienBEAN nv : listNV){
+										%>
+										<option value="<%=i%>"><%=nv.getId() %></option>
+										<%
+										i++;
+									}
+								}else{
+									%>
+									<option value="<%=i%>">ERRORS!</option>
+									<%
+								}
+							%>
+						</select>
 					</div>
 					<div class="form-group">
 						<label>Ngày Nghỉ: </label> 
