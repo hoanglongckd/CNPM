@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>DA-CNPM</display-name>
-  <error-page> 
+  <error-page>
     <error-code>404</error-code>
     <location>/404.html</location>
-</error-page>
-  
+  </error-page>
   <servlet>
     <servlet-name>ThemXeBaoDuongController</servlet-name>
     <servlet-class>controller.BaoDuongXe.ThemXeBaoDuongController</servlet-class>
@@ -167,11 +166,11 @@
     <url-pattern>/xoa-xe</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>AddTheoDoiNhanVienController</servlet-name>
-    <servlet-class>controller.TheoDoiNhanVien.AddTheoDoiNhanVienController</servlet-class>
+    <servlet-name>ThemMoiVangNghi</servlet-name>
+    <servlet-class>controller.QuanLyVangNghi.ThemMoiVangNghi</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AddTheoDoiNhanVienController</servlet-name>
+    <servlet-name>ThemMoiVangNghi</servlet-name>
     <url-pattern>/them-nhan-vien-nghi</url-pattern>
   </servlet-mapping>
   <servlet>
@@ -230,7 +229,6 @@
     <servlet-name>ChonXeServlet</servlet-name>
     <url-pattern>/chon-xe</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>DashboardController</servlet-name>
     <servlet-class>controller.DangNhap.DashboardController</servlet-class>
@@ -239,8 +237,6 @@
     <servlet-name>DashboardController</servlet-name>
     <url-pattern>/dashboard</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <servlet-name>LoginController</servlet-name>
     <servlet-class>controller.DangNhap.LoginController</servlet-class>
@@ -249,7 +245,6 @@
     <servlet-name>LoginController</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>LogoutController</servlet-name>
     <servlet-class>controller.DangNhap.LogoutController</servlet-class>
@@ -258,7 +253,6 @@
     <servlet-name>LogoutController</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>ChangePasswordController</servlet-name>
     <servlet-class>controller.Profiles.ChangePasswordController</servlet-class>
@@ -267,7 +261,6 @@
     <servlet-name>ChangePasswordController</servlet-name>
     <url-pattern>/doi-mat-khau</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>ProfileController</servlet-name>
     <servlet-class>controller.Profiles.ProfileController</servlet-class>
@@ -276,7 +269,6 @@
     <servlet-name>ProfileController</servlet-name>
     <url-pattern>/profile</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>QuanLyTaiKhoanController</servlet-name>
     <servlet-class>controller.Profiles.QuanLyTaiKhoanController</servlet-class>
