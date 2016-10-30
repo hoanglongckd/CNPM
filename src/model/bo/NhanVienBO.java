@@ -2,6 +2,7 @@ package model.bo;
 
 import java.util.ArrayList;
 import model.bean.NhanVienBEAN;
+import model.bean.PhanCongNhanVienBEAN;
 import model.dao.NhanVienDAO;
 
 public class NhanVienBO {
@@ -26,6 +27,10 @@ public class NhanVienBO {
 
 	public static boolean setSuaNhanVien(NhanVienBEAN nhanVienBEAN) {
 		return nhanVienDAO.setSuaNhanVien(nhanVienBEAN);
+	}
+
+	public static boolean addPhanCongNhanVien(PhanCongNhanVienBEAN phanCongNhanVienBEAN) {
+		return nhanVienDAO.addPhanCongNhanVien(phanCongNhanVienBEAN);
 	}
 
 }

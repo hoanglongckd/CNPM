@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import model.bean.BaoDuongXeBEAN;
 import model.bean.NhanVienBEAN;
+import model.bean.PhanCongNhanVienBEAN;
 import utils.SQLServerConnUtils;
 
 public class NhanVienDAO {
@@ -94,5 +95,23 @@ public class NhanVienDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	public boolean addPhanCongNhanVien(PhanCongNhanVienBEAN phanCongNhanVienBEAN) {
+		try {
+			String sql = "INSERT INTO PHANCONGNV(idNhanVien, idCa, idThuNgay) "
+					+ "VALUES(?, ?, ?)";
+			//System.out.println(nhanVienBEAN.getMaNhanVien() + nhanVienBEAN.getHoTen() + nhanVienBEAN.getIdChucVu());
+			PreparedStatement pre = conn.prepareStatement(sql);
+			pre.setInt(1, phanCongNhanVienBEAN.getIdNhanVien());
+			pre.setInt(2, phanCongNhanVienBEAN.getIdCa());
+			pre.setInt(3, phanCongNhanVienBEAN.getIdThuNgay());
+			int rowEffect = pre.executeUpdate();
+			if (rowEffect != 0)
+				return true;
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return false;
 	}
 }
