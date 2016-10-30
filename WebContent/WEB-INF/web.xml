@@ -166,16 +166,16 @@
     <url-pattern>/xoa-xe</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>AddTheoDoiNhanVienController</servlet-name>
-    <servlet-class>controller.TheoDoiNhanVien.AddTheoDoiNhanVienController</servlet-class>
+    <servlet-name>ThemMoiVangNghiController</servlet-name>
+    <servlet-class>controller.QuanLyVangNghi.ThemMoiVangNghiController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AddTheoDoiNhanVienController</servlet-name>
+    <servlet-name>ThemMoiVangNghiController</servlet-name>
     <url-pattern>/them-nhan-vien-nghi</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>ChiTietVangNghiController</servlet-name>
-    <servlet-class>controller.TheoDoiNhanVien.ChiTietVangNghiController</servlet-class>
+    <servlet-class>controller.QuanLyVangNghi.ChiTietVangNghiController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ChiTietVangNghiController</servlet-name>
@@ -183,18 +183,18 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>DanhSachVangNghiController</servlet-name>
-    <servlet-class>controller.TheoDoiNhanVien.DanhSachVangNghiController</servlet-class>
+    <servlet-class>controller.QuanLyVangNghi.DanhSachVangNghiController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DanhSachVangNghiController</servlet-name>
     <url-pattern>/danh-sach-vang-nghi</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>UpdateVangNghiController</servlet-name>
-    <servlet-class>controller.TheoDoiNhanVien.UpdateVangNghiController</servlet-class>
+    <servlet-name>CapNhatVangNghiController</servlet-name>
+    <servlet-class>controller.QuanLyVangNghi.CapNhatVangNghiController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UpdateVangNghiController</servlet-name>
+    <servlet-name>CapNhatVangNghiController</servlet-name>
     <url-pattern>/cap-nhat-vang-nghi</url-pattern>
   </servlet-mapping>
   <servlet>
