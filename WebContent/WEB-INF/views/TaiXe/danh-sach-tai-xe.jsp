@@ -36,7 +36,6 @@
 							<th>Mã tài xế</th>
 							<th>Họ và tên</th>
 							<th>Ngày sinh</th>
-							<th>Ca làm việc</th>
 							<th>Delete</th>
 							<th>Edit</th>
 						</tr>
@@ -50,7 +49,6 @@
 									<td><%=listTaiXe.get(i).getMaTaiXe()%></td>
 									<td><%=listTaiXe.get(i).getHoTen()%></td>								
 									<td><%=listTaiXe.get(i).getNgaySinh()%></td>
-									<td>1</td>
 									<td><a href="<%=request.getContextPath()%>/chinh-sua-tai-xe?idTaiXe=<%=listTaiXe.get(i).getId()%>" class = "btn btn-danger">Update</a> </td>
 									<td><a href="<%=request.getContextPath()%>/xoa-tai-xe?idTaiXe=<%=listTaiXe.get(i).getId() %>" class = "btn btn-info">Delete</a></td>
 								</tr>
@@ -60,7 +58,6 @@
 									<td><%=listTaiXe.get(i).getMaTaiXe()%></td>
 									<td><%=listTaiXe.get(i).getHoTen()%></td>
 									<td><%=listTaiXe.get(i).getNgaySinh()%></td>
-									<td>1</td>
 									<td><a href="<%=request.getContextPath()%>/chinh-sua-tai-xe?idTaiXe=<%=listTaiXe.get(i).getId() %>" class = "btn btn-danger">Update</a> </td>
 									<td><a href="<%=request.getContextPath()%>/xoa-tai-xe?idTaiXe=<%=listTaiXe.get(i).getId() %>" class = "btn btn-info">Delete</a></td>
 								</tr>

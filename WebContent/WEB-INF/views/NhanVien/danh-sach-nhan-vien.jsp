@@ -36,7 +36,6 @@
 							<th>Mã Nhân viên</th>
 							<th>Họ và tên</th>
 							<th>Ngày sinh</th>
-							<th>Ca làm việc</th>
 							<th>Delete</th>
 							<th>Edit</th>
 						</tr>
@@ -52,7 +51,6 @@
 									<td><%=listNhanVien.get(i).getHoTen()%></td>
 									
 									<td><%=listNhanVien.get(i).getNgaySinh()%></td>
-									<td>1</td>
 									<td><a href="<%=request.getContextPath()%>/chinh-sua-nhan-vien?idNhanVien=<%=listNhanVien.get(i).getId()%>" class = "btn btn-danger">Update</a> </td>
 									<td><a href="<%=request.getContextPath()%>/xoa-nhan-vien?idNhanVien=<%=listNhanVien.get(i).getId() %>" class = "btn btn-info">Delete</a></td>
 								</tr>
@@ -62,7 +60,6 @@
 									<td><%=listNhanVien.get(i).getMaNhanVien()%></td>
 									<td><%=listNhanVien.get(i).getHoTen()%></td>
 									<td><%=listNhanVien.get(i).getNgaySinh()%></td>
-									<td>1</td>
 									<td><a href="<%=request.getContextPath()%>/chinh-sua-nhan-vien?idNhanVien=<%=listNhanVien.get(i).getId() %>" class = "btn btn-danger">Update</a> </td>
 									<td><a href="<%=request.getContextPath()%>/xoa-nhan-vien?idNhanVien=<%=listNhanVien.get(i).getId() %>" class = "btn btn-info">Delete</a></td>
 								</tr>
