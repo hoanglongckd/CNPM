@@ -98,7 +98,7 @@ public class SuaXeBaoDuongController extends HttpServlet {
 				baoDuongXeBEAN.setSoTien(chiPhiBaoDuong);
 				baoDuongXeBEAN.setChiTiet(chiTiet);
 				if (BaoDuongXeBO.setSuaXe(baoDuongXeBEAN)) {
-					msg.setAttribute("messages", "<ul><li>Thêm xe bảo dưỡng thành công!</li></ul>");
+					msg.setAttribute("messages", "<ul><li>Sửa xe bảo dưỡng thành công!</li></ul>");
 					response.sendRedirect(request.getContextPath() + "/bao-cao-xe-bao-duong");
 				} 
 				else {

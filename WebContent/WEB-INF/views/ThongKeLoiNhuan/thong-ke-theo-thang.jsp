@@ -1,3 +1,5 @@
+<%@page import="model.bean.ThongKeLoiNhuanBEAN"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -7,20 +9,54 @@
 <jsp:include page="../_top.jsp" />
 <jsp:include page="../_menu.jsp" />
 
+<%
+	ArrayList<ThongKeLoiNhuanBEAN> list = null;
+	String month = "", year = "";
+	if (request.getAttribute("list") != null) {
+		list = (ArrayList<ThongKeLoiNhuanBEAN>) request.getAttribute("list");
+	}
+	if (request.getAttribute("month") != null && request.getAttribute("year") != null) {
+		month = (String) request.getAttribute("month");
+		year = (String) request.getAttribute("year");
+	}
+%>
+
 <!-- Page Content -->
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Thống kê
-                    <small>lợi nhuận tháng</small>
+                <%
+                	if (!"".equals(month) && !"".equals(year)) {
+             	%>
+             		<small>lợi nhuận tháng <%=month %> năm <%=year %></small>
+                <%
+                	}
+                	else {
+                %>
+                	<small>lợi nhuận theo tháng</small>
+                <%
+                	}
+                %>
                 </h1>
             </div>
             
             <div class="col-lg-4 col-lg-offset-4">
-	            <form class="form-inline" method="GET">
+	            <form class="form-inline" method="POST">
 	            	<div class="form-group">
-						<input class="form-control" type="text" name="filter"/>
+	            	<%
+	            		if (!"".equals(month) && !"".equals(year)) {
+	            	%>
+	            		<input class="form-control" type="text" name="filter" value="<%=month %>/<%=year %>"/>
+	            	<%
+	            		}
+	            		else {
+	            	%>
+	            		<input class="form-control" type="text" name="filter"/>
+	            	<%
+	            		}
+	            	%>
 						<button type="submit" class="btn btn-default">Thống kê</button>
 					</div>
 				</form>
@@ -41,7 +77,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                	
+               	<%
+               		int stt = 0;
+               		if (list != null) {
+               			for (ThongKeLoiNhuanBEAN item : list) {
+               				stt++;
+               				
+               	%>
+               		<tr class="odd gradeX" align="center">
+               			<td><%=stt %></td>
+               			<td><%=item.getBienSoXe() %></td>
+               			<td><%=item.getTienTaiXeTra() %></td>
+               			<td><%=item.getTienBaoDuong() %></td>
+               			<td><%=item.getTienTaiXeTra() - item.getTienBaoDuong() %></td>
+               		</tr>
+               	<%
+               				
+               			}
+               		}
+               	%>
                 </tbody>
             </table>
         </div>

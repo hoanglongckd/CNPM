@@ -2,6 +2,7 @@ package controller.ThongKeLoiNhuan;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import model.bean.ThongKeLoiNhuanBEAN;
+import model.bo.ThongKeLoiNhuanBO;
 
 /**
  * Servlet implementation class ThongKeLoiNhuanTheoThang
@@ -31,6 +35,14 @@ public class TheoThangController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/ThongKeLoiNhuan/thong-ke-theo-thang.jsp");
+		dispatcher.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession msg = request.getSession();
 		String filter = request.getParameter("filter");
@@ -50,7 +62,12 @@ public class TheoThangController extends HttpServlet {
 				year = simpleDateFormat2.format(date);
 				month = simpleDateFormat3.format(date);
 				System.out.println("date: " + date + ", year: " + year + ", month: " + month);
-				
+				ArrayList<ThongKeLoiNhuanBEAN> thongKeLoiNhuanBEANs = ThongKeLoiNhuanBO.thongKeTheoThang(year, month);
+				request.setAttribute("list", thongKeLoiNhuanBEANs);
+				request.setAttribute("month", month);
+				request.setAttribute("year", year);
+				RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/ThongKeLoiNhuan/thong-ke-theo-thang.jsp");
+				dispatcher.forward(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 				msg.setAttribute("errors", "Sai định dạng ngày tháng. Vui lòng nhập theo định dạng <b>MM/YYYY</b>");
@@ -58,16 +75,6 @@ public class TheoThangController extends HttpServlet {
 			}
 			
 		}
-		
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
