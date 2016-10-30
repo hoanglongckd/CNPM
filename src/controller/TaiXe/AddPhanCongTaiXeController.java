@@ -1,4 +1,4 @@
-	package controller.NhanVien;
+	package controller.TaiXe;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.bean.NhanVienBEAN;
-import model.bean.PhanCongNhanVienBEAN;
-import model.bo.NhanVienBO;
+import model.bean.PhanCongTaiXeBEAN;
+import model.bo.TaiXeBO;
 
 /**
  * Servlet implementation class AddBaoDuongXeController
  */
 //@WebServlet("/them-nhan-vien")
-public class AddPhanCongNhanVienController extends HttpServlet {
+public class AddPhanCongTaiXeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddPhanCongNhanVienController() { 	
+    public AddPhanCongTaiXeController() { 	
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +32,7 @@ public class AddPhanCongNhanVienController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/NhanVien/them-phan-cong-nhan-vien.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/TaiXe/them-phan-cong-tai-xe.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -43,22 +43,24 @@ public class AddPhanCongNhanVienController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession msg = request.getSession();
 		
-		int idNhanVien = Integer.parseInt(request.getParameter("idNhanVien"));
+		int idTaiXe = Integer.parseInt(request.getParameter("idTaiXe"));
+		int idXe = Integer.parseInt(request.getParameter("idXe"));
 		int idCa = Integer.parseInt(request.getParameter("idCaLamViec"));
 		int idThuNgay = Integer.parseInt(request.getParameter("idThuNgay"));
-		PhanCongNhanVienBEAN phanCongNhanVienBEAN = new PhanCongNhanVienBEAN();
+		PhanCongTaiXeBEAN phanCongTaiXeBEAN = new PhanCongTaiXeBEAN();
 		
-		phanCongNhanVienBEAN.setIdNhanVien(idNhanVien);
-		phanCongNhanVienBEAN.setIdCa(idCa);
-		phanCongNhanVienBEAN.setIdThuNgay(idThuNgay);
+		phanCongTaiXeBEAN.setIdTaiXe(idTaiXe);
+		phanCongTaiXeBEAN.setIdCa(idCa);
+		phanCongTaiXeBEAN.setIdThuNgay(idThuNgay);
+		phanCongTaiXeBEAN.setIdXe(idXe);
 		
-		if (NhanVienBO.addPhanCongNhanVien(phanCongNhanVienBEAN)) {
-			msg.setAttribute("messages", "<ul><li>Thêm phân công nhân viên thành công!</li></ul>");
-			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");		
+		if (TaiXeBO.addPhanCongTaiXe(phanCongTaiXeBEAN)) {
+			msg.setAttribute("messages", "<ul><li>ThÃªm phÃ¢n cÃ´ng tÃ i xáº¿ thÃ nh cÃ´ng!</li></ul>");
+			response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");		
 			}
 		else {
-			msg.setAttribute("errors", "<ul><li>Thêm phân công nhân viên không thành công!</li></ul>");
-			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");
+			msg.setAttribute("errors", "<ul><li>ThÃªm phÃ¢n cÃ´ng tÃ i xáº¿ khÃ´ng thÃ nh cÃ´ng!</li></ul>");
+			response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");
 		}
 		
 	}

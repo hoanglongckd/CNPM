@@ -8,7 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.bean.PhanCongTaiXeBEAN;
 import model.bean.TaiXeBEAN;
+import model.bean.XeBEAN;
 import utils.SQLServerConnUtils;
 
 public class TaiXeDAO {
@@ -129,4 +131,42 @@ public class TaiXeDAO {
 		}
 		return false;
 	}
+
+	public boolean addPhanCongTaiXe(PhanCongTaiXeBEAN phanCongTaiXeBEAN) {
+		try {
+			String sql = "INSERT INTO PHANCONGTX(idTaiXe, idCa, idThuNgay, idXe) "
+					+ "VALUES(?, ?, ?)";
+			//System.out.println(nhanVienBEAN.getMaNhanVien() + nhanVienBEAN.getHoTen() + nhanVienBEAN.getIdChucVu());
+			PreparedStatement pre = conn.prepareStatement(sql);
+			pre.setInt(1, phanCongTaiXeBEAN.getIdTaiXe());
+			pre.setInt(2, phanCongTaiXeBEAN.getIdCa());
+			pre.setInt(3, phanCongTaiXeBEAN.getIdThuNgay());
+			pre.setInt(4, phanCongTaiXeBEAN.getIdXe());
+			int rowEffect = pre.executeUpdate();
+			if (rowEffect != 0)
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+
+	public ArrayList<XeBEAN> getListXe() {
+		 ArrayList<XeBEAN> listXe = new ArrayList<>();
+		   String sql ="select * from XE";
+		   try{
+			   Statement st = conn.createStatement();
+			   ResultSet rs = st.executeQuery(sql);
+			   while(rs.next()){
+					XeBEAN xe = new XeBEAN(rs.getInt("id"),rs.getString("BienSoXe"), rs.getString("Model"), rs.getInt("SoCho"),rs.getString("Hang"),rs.getBoolean("TinhTrangHoatDong"));
+					listXe.add(xe);
+			   }
+		   }catch(Exception e){
+			  return null;
+		   }    
+		   return listXe;
+
+	}
+	
 }

@@ -3,7 +3,10 @@ package model.bo;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import model.bean.PhanCongTaiXeBEAN;
 import model.bean.TaiXeBEAN;
+import model.bean.XeBEAN;
 import model.dao.TaiXeDAO;
 
 public class TaiXeBO {
@@ -22,7 +25,7 @@ public class TaiXeBO {
 		return taiXeDAO.addTaiXe(taiXeBEAN);
 	}
 
-	public ArrayList<TaiXeBEAN> getDanhSachTaiXe() {
+	public static ArrayList<TaiXeBEAN> getDanhSachTaiXe() {
 		return taiXeDAO.getDanhSachTaiXe();
 	}
 
@@ -38,6 +41,12 @@ public class TaiXeBO {
 		return taiXeDAO.setSuaTaiXe(taiXeBEAN);
 	}
 
+	public static boolean addPhanCongTaiXe(PhanCongTaiXeBEAN phanCongTaiXeBEAN) {
+		return taiXeDAO.addPhanCongTaiXe(phanCongTaiXeBEAN);
+	}
 
+	public static ArrayList<XeBEAN> getListXe(){
+		return taiXeDAO.getListXe();
+	}
 	
 }
