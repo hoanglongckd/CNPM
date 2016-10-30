@@ -12,4 +12,8 @@ public class ThongKeLoiNhuanBO {
 	public static ArrayList<ThongKeLoiNhuanBEAN> thongKeTheoThang(String year, String month) {
 		return thongKeLoiNhuanDAO.thongKeTheoThang(year, month);
 	}
+	
+	public static ArrayList<ThongKeLoiNhuanBEAN> thongKeTheoNam (String year) {
+		return thongKeLoiNhuanDAO.thongKeTheoNam(year);
+	}
 }

@@ -44,4 +44,31 @@ public class ThongKeLoiNhuanDAO {
 		}
 		return lists;
 	}
+	
+	public ArrayList<ThongKeLoiNhuanBEAN> thongKeTheoNam (String year) {
+		ArrayList<ThongKeLoiNhuanBEAN> list = new ArrayList<>();
+		try {
+			String sql = "SELECT XE.BienSoXe, SUM(GIATIEN.ThanhTien) as Money, SUM(BAODUONGXE.SoTien) as Cost "
+					+ "FROM GIATIEN "
+					+ "FULL JOIN DIEUPHOI ON GIATIEN.idDieuPhoi = DIEUPHOI.id "
+					+ "FULL JOIN PHANCONGTX ON DIEUPHOI.idPhanCong = PHANCONGTX.id "
+					+ "FULL JOIN XE ON XE.id = PHANCONGTX.idXe "
+					+ "FULL JOIN BAODUONGXE ON XE.id = BAODUONGXE.idXe "
+					+ "WHERE YEAR(DIEUPHOI.ThoiGianBatDau) = ? OR YEAR(BAODUONGXE.NgayBaoDuong) = ? GROUP BY XE.BienSoXe";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, year);
+			ps.setString(2, year);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				ThongKeLoiNhuanBEAN item = new ThongKeLoiNhuanBEAN(
+						rs.getString("BienSoXe"), 
+						rs.getLong("Money"), 
+						rs.getLong("Cost"));
+				list.add(item);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }
