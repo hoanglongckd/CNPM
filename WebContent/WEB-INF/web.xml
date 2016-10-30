@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>DA-CNPM</display-name>
+  <error-page> 
+    <error-code>404</error-code>
+    <location>/404.html</location>
+</error-page>
+  
   <servlet>
     <servlet-name>ThemXeBaoDuongController</servlet-name>
     <servlet-class>controller.BaoDuongXe.ThemXeBaoDuongController</servlet-class>
@@ -97,8 +102,7 @@
     <servlet-name>EditNhanVienController</servlet-name>
     <url-pattern>/chinh-sua-nhan-vien</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>PhanCongNhanVienController</servlet-name>
     <servlet-class>controller.NhanVien.PhanCongNhanVienController</servlet-class>
   </servlet>
@@ -106,7 +110,6 @@
     <servlet-name>PhanCongNhanVienController</servlet-name>
     <url-pattern>/phan-cong-nhan-vien</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>PhanCongTaiXeController</servlet-name>
     <servlet-class>controller.TaiXe.PhanCongTaiXeController</servlet-class>
@@ -115,7 +118,6 @@
     <servlet-name>PhanCongTaiXeController</servlet-name>
     <url-pattern>/phan-cong-tai-xe</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AddPhanCongNhanVienController</servlet-name>
     <servlet-class>controller.NhanVien.AddPhanCongNhanVienController</servlet-class>
@@ -123,14 +125,6 @@
   <servlet-mapping>
     <servlet-name>AddPhanCongNhanVienController</servlet-name>
     <url-pattern>/them-phan-cong-nhan-vien</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>AddPhanCongTaiXeController</servlet-name>
-    <servlet-class>controller.TaiXe.AddPhanCongTaiXeController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AddPhanCongTaiXeController</servlet-name>
-    <url-pattern>/them-phan-cong-tai-xe</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>EditTaiXeController</servlet-name>
@@ -236,12 +230,59 @@
     <servlet-name>ChonXeServlet</servlet-name>
     <url-pattern>/chon-xe</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <servlet-name>ShowListDieuPhoi</servlet-name>
-    <servlet-class>controller.QuanLyXe.ShowListDieuPhoi</servlet-class>
+    <servlet-name>DashboardController</servlet-name>
+    <servlet-class>controller.DangNhap.DashboardController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ShowListDieuPhoi</servlet-name>
-    <url-pattern>/list-dieu-phoi</url-pattern>
+    <servlet-name>DashboardController</servlet-name>
+    <url-pattern>/dashboard</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>LoginController</servlet-name>
+    <servlet-class>controller.DangNhap.LoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginController</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>LogoutController</servlet-name>
+    <servlet-class>controller.DangNhap.LogoutController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutController</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ChangePasswordController</servlet-name>
+    <servlet-class>controller.Profiles.ChangePasswordController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangePasswordController</servlet-name>
+    <url-pattern>/doi-mat-khau</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ProfileController</servlet-name>
+    <servlet-class>controller.Profiles.ProfileController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProfileController</servlet-name>
+    <url-pattern>/profile</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>QuanLyTaiKhoanController</servlet-name>
+    <servlet-class>controller.Profiles.QuanLyTaiKhoanController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QuanLyTaiKhoanController</servlet-name>
+    <url-pattern>/quan-ly-tai-khoan</url-pattern>
   </servlet-mapping>
 </web-app>

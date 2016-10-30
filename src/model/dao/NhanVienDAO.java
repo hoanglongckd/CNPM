@@ -96,6 +96,8 @@ public class NhanVienDAO {
 		}
 		return false;
 	}
+	
+	
 
 	public boolean addPhanCongNhanVien(PhanCongNhanVienBEAN phanCongNhanVienBEAN) {
 		try {
@@ -133,5 +135,19 @@ public class NhanVienDAO {
 		return nhanVien;
 	}
 	
+	public boolean updatePassword(NhanVienBEAN nhanVienBEAN) {
+		String sql = "UPDATE NHANVIEN SET "
+				+ "Password = ? WHERE MaNV = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, nhanVienBEAN.getPassword());
+			ps.setString(2, nhanVienBEAN.getMaNhanVien());
+				int rowEffect = ps.executeUpdate();
+			if (rowEffect != 0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	
 }
