@@ -1,4 +1,4 @@
-<%@page import="model.bean.TheoDoiNhanVienBEAN"%>
+<%@page import="model.bean.QuanLyVangNghiBEAN"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -11,9 +11,11 @@
 
 <!-- Page Content -->
 <%
-	ArrayList<TheoDoiNhanVienBEAN> listVN = null;
-	if(request.getAttribute("listVN")!=null){
-		listVN = (ArrayList<TheoDoiNhanVienBEAN>)request.getAttribute("listVN");
+	QuanLyVangNghiBEAN nhanVien = null;
+	ArrayList<QuanLyVangNghiBEAN> list = null;
+	if(request.getAttribute("list") != null && request.getAttribute("nhanVien") != null){
+		nhanVien = (QuanLyVangNghiBEAN) request.getAttribute("nhanVien");
+		list = (ArrayList<QuanLyVangNghiBEAN>)request.getAttribute("list");
 	}
 %>
 <!-- Page Content -->
@@ -27,13 +29,16 @@
             </div>
             
              <div class="col-lg-12">
-                <h1 >
-                    <small>Mã Nhân Viên: <%=listVN.get(0).getIdNhanVien() %>  </small>
-                </h1>
-                 <h1 >
-                    <small>Họ Tên:<%=listVN.get(0).getName() %>  </small>
-                </h1>
+                <h3>
+                    Mã Nhân Viên: <%=nhanVien.getMaNV() %>
+                </h3>
+                 <h3>
+                    Họ Tên: <%=nhanVien.getTenNV() %>
+                </h3>
             </div>
+            <br>
+            
+            <jsp:include page="../_message-block.jsp"></jsp:include>
             
             <!-- /.col-lg-12 -->
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -49,20 +54,29 @@
                 </thead>
                 <tbody>
                 <%
-                	int stt = 0;
-                	for(int i=0;i<listVN.size();++i){
+                	int i = 0;
+                	for(QuanLyVangNghiBEAN item : list){
                 		
                 %>
                 	<tr class="odd gradeX" align="center">
-                        <td><%=i+1%></td>
-                        <td><%=listVN.get(i).getNgaynghi()%></td>
-                        <td><%=listVN.get(i).getPhep()%></td>
-                        <td><%=listVN.get(i).getLydo()%></td>
+                        <td><%=++i %></td>
+                        <td><%=item.getNgayNghi() %></td>
+                        <% if (item.isCoPhep()) { %>
+                        <td>Có</td>
+                        <% }else { %>
+                        <td>Không</td>
+                        <% } %>
+                        <td><%=item.getLyDo() %></td>
                	
                         <td>
-							<a href="<%=request.getContextPath()%>/cap-nhat-vang-nghi?id=<%=listVN.get(i).getId()%>" class = "btn btn-danger">Sửa</a> </td>
+                        	<i class="fa fa-pencil fa-fw"></i>
+							<a href="<%=request.getContextPath()%>/cap-nhat-vang-nghi?id=<%=item.getId() %>">Sửa</a>
+						</td>
 								
-                        <td class="center"><i class="fa fa-trash-o fa-fw"></i> <a href="<%=request.getContextPath()%>/chi-tiet-vang-nghi?delete=<%=listVN.get(i).getId()%>,<%=listVN.get(i).getIdNhanVien()%>" > Xóa</a></td>
+                        <td class="center">
+                        	<i class="fa fa-trash-o fa-fw"></i>
+							<a href="<%=request.getContextPath()%>/chi-tiet-vang-nghi?delete=<%=item.getId() %>" > Xóa</a>
+						</td>
                     </tr>
                 <%
                 		}
