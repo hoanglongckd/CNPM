@@ -114,4 +114,24 @@ public class NhanVienDAO {
 	}
 	return false;
 	}
+	
+	//Nguyen
+	
+	public NhanVienBEAN getNhanVienByMaNV(String maNV) {
+		NhanVienBEAN nhanVien = null;
+		try {
+			String sql = "select * from NHANVIEN where MaNV='"+maNV+"'";
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()){
+				 nhanVien = new NhanVienBEAN(rs.getInt("id"),rs.getString("MaNV"), rs.getString("Ten"),
+							rs.getString("NgaySinh"), rs.getInt("idChucVu") ,rs.getString("Password"));
+			}	
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return nhanVien;
+	}
+	
+	
 }

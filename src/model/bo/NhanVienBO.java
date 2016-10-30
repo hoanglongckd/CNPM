@@ -32,5 +32,9 @@ public class NhanVienBO {
 	public static boolean addPhanCongNhanVien(PhanCongNhanVienBEAN phanCongNhanVienBEAN) {
 		return nhanVienDAO.addPhanCongNhanVien(phanCongNhanVienBEAN);
 	}
-
+	/////
+	public NhanVienBEAN getNhanVienByMaNV(String maNV) {
+		// TODO Auto-generated method stub
+		return nhanVienDAO.getNhanVienByMaNV(maNV);
+	}
 }
