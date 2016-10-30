@@ -166,27 +166,27 @@
     <url-pattern>/xoa-xe</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>ThemMoiVangNghi</servlet-name>
-    <servlet-class>controller.QuanLyVangNghi.ThemMoiVangNghi</servlet-class>
+    <servlet-name>ThemMoiVangNghiController</servlet-name>
+    <servlet-class>controller.QuanLyVangNghi.ThemMoiVangNghiController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ThemMoiVangNghi</servlet-name>
+    <servlet-name>ThemMoiVangNghiController</servlet-name>
     <url-pattern>/them-nhan-vien-nghi</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>ChiTietVangNghiController</servlet-name>
-    <servlet-class>controller.TheoDoiNhanVien.ChiTietVangNghiController</servlet-class>
+    <servlet-class>controller.QuanLyVangNghi.ChiTietVangNghiController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ChiTietVangNghiController</servlet-name>
     <url-pattern>/chi-tiet-vang-nghi</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>DanhSachVangNghi</servlet-name>
-    <servlet-class>controller.QuanLyVangNghi.DanhSachVangNghi</servlet-class>
+    <servlet-name>DanhSachVangNghiController</servlet-name>
+    <servlet-class>controller.QuanLyVangNghi.DanhSachVangNghiController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DanhSachVangNghi</servlet-name>
+    <servlet-name>DanhSachVangNghiController</servlet-name>
     <url-pattern>/danh-sach-vang-nghi</url-pattern>
   </servlet-mapping>
   <servlet>
