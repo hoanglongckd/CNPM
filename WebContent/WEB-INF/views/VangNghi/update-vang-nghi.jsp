@@ -1,4 +1,4 @@
-<%@page import="model.bean.TheoDoiNhanVienBEAN"%>
+<%@page import="model.bean.QuanLyVangNghiBEAN"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -9,13 +9,12 @@
 <jsp:include page="../_menu.jsp" />
 
 <!-- Page Content -->
-	<%
-	TheoDoiNhanVienBEAN nv = null;
-	if(request.getAttribute("NV")!=null){
-		nv = (TheoDoiNhanVienBEAN)request.getAttribute("NV");
+<%
+	QuanLyVangNghiBEAN item = null;
+	if(request.getAttribute("item") != null){
+		item = (QuanLyVangNghiBEAN)request.getAttribute("item");
 	}
-	else System.out.print(" eo co null");
-	%>
+%>
 
 
 <div id="page-wrapper">
@@ -23,33 +22,44 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					Update nhân viên vắng nghỉ
+					Update
+					<small>nhân viên vắng nghỉ</small>
 				</h1>
 			</div>
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom: 120px">
 				<form action="<%=request.getContextPath() %>/cap-nhat-vang-nghi" method="POST">
 					<div class="form-group">
-						<label>Mã nhân viên: </label>  <%=nv.getIdNhanVien() %>
+						<label>Mã nhân viên: </label>  
+						<input type="text" class="form-control" value="<%=item.getMaNV() %>" readonly>
 					</div>
 					<div class="form-group">
-						<label>Ngày Nghỉ: </label> <%= nv.getNgaynghi() %>
+						<label>Ngày Nghỉ: </label> 
+						<input type="text" class="form-control" name="ngay-nghi" value="<%=item.getNgayNghi() %>">
 					</div>
 					<div class="form-group">
-						<label>Phép: </label>
-						 <input type="radio" name="rdPhep" value="Yes"  checked> Có 
-  						<input type="radio" name="rdPhep" value="No"> Không<br>
-  						
+						<label>Phép: </label><br>
+						<div class="radio-inline">
+							<label>
+						 		<input type="radio" name="phep" value="Yes" <% if(item.isCoPhep()) { %> checked <% } %> > Có 
+						 	</label>
+					 	</div>
+					 	<div class="radio-inline">
+						 	<label>
+  								<input type="radio" name="phep" value="No" <% if(!item.isCoPhep()) { %> checked <% } %> > Không
+  							</label>
+  						</div>
 					</div>
 					<div class="form-group">
 						<label>Lý do: </label><br>
-						<textarea class="form-control" placeholder="Describe yourself here..."
-						name="lydo" ><%=nv.getLydo() %></textarea>
+						<textarea class="form-control" placeholder="Nhập lý do nhân viên xin nghỉ..."
+						name="lydo" rows="4" ><%=item.getLyDo() %></textarea>
 					</div>
-					<input type="hidden" name="action" value="<%=nv.getId() %>" >
-					<button type="submit"  name="btnUpdate"  value="<%=nv.getIdNhanVien() %>" class="btn btn-default">Update</button>
+					<input type="hidden" name="idNhanVien" value="<%=item.getIdNhanVien() %>">
+					<input type="hidden" name="id" value="<%=item.getId() %>" >
+					<button type="submit"  name="btnUpdate" class="btn btn-default">Update</button>
 					<button type="reset" name="btnReset"  value="Reset" class="btn btn-default">Reset</button>
-					<button type="submit"name="btnCancel"  value="<%=nv.getIdNhanVien() %>"  class="btn btn-default">Hủy</button>
+					<a href="<%=request.getContextPath() %>/chi-tiet-vang-nghi?id=<%=item.getIdNhanVien() %>" class="btn btn-default">Hủy</a>
 				
 				</form>
 			</div>
@@ -65,6 +75,10 @@
 <script type="text/javascript">
 	$(function() {
 		$('input[name="ngay-nghi"]').daterangepicker({
+			locale: 
+	    	{
+    	    	format: 'DD/MM/YYYY'
+    	    },
 			singleDatePicker : true,
 			showDropdowns : true
 		});

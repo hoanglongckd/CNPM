@@ -1,21 +1,22 @@
-package controller.TheoDoiNhanVien;
+package controller.QuanLyVangNghi;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.NhanVienVangNghiBEAN;
-import model.bo.NhanVienVangNghiBO;
+import model.bean.QuanLyVangNghiBEAN;
+import model.bo.QuanLyVangNghiBO;
 
 /**
- * Servlet implementation class DanhSachVangNghiController
+ * Servlet implementation class DanhSachVangNghi
  */
-//@WebServlet("/DanhSachVangNghiController")
+//@WebServlet("/DanhSachVangNghi")
 public class DanhSachVangNghiController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,7 +32,10 @@ public class DanhSachVangNghiController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
+		ArrayList<QuanLyVangNghiBEAN> list = QuanLyVangNghiBO.lietKeVangNghi();
+		request.setAttribute("list", list);
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/VangNghi/danh-sach-vang-nghi.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -39,9 +43,7 @@ public class DanhSachVangNghiController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<NhanVienVangNghiBEAN> list = NhanVienVangNghiBO.getInstance().getList();
-		request.setAttribute("listVN", list);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/VangNghi/danh-sach-vang-nghi.jsp");
-		rd.forward(request, response);
+		doGet(request, response);
 	}
+
 }
