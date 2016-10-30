@@ -55,7 +55,7 @@
                         <td><%=item.getSoCho()%></td>
                         <td><%=item.getHang()%></td>
                         <td class="center">
-                        	<i class="fa fa-eye fa-fw"></i>
+                        	<i class="fa fa-edit"></i>
                         	<a href="<%=request.getContextPath()%>/cap-nhat-xe?id=<%=item.getId()%>"> Cập nhật</a>
                        	</td>
                         <td class="center">

@@ -38,4 +38,8 @@ public class DieuPhoiBO {
 		return dieuPhoiDAO.updateIDPhanCong(dieuphoi);
 	}
 
+	public static ArrayList<XeBEAN> getListDieuPhoi() {
+		return dieuPhoiDAO.getListDieuPhoi();
+	}
+
 }
