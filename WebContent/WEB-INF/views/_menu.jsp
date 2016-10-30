@@ -16,13 +16,20 @@
 				<!-- /input-group -->
 				</li>
 				<li>
-					<a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+					<a href="<%=request.getContextPath()%>/dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
 				</li>
 				<li>
 					<a href="#"><i class="fa fa-user"></i> Quản lý nhân viên<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a href="<%=request.getContextPath()%>/them-nhan-vien">Thêm nhân viên</a></li>
 						<li><a href="<%=request.getContextPath()%>/danh-sach-nhan-vien">Danh sách nhân viên</a></li>
+					</ul>
+					<!-- /.nav-second-level -->
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-user"></i> Quản lý tài khoản<span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="<%=request.getContextPath()%>/quan-ly-tai-khoan">Danh sách tài khoản</a></li>
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>

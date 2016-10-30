@@ -25,7 +25,19 @@
 	<!-- DataTables Responsive CSS -->
 	<link href="<%=request.getContextPath()%>/public/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
 </head>
+
 <body>
+
+
+<%
+//check login
+HttpSession ss = request.getSession();
+if(ss.getAttribute("maNV")==null){
+	request.getRequestDispatcher("/login").forward(request, response);
+}
+
+%>
+
 	<div id="wrapper">
 	
 	<!-- Navigation -->
@@ -48,10 +60,10 @@
 					<i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
 				</a>
 				<ul class="dropdown-menu dropdown-user">
-					<li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
-					<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
+					<li><a href="<%=request.getContextPath() %>/profile"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
+<!-- 					<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li> -->
 					<li class="divider"></li>
-					<li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+					<li><a href="<%=request.getContextPath() %>/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
 				</ul>
 				<!-- /.dropdown-user -->
 			</li>
