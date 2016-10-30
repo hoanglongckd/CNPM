@@ -32,10 +32,10 @@
 	                        <h3 class="panel-title">Please Sign In</h3>
 	                    </div>
 	                    <div class="panel-body">
-	                        <form role="form" action="" method="POST">
+	                        <form role="form" action="<%=request.getContextPath()%>/login" method="POST">
 	                            <fieldset>
 	                                <div class="form-group">
-	                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+	                                    <input class="form-control" placeholder="E-mail" name="email" type="text" autofocus>
 	                                </div>
 	                                <div class="form-group">
 	                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">

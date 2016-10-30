@@ -44,6 +44,9 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		
+		if(session.getAttribute("maNV")!=null)
+			response.sendRedirect(request.getContextPath()+"/dashboard");
 		//get
 		String maNV = request.getParameter("maNV");
 		String password = request.getParameter("password");
@@ -55,6 +58,7 @@ public class LoginController extends HttpServlet {
 			if(nhanVien.getPassword().equals(password)){
 				//tao session
 				session.setAttribute("maNV", maNV);
+				session.setMaxInactiveInterval(-1);
 				//chuyen sang trang dashboardController
 				response.sendRedirect(request.getContextPath()+"/dashboard");
 				//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/_content.jsp");

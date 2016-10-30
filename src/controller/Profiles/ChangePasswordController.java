@@ -1,17 +1,14 @@
 package controller.Profiles;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.bean.ChucVuBEAN;
 import model.bean.NhanVienBEAN;
 import model.bo.ChucVuBO;
 import model.bo.NhanVienBO;
@@ -65,9 +62,11 @@ public class ChangePasswordController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		if(session.getAttribute("maNV")==null)response.sendRedirect(request.getContextPath()+"/login");
+		//
 		if(request.getParameter("submit")!=null){
 			String maNhanVien =(request.getParameter("maNhanVien"));
-			String newPassword = request.getParameter("newPassword");
+			String newPassword = request.getParameter("new-password");
 			String idUser = "";
 			if(session.getAttribute("maNV")==null){
 				response.sendRedirect(request.getContextPath()+"/login");
@@ -77,12 +76,14 @@ public class ChangePasswordController extends HttpServlet {
 			//
 			if(maNhanVien.equals(idUser)){
 				NhanVienBEAN nhanVien = new NhanVienBEAN(0,maNhanVien,"","",0,newPassword);
-				nhanVienBO.updatePassword(nhanVien);
-				response.sendRedirect(request.getContextPath()+"/doi-mat-khau?msg=1");
+				if(nhanVienBO.updatePassword(nhanVien))
+					response.sendRedirect(request.getContextPath()+"/doi-mat-khau?msg=1");
+				else response.sendRedirect(request.getContextPath()+"/doi-mat-khau?msg=2");
 			}else{
 				NhanVienBEAN nhanVien = new NhanVienBEAN(0,idUser,"","",0,newPassword);
-				nhanVienBO.updatePassword(nhanVien);
-				response.sendRedirect(request.getContextPath()+"/doi-mat-khau?msg=1");
+				if(nhanVienBO.updatePassword(nhanVien))
+					response.sendRedirect(request.getContextPath()+"/doi-mat-khau?msg=1");
+				else response.sendRedirect(request.getContextPath()+"/doi-mat-khau?msg=2");
 			}
 		}
 	}

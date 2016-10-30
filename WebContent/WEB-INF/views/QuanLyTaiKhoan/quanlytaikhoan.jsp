@@ -32,6 +32,7 @@
                     <tr align="center">
                         <th>STT</th>
                         <th>Mã Nhân Viên</th>
+                        <th> Tên Nhân Viên</th>
                         <th>Password</th>
                         <th>Change password</th>
                     </tr>
@@ -46,7 +47,8 @@
                 	<tr class="odd gradeX" align="center">
                         <td><%=stt%></td>
                         <td><%=nhanVien.getMaNhanVien()%></td>
-                        <td><%=nhanVien.getPassword()%></td>
+                        <td><%=nhanVien.getHoTen()%></td>
+                        <td >*****</td>
                         <td class="center">
                         	<i class="fa fa-pencil"></i>
                         	<a href="<%=request.getContextPath()%>/doi-mat-khau?id=<%=nhanVien.getMaNhanVien()%>"> Change password</a>

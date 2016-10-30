@@ -33,25 +33,26 @@ public class QuanLyTaiKhoanController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     NhanVienBO nhanVienBO = new NhanVienBO();
-    ChucVuBO chucVuBO = new ChucVuBO();
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//check isLogin
 		HttpSession session = request.getSession();
 		String maNV = null;
 		if(session.getAttribute("maNV")==null){
 			response.sendRedirect(request.getContextPath()+"/login");
-		}else {
+		}else{
+			// ---kiem tra chucvu cua nhan vien---
+			ChucVuBO chucVuBO = new ChucVuBO();
 			maNV = (String) session.getAttribute("maNV");
 			NhanVienBEAN nhanVien = nhanVienBO.getNhanVienByMaNV(maNV);
-			if(nhanVien==null)System.out.println("null");
-			// ---kiem tra chucvu cua nhan vien---
-			if(nhanVien.getIdChucVu()==1){
+			if(nhanVien.getIdChucVu()!=1){
+				response.sendRedirect(request.getContextPath()+"/dashboard");
+			}else{
+				//la admin
 				ArrayList<NhanVienBEAN> listNhanVien = nhanVienBO.getDanhSachNhanVien();
 				request.setAttribute("listNhanVien", listNhanVien);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/QuanLyTaiKhoan/quanlytaikhoan.jsp");
 				dispatcher.forward(request, response);
-			}else{
-				//khong phai admin
-				response.sendRedirect(request.getContextPath()+"/dashboard");
 			}
 		}
 	}

@@ -29,7 +29,7 @@ if(request.getAttribute("msg")!=null)
 			</div>
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom:120px">
-				<form action="<%=request.getContextPath()%>/change-password" method="POST">
+				<form action="<%=request.getContextPath()%>/doi-mat-khau" method="POST">
 					<%
 						if("1".equals(msg)){
 					%>

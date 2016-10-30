@@ -28,16 +28,6 @@
 
 <body>
 
-
-<%
-//check login
-HttpSession ss = request.getSession();
-if(ss.getAttribute("maNV")==null){
-	request.getRequestDispatcher("/login").forward(request, response);
-}
-
-%>
-
 	<div id="wrapper">
 	
 	<!-- Navigation -->

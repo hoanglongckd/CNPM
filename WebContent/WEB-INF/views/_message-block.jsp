@@ -27,6 +27,7 @@
      			</div>
      			<%
            			}
-      				msg.invalidate(); 
+      				msg.removeAttribute("messages"); 
+      				msg.removeAttribute("errors"); 
      			%>
             </div>
