@@ -182,11 +182,11 @@
     <url-pattern>/chi-tiet-vang-nghi</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>DanhSachVangNghiController</servlet-name>
-    <servlet-class>controller.TheoDoiNhanVien.DanhSachVangNghiController</servlet-class>
+    <servlet-name>DanhSachVangNghi</servlet-name>
+    <servlet-class>controller.QuanLyVangNghi.DanhSachVangNghi</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DanhSachVangNghiController</servlet-name>
+    <servlet-name>DanhSachVangNghi</servlet-name>
     <url-pattern>/danh-sach-vang-nghi</url-pattern>
   </servlet-mapping>
   <servlet>
