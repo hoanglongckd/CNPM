@@ -106,6 +106,7 @@
     <servlet-name>PhanCongNhanVienController</servlet-name>
     <url-pattern>/phan-cong-nhan-vien</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>PhanCongTaiXeController</servlet-name>
     <servlet-class>controller.TaiXe.PhanCongTaiXeController</servlet-class>
@@ -114,6 +115,7 @@
     <servlet-name>PhanCongTaiXeController</servlet-name>
     <url-pattern>/phan-cong-tai-xe</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>AddPhanCongNhanVienController</servlet-name>
     <servlet-class>controller.NhanVien.AddPhanCongNhanVienController</servlet-class>
@@ -121,6 +123,14 @@
   <servlet-mapping>
     <servlet-name>AddPhanCongNhanVienController</servlet-name>
     <url-pattern>/them-phan-cong-nhan-vien</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddPhanCongTaiXeController</servlet-name>
+    <servlet-class>controller.TaiXe.AddPhanCongTaiXeController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddPhanCongTaiXeController</servlet-name>
+    <url-pattern>/them-phan-cong-tai-xe</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>EditTaiXeController</servlet-name>
