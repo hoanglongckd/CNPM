@@ -190,11 +190,11 @@
     <url-pattern>/danh-sach-vang-nghi</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>UpdateVangNghiController</servlet-name>
-    <servlet-class>controller.TheoDoiNhanVien.UpdateVangNghiController</servlet-class>
+    <servlet-name>CapNhatVangNghiController</servlet-name>
+    <servlet-class>controller.QuanLyVangNghi.CapNhatVangNghiController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UpdateVangNghiController</servlet-name>
+    <servlet-name>CapNhatVangNghiController</servlet-name>
     <url-pattern>/cap-nhat-vang-nghi</url-pattern>
   </servlet-mapping>
   <servlet>
