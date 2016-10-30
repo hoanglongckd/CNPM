@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import model.bean.DieuPhoiBEAN;
 import model.bean.XeBEAN;
@@ -100,11 +103,12 @@ public class DieuPhoiDAO {
 	}
 
 	public boolean updateIDPhanCong(DieuPhoiBEAN dieuphoi) {
-		String sql = "UPDATE DIEUPHOI SET idPhanCong = ? WHERE id = ?";
+		String sql = "UPDATE DIEUPHOI SET idPhanCong = ?, ThoiGianBatDau = ? WHERE id = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, dieuphoi.getIdPhanCong());
-			ps.setInt(2, dieuphoi.getId());
+			ps.setString(2, dieuphoi.getThoiGianBatDau());
+			ps.setInt(3, dieuphoi.getId());
 			int rowEffect = ps.executeUpdate();
 			if (rowEffect != 0)
 				return true;
@@ -112,6 +116,26 @@ public class DieuPhoiDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public ArrayList<XeBEAN> getListDieuPhoi() {
+		ArrayList<XeBEAN> listXe = new ArrayList<>();
+		try {
+			String sql = "SELECT TAIXE.Ten, XE.BienSoXe, DIEUPHOI.DiaChiNhanKhach, DIEUPHOI.ThoiGianBatDau FROM PHANCONGTX "
+					+ "JOIN TAIXE ON PHANCONGTX.idTaiXe = TAIXE.id " 
+					+ "JOIN XE ON PHANCONGTX.idXe = XE.id "
+					+ "JOIN DIEUPHOI ON PHANCONGTX.id = DIEUPHOI.idPhanCong";
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while (rs.next()) {
+				XeBEAN xe = new XeBEAN(rs.getString("Ten"), rs.getString("BienSoXe"), rs.getString("DiaChiNhanKhach"), rs.getString("ThoiGianBatDau"));
+				listXe.add(xe);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return listXe;
 	}
 	
 

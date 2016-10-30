@@ -10,6 +10,8 @@ public class XeBEAN {
 	private String ghiChu;
 	private String taiXe;
 	private int idTX;
+	private String diaChi;
+	private String thoiGian;
 	
 	public XeBEAN() {
 		super();
@@ -54,6 +56,15 @@ public class XeBEAN {
 		this.bienSoXe = bienSoXe;
 		this.taiXe = taiXe;
 		this.soCho = soCho;
+	}
+	
+	public XeBEAN(String taiXe, String bienSoXe, String diaChi, String thoiGian) {
+		super();
+		
+		this.bienSoXe = bienSoXe;
+		this.taiXe = taiXe;
+		this.diaChi = diaChi;
+		this.thoiGian = thoiGian;
 	}
 
 	public int getId() {
@@ -126,6 +137,22 @@ public class XeBEAN {
 
 	public void setIdTX(int idTX) {
 		this.idTX = idTX;
+	}
+
+	public String getDiaChi() {
+		return diaChi;
+	}
+
+	public void setDiaChi(String diaChi) {
+		this.diaChi = diaChi;
+	}
+
+	public String getThoiGian() {
+		return thoiGian;
+	}
+
+	public void setThoiGian(String thoiGian) {
+		this.thoiGian = thoiGian;
 	}
 	
 }

@@ -236,4 +236,12 @@
     <servlet-name>ChonXeServlet</servlet-name>
     <url-pattern>/chon-xe</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ShowListDieuPhoi</servlet-name>
+    <servlet-class>controller.QuanLyXe.ShowListDieuPhoi</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowListDieuPhoi</servlet-name>
+    <url-pattern>/list-dieu-phoi</url-pattern>
+  </servlet-mapping>
 </web-app>
