@@ -43,7 +43,7 @@ public class AddNhanVienController extends HttpServlet {
 		HttpSession msg = request.getSession();
 		String maNV = request.getParameter("ma-nhan-vien");
 		String hoTen = request.getParameter("ho-va-ten");
-		int idChucVu = 3; //nhan vien la 3, admin la 1
+		int idChucVu = 1; //nhan vien la 1, admin la 1
 		String ngaySinh = request.getParameter("ngay-sinh");
 		String password = "123456"; //Mat khau mac dinh la 123456
 		
@@ -56,11 +56,11 @@ public class AddNhanVienController extends HttpServlet {
 		nhanVienBEAN.setIdChucVu(idChucVu);
 		
 		if (NhanVienBO.addNhanVien(nhanVienBEAN)) {
-			msg.setAttribute("messages", "<ul><li>Thêm nhân viên thành công!</li></ul>");
+			msg.setAttribute("messages", "<ul><li>ThÃªm nhÃ¢n viÃªn thÃ nh cÃ´ng!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");		
 			}
 		else {
-			msg.setAttribute("errors", "<ul><li>Thêm nhân viên không thành công!</li></ul>");
+			msg.setAttribute("errors", "<ul><li>ThÃªm nhÃ¢n viÃªn khÃ´ng thÃ nh cÃ´ng!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");
 		}
 		

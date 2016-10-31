@@ -17,7 +17,7 @@ public class NhanVienDAO {
 	static ResultSet rs;
 	static Statement st;
 	
-	public static boolean addNhanVien(NhanVienBEAN nhanVienBEAN) {
+	public boolean addNhanVien(NhanVienBEAN nhanVienBEAN) {
 		try {
 					String sqlThemNhanVien = "INSERT INTO NHANVIEN(MaNV, Password, Ten, NgaySinh, idChucVu) "
 							+ "VALUES(?, ?, ?, ?,?)";

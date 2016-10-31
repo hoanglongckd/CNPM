@@ -46,7 +46,7 @@ public class LoginController extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		if(session.getAttribute("maNV")!=null)
-			response.sendRedirect(request.getContextPath()+"/dashboard");
+			response.sendRedirect(request.getContextPath() + "/dashboard");
 		//get
 		String maNV = request.getParameter("maNV");
 		String password = request.getParameter("password");
@@ -60,7 +60,7 @@ public class LoginController extends HttpServlet {
 				session.setAttribute("maNV", maNV);
 				session.setMaxInactiveInterval(-1);
 				//chuyen sang trang dashboardController
-				response.sendRedirect(request.getContextPath()+"/dashboard");
+				response.sendRedirect(request.getContextPath() + "/dashboard");
 				//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/_content.jsp");
 			}else{
 				request.setAttribute("maNV", maNV);
