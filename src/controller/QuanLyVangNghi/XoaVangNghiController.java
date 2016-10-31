@@ -1,30 +1,25 @@
 package controller.QuanLyVangNghi;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.bean.QuanLyVangNghiBEAN;
 import model.bo.QuanLyVangNghiBO;
 
 /**
- * Servlet implementation class ChiTietVangNghi
+ * Servlet implementation class XoaVangNghiController
  */
-//@WebServlet("/ChiTietVangNghi")
-public class ChiTietVangNghiController extends HttpServlet {
+//@WebServlet("/XoaVangNghiController")
+public class XoaVangNghiController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ChiTietVangNghiController() {
+    public XoaVangNghiController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,22 +29,25 @@ public class ChiTietVangNghiController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession msg = request.getSession();
-		
-		int idNhanVien = 0;
+		String idParam = request.getParameter("id");
+		String idNVParam = request.getParameter("idNV");
+		int id = 0;
+		int idNV = 0;
 		try {
-			idNhanVien = Integer.parseInt(request.getParameter("id"));
+			id = Integer.parseInt(idParam);
+			idNV = Integer.parseInt(idNVParam);
 		} catch (Exception e) {
-			msg.setAttribute("errors", "Vui lòng không chỉnh sửa đường dẫn.");
-			response.sendRedirect(request.getContextPath() + "/danh-sach-vang-nghi");
+			msg.setAttribute("errors", "<ul><li>Vui lòng không sửa đường dẫn!</li></ul>");
+			response.sendRedirect(request.getContextPath() + "/chi-tiet-vang-nghi?id=" + idNV);
 			e.printStackTrace();
 		}
-		QuanLyVangNghiBEAN nhanVien = QuanLyVangNghiBO.layChiTietNV(idNhanVien);
-		ArrayList<QuanLyVangNghiBEAN> list = QuanLyVangNghiBO.lietKeVangNghiMotNV(idNhanVien);
-		request.setAttribute("nhanVien", nhanVien);
-		request.setAttribute("list", list);
-		request.setAttribute("idNV", idNhanVien);
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/VangNghi/chi-tiet-vang-nghi.jsp");
-		dispatcher.forward(request, response);
+		if (QuanLyVangNghiBO.xoaVangNghi(id)) {
+			msg.setAttribute("messages", "<ul><li>Xóa thành công!</li></ul>");
+			response.sendRedirect(request.getContextPath() + "/chi-tiet-vang-nghi?id=" + idNV);
+		} else {
+			msg.setAttribute("errors", "<ul><li>Có lỗi xảy ra. Vui lòng liên hệ với nhà cung cấp dịch vụ!</li></ul>");
+			response.sendRedirect(request.getContextPath() + "/chi-tiet-vang-nghi?id=" + idNV);
+		}
 	}
 
 	/**

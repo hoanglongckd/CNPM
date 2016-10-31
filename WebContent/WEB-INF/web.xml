@@ -190,6 +190,14 @@
     <url-pattern>/danh-sach-vang-nghi</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>XoaVangNghiController</servlet-name>
+    <servlet-class>controller.QuanLyVangNghi.XoaVangNghiController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>XoaVangNghiController</servlet-name>
+    <url-pattern>/xoa-vang-nghi</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>CapNhatVangNghiController</servlet-name>
     <servlet-class>controller.QuanLyVangNghi.CapNhatVangNghiController</servlet-class>
   </servlet>
@@ -228,6 +236,14 @@
   <servlet-mapping>
     <servlet-name>ChonXeServlet</servlet-name>
     <url-pattern>/chon-xe</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ShowListDieuPhoi</servlet-name>
+    <servlet-class>controller.QuanLyXe.ShowListDieuPhoi</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowListDieuPhoi</servlet-name>
+    <url-pattern>/danh-sach-dieu-phoi</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>DashboardController</servlet-name>

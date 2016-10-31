@@ -152,4 +152,16 @@ public class QuanLyVangNghiDAO {
 		}
 		return false;
 	}
+	
+	public boolean xoaVangNghi (int id) {
+		try {
+			String sql = "DELETE THEODOINHANVIEN WHERE id = " + id;
+			st = conn.createStatement();
+			int valid = st.executeUpdate(sql);
+			if (valid != 0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

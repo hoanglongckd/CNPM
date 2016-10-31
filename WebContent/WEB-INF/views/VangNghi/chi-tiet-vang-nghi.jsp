@@ -13,9 +13,11 @@
 <%
 	QuanLyVangNghiBEAN nhanVien = null;
 	ArrayList<QuanLyVangNghiBEAN> list = null;
-	if(request.getAttribute("list") != null && request.getAttribute("nhanVien") != null){
+	String idNV = "";
+	if(request.getAttribute("list") != null && request.getAttribute("nhanVien") != null && request.getAttribute("idNV") != null){
 		nhanVien = (QuanLyVangNghiBEAN) request.getAttribute("nhanVien");
 		list = (ArrayList<QuanLyVangNghiBEAN>)request.getAttribute("list");
+		idNV = request.getAttribute("idNV").toString();
 	}
 %>
 <!-- Page Content -->
@@ -75,7 +77,7 @@
 								
                         <td class="center">
                         	<i class="fa fa-trash-o fa-fw"></i>
-							<a href="<%=request.getContextPath()%>/chi-tiet-vang-nghi?delete=<%=item.getId() %>" > Xóa</a>
+							<a href="<%=request.getContextPath()%>/xoa-vang-nghi?id=<%=item.getId() %>&idNV=<%=idNV %>" > Xóa</a>
 						</td>
                     </tr>
                 <%

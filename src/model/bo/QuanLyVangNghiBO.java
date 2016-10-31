@@ -35,4 +35,8 @@ public class QuanLyVangNghiBO {
 	public static boolean setCapNhapVangNghi (QuanLyVangNghiBEAN item) {
 		return quanLyVangNghiDAO.setCapNhapVangNghi(item);
 	}
+	
+	public static boolean xoaVangNghi (int id) {
+		return quanLyVangNghiDAO.xoaVangNghi(id);
+	}
 }
