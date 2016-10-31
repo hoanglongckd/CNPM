@@ -97,7 +97,7 @@ public class ProfileController extends HttpServlet {
 				}
 			}
 		}else{
-			System.out.println("null cmnr");
+			response.sendRedirect(request.getContextPath()+"/login");
 		}
 	}
 
