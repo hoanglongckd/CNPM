@@ -23,11 +23,13 @@
 					<ul class="nav nav-second-level">
 						<li><a href="<%=request.getContextPath()%>/them-nhan-vien">Thêm nhân viên</a></li>
 						<li><a href="<%=request.getContextPath()%>/danh-sach-nhan-vien">Danh sách nhân viên</a></li>
+						<li><a href="<%=request.getContextPath()%>/them-phan-cong-nhan-vien">Phân công nhân viên</a></li>
+<%-- 						<li><a href="<%=request.getContextPath()%>/phan-cong-nhan-vien">Bảng phân công nhân viên</a></li> --%>
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>
 				<li>
-					<a href="#"><i class="fa fa-user"></i> Quản lý tài khoản<span class="fa arrow"></span></a>
+					<a href="#"><i class="fa fa-credit-card"></i> Quản lý tài khoản<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a href="<%=request.getContextPath()%>/quan-ly-tai-khoan">Danh sách tài khoản</a></li>
 					</ul>
@@ -38,6 +40,7 @@
 					<ul class="nav nav-second-level">
 						<li><a href="<%=request.getContextPath()%>/them-tai-xe">Thêm tài xế</a></li>
 						<li><a href="<%=request.getContextPath()%>/danh-sach-tai-xe">Danh sách tài xế</a></li>
+						<li><a href="<%=request.getContextPath()%>/phan-cong-tai-xe">Danh sách tài xế</a></li>
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>
