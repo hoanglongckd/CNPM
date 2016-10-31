@@ -40,7 +40,7 @@
 					<ul class="nav nav-second-level">
 						<li><a href="<%=request.getContextPath()%>/them-tai-xe">Thêm tài xế</a></li>
 						<li><a href="<%=request.getContextPath()%>/danh-sach-tai-xe">Danh sách tài xế</a></li>
-						<li><a href="<%=request.getContextPath()%>/phan-cong-tai-xe">Danh sách tài xế</a></li>
+						<li><a href="<%=request.getContextPath()%>/phan-cong-tai-xe">Phân công tài xế</a></li>
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>
