@@ -41,7 +41,7 @@ public class NhanVienDAO {
 	public ArrayList<NhanVienBEAN> getDanhSachNhanVien() {
 		ArrayList<NhanVienBEAN> listNhanVien = new ArrayList<>();
 		try {
-			String sql = "select * from NHANVIEN where NHANVIEN.idChucVu = (select id from CHUCVU where TenChucVu = 'Nhân Viên')";
+			String sql = "select * from NHANVIEN where NHANVIEN.idChucVu = (select id from CHUCVU where MaChucVu = 'NV')";
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()){
@@ -153,7 +153,7 @@ public class NhanVienDAO {
 
 	public ChucVuBEAN getChucVu() {
 		try {
-			String sql = "select * from CHUCVU where TenChucVu = 'Nhân Viên'";
+			String sql = "select * from CHUCVU where MaChucVu = 'NV'";
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()){
