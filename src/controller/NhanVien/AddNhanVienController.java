@@ -63,11 +63,11 @@ public class AddNhanVienController extends HttpServlet {
 		nhanVienBEAN.setIdChucVu(idChucVu);
 		
 		if (NhanVienBO.addNhanVien(nhanVienBEAN)) {
-			msg.setAttribute("messages", "<ul><li>Thêm nhân viên thành công</li></ul>");
+			msg.setAttribute("messages", "<ul><li>ThÃªm nhÃ¢n viÃªn thÃ nh cÃ´ng!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");		
 			}
 		else {
-			msg.setAttribute("errors", "<ul><li>Thêm nhân viên không thành công!</li></ul>");
+			msg.setAttribute("errors", "<ul><li>ThÃªm nhÃ¢n viÃªn khÃ´ng thÃ nh cÃ´ng!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");
 		}
 		

@@ -48,7 +48,7 @@ public class PhanCongNhanVienController extends HttpServlet {
 		ArrayList<ThuNgayBEAN> listThuNgay = ThuNgayBO.getDanhSachThuNgay();
 		request.setAttribute("listThuNgay", listThuNgay);
 
-		System.out.println("d鈌afa" + listNhanVien.isEmpty());
+		System.out.println("d锟絝afa" + listNhanVien.isEmpty());
 		
 		RequestDispatcher dispatcher = this.getServletContext()
 				.getRequestDispatcher("/WEB-INF/views/NhanVien/them-phan-cong-nhan-vien.jsp");
@@ -75,10 +75,10 @@ public class PhanCongNhanVienController extends HttpServlet {
 		phanCongNhanVienBEAN.setIdNhanVien(idNhanVien);
 		phanCongNhanVienBEAN.setIdThuNgay(idThuNgay);
 		if (PhanCongNhanVienBO.themPhanCongNhanVien(phanCongNhanVienBEAN)) {
-			msg.setAttribute("messages", "<ul><li>Th阭 ph鈔 c鬾g nh鈔 vi阯 th鄋h c鬾g!</li></ul>");
+			msg.setAttribute("messages", "<ul><li>Th锚m ph芒n c么ng nh芒n vi锚n th脿nh c么ng!<li></ul>");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");
 		} else {
-			msg.setAttribute("errors", "<ul><li>Th阭 ph鈔 c鬾g nh鈔 vi阯 kh鬾g th鄋h c鬾g!</li></ul>");
+			msg.setAttribute("errors", "<ul><li>Th锚m ph芒n c么ng nh芒n vi锚ng kh么ng th脿nh c么ng!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");
 		}
 

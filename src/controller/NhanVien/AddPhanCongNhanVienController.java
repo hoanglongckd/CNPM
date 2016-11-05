@@ -53,11 +53,11 @@ public class AddPhanCongNhanVienController extends HttpServlet {
 		phanCongNhanVienBEAN.setIdThuNgay(idThuNgay);
 		
 		if (NhanVienBO.addPhanCongNhanVien(phanCongNhanVienBEAN)) {
-			msg.setAttribute("messages", "<ul><li>Th阭 ph鈔 c鬾g nh鈔 vi阯 th鄋h c鬾g!</li></ul>");
+			msg.setAttribute("messages", "<ul><li>Th锚m ph芒n c么ng cho nh芒n vi锚n th脿nh c么ng!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");		
 			}
 		else {
-			msg.setAttribute("errors", "<ul><li>Th阭 ph鈔 c鬾g nh鈔 vi阯 kh鬾g th鄋h c鬾g!</li></ul>");
+			msg.setAttribute("errors", "<ul><li>Th锚m ph芒n c么ng cho nh芒n vi锚n kh么ng th脿nh c么ng!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");
 		}
 		
