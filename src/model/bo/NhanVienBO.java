@@ -18,6 +18,10 @@ public class NhanVienBO {
 	public static ArrayList<NhanVienBEAN> getDanhSachNhanVien() {
 		return nhanVienDAO.getDanhSachNhanVien();
 	}
+	
+	public static ArrayList<NhanVienBEAN> getDanhSachNhanVienNguyen() {
+		return nhanVienDAO.getDanhSachNhanVienNguyen();
+	}
 
 	public boolean isNhanVienDeleted(String idNhanVien) {
 		return nhanVienDAO.isNhanVienDeleted(idNhanVien);

@@ -166,4 +166,21 @@ public class NhanVienDAO {
 		return null;
 	}
 	
+	public ArrayList<NhanVienBEAN> getDanhSachNhanVienNguyen() {
+		ArrayList<NhanVienBEAN> listNhanVien = new ArrayList<>();
+		try {
+			String sql = "select * from NHANVIEN ";
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()){
+				NhanVienBEAN nhanVien = new NhanVienBEAN(rs.getInt("id"),rs.getString("MaNV"), rs.getString("Ten"), rs.getString("NgaySinh"),rs.getInt("IdChucVu"),rs.getString("Password"));
+				listNhanVien.add(nhanVien);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return listNhanVien;
+	}
+	
+	
 }

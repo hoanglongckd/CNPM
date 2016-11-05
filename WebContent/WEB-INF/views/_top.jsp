@@ -28,6 +28,15 @@
 
 <body>
 
+    <%
+    HttpSession ses = request.getSession();
+    if(ses.getAttribute("maNV")==null){
+    %>
+	<script type="text/javascript">
+window.location.assign('<%=request.getContextPath() %>/login');
+</script>
+<%} %>
+
 	<div id="wrapper">
 	
 	<!-- Navigation -->
