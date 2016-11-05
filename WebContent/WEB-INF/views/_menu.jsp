@@ -128,6 +128,9 @@
 						</ul>
 					<!-- /.nav-second-level -->
 				</li>
+				<li>
+					<a href="<%=request.getContextPath()%>/gia-lap-xe"><i class="fa fa-paper-plane"></i> Giả lập taxi<span class="fa arrow"></span></a>
+				</li>
 				</ul>
 		</div>
 	<!-- /.sidebar-collapse -->

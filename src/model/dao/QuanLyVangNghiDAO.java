@@ -39,13 +39,14 @@ public class QuanLyVangNghiDAO {
 	public boolean themMoiVangNghi (QuanLyVangNghiBEAN item) {
 		Date current = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		System.out.println("Hom nay: " +sdf.format(current));
+		String homnay = sdf.format(current);
 		
 		try {
 			Date nhapzo  = sdf.parse(item.getNgayNghi());
-			System.out.println("Nhap zo: " +sdf.format(nhapzo));
 			
-			if(nhapzo.before(current)){
+			Date cu = sdf.parse(homnay);
+			
+			if(nhapzo.compareTo(cu) < 0){
 				return false;
 			}
 		} catch (ParseException e1) {

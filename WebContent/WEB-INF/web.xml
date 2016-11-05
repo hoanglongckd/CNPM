@@ -301,4 +301,12 @@
     <servlet-name>QuanLyTaiKhoanController</servlet-name>
     <url-pattern>/quan-ly-tai-khoan</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>GiaLapXeServlet</servlet-name>
+    <servlet-class>controller.QuanLyXe.GiaLapXeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GiaLapXeServlet</servlet-name>
+    <url-pattern>/gia-lap-xe</url-pattern>
+  </servlet-mapping>
 </web-app>
