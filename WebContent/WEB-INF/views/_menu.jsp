@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
     <%
     HttpSession s = request.getSession();
-    String maChucVu = s.getAttribute("maChucVu").toString();
+    String maChucVu = "";
+    if (s.getAttribute("maChucVu") != null)
+    	maChucVu = s.getAttribute("maChucVu").toString();
     if(maChucVu.equals("AD")){
     %>
 	<div class="navbar-default sidebar" role="navigation">
