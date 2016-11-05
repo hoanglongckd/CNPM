@@ -287,7 +287,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>LoginController2</servlet-name>
-    <servlet-class>controller.DangNhap.LoginController</servlet-class>
+    <servlet-class>controller.DangNhap.LoginController2</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginController2</servlet-name>
