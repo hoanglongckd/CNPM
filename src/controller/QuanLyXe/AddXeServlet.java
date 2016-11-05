@@ -1,7 +1,6 @@
 package controller.QuanLyXe;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import model.bean.TaiXeBEAN;
 import model.bean.XeBEAN;
-import model.bo.TaiXeBO;
 import model.bo.XeBO;
 
 /**
@@ -36,21 +34,11 @@ public class AddXeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// try {
-
-		// get List Name Of Class present
-		TaiXeBO taiXebo = new TaiXeBO();
-		List<TaiXeBEAN> listMaTX = null;
-		listMaTX = taiXebo.getAllTenTX();
-		request.setAttribute("listMaTX", listMaTX);
-		// System.out.println(listMaTX.get(0));
+		
 		RequestDispatcher dispatcher = request.getServletContext()
 				.getRequestDispatcher("/WEB-INF/views/Xe/QuanLyXe.jsp");
 		dispatcher.forward(request, response);
 
-		// } catch (Exception e) {
-		// response.sendRedirect(request.getContextPath() + "/listXe");
-		// }
 	}
 
 	/**

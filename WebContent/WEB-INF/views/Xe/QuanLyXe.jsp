@@ -9,13 +9,6 @@
 <jsp:include page="../_top.jsp" />
 <jsp:include page="../_menu.jsp" />
 
-<%
-	ArrayList<TaiXeBEAN> listMaTX = null;
-	if (request.getAttribute("listMaTX") != null) {
-		listMaTX = (ArrayList<TaiXeBEAN>) request.getAttribute("listMaTX");
-	}
-%>
-
 <!-- Page Content -->
 <div id="page-wrapper">
 	<div class="container-fluid">
@@ -29,24 +22,7 @@
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom: 120px">
 				<form action="<%=request.getContextPath()%>/them-xe" method="POST">
-					<div class="form-group">
-						<label>Tên tài xế</label> <select class="form-control"
-							name="tentx" id="tentx" required>
-							<%
-								if (listMaTX != null)
-									for (TaiXeBEAN item : listMaTX) {
-							%>
-							<option value="<%=item.getId()%>"><%=item.getMaTaiXe()%></option>
-							<%
-								}
-								else {
-							%>
-							<option value="">Chưa có tài xế</option>
-							<%
-								}
-							%>
-						</select>
-					</div>
+					
 					<div class="form-group">
 						<label>Biển số xe</label> <input class="form-control"
 							name="biensoxe" id="biensoxe" placeholder="Nhập biển số xe" required/>

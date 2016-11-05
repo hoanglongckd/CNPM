@@ -33,7 +33,6 @@
                         <th>STT</th>
                         <th>Biển số xe</th>
                         <th>Model</th>
-                        <th>Tài xế</th>
                         <th>Số chổ ngồi</th>
                         <th>Hãng</th>
                         <th>Cập nhật</th>
@@ -51,7 +50,6 @@
                         <td><%=stt%></td>
                         <td><%=item.getBienSoXe()%></td>
                         <td><%=item.getModel()%></td>
-                        <td><%=item.getTaiXe()%></td>
                         <td><%=item.getSoCho()%></td>
                         <td><%=item.getHang()%></td>
                         <td class="center">
