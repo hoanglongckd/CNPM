@@ -76,14 +76,25 @@ public class ChangePasswordController extends HttpServlet {
 			//
 			if(maNhanVien.equals(idUser)){
 				NhanVienBEAN nhanVien = new NhanVienBEAN(0,maNhanVien,"","",0,newPassword);
-				if(nhanVienBO.updatePassword(nhanVien))
-					response.sendRedirect(request.getContextPath()+"/doi-mat-khau?msg=1");
-				else response.sendRedirect(request.getContextPath()+"/doi-mat-khau?msg=2");
+				if(nhanVienBO.updatePassword(nhanVien)){
+					session.setAttribute("messages", "<ul><li> Đổi mật khẩu thành công!</li></ul>");
+					response.sendRedirect(request.getContextPath()+"/doi-mat-khau");
+					}
+				else {
+					session.setAttribute("errors", "<ul><li>Có lỗi xảy ra! Vui lòng liên hệ với nhà cung cấp dịch vụ!</li></ul>");
+					response.sendRedirect(request.getContextPath()+"/doi-mat-khau");
+				
+				}
 			}else{
 				NhanVienBEAN nhanVien = new NhanVienBEAN(0,idUser,"","",0,newPassword);
-				if(nhanVienBO.updatePassword(nhanVien))
-					response.sendRedirect(request.getContextPath()+"/doi-mat-khau?msg=1");
-				else response.sendRedirect(request.getContextPath()+"/doi-mat-khau?msg=2");
+				if(nhanVienBO.updatePassword(nhanVien)){
+					session.setAttribute("messages", "<ul><li>Sửa xe bảo dưỡng thành công!</li></ul>");
+				response.sendRedirect(request.getContextPath()+"/doi-mat-khau");
+				}
+				else {
+				session.setAttribute("errors", "<ul><li>Có lỗi xảy ra! Vui lòng liên hệ với nhà cung cấp dịch vụ!</li></ul>");
+				response.sendRedirect(request.getContextPath()+"/doi-mat-khau");
+				}
 			}
 		}
 	}

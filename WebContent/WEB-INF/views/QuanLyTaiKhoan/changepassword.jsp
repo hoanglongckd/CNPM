@@ -28,6 +28,7 @@ if(request.getAttribute("msg")!=null)
 				</h1>
 			</div>
 			<!-- /.col-lg-12 -->
+			<jsp:include page="../_message-block.jsp" />
 			<div class="col-lg-7" style="padding-bottom:120px">
 				<form action="<%=request.getContextPath()%>/doi-mat-khau" method="POST">
 					<%
