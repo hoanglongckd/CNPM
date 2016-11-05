@@ -63,7 +63,7 @@ public class TaiXeDAO {
 			//System.out.println(nhanVienBEAN.getMaNhanVien() + nhanVienBEAN.getHoTen() + nhanVienBEAN.getIdChucVu());
 			PreparedStatement pre = conn.prepareStatement(sqlThemTaiXe);
 			pre.setString(1, taiXeBEAN.getMaTaiXe());
-			pre.setString(2, taiXeBEAN.getHoTen());
+			pre.setNString(2, taiXeBEAN.getHoTen());
 			pre.setString(3, taiXeBEAN.getNgaySinh());
 			int rowEffect = pre.executeUpdate();
 			if (rowEffect != 0)

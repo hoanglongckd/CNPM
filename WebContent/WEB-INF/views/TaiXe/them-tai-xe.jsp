@@ -23,15 +23,15 @@
 					method="POST">
 					<div class="form-group">
 						<label>Mã tài xế: </label> <input class="form-control"
-							type="text" name="ma-tai-xe" />
+							type="text" name="ma-tai-xe" required/>
 					</div>
 					<div class="form-group">
 						<label>Họ và tên: </label> <input class="form-control" type="text"
-							name="ho-va-ten" />
+							name="ho-va-ten" required />
 					</div>
 					<div class="form-group">
 						<label>Ngày sinh: </label> <input class="form-control" type="text"
-							name="ngay-sinh" />
+							name="ngay-sinh" required />
 					</div>
 					<br>
 					<button type="submit" class="btn btn-default">Thêm</button>

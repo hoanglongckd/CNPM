@@ -36,11 +36,11 @@
 					</div>
 					<div class="form-group">
 						<label>Họ và tên: </label> <input class="form-control" type="text"
-							name="ho-va-ten" value="<%=taiXe.getHoTen()%>"/>
+							name="ho-va-ten" value="<%=taiXe.getHoTen()%>" required/>
 					</div>
 					<div class="form-group">
 						<label>Ngày sinh: </label> <input class="form-control" type="text"
-							name="ngay-sinh"  value="<%=taiXe.getNgaySinh()%>"/> 
+							name="ngay-sinh"  value="<%=taiXe.getNgaySinh()%>"required/> 
 					</div>
 					<button type="submit" class="btn btn-default">Save</button>
 					<a href="<%=request.getContextPath()%>/danh-sach-tai-xe" class = "btn btn-default">Cancel</a>

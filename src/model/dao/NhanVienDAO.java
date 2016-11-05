@@ -26,7 +26,7 @@ public class NhanVienDAO {
 					PreparedStatement pre = conn.prepareStatement(sqlThemNhanVien);
 					pre.setString(1, nhanVienBEAN.getMaNhanVien());
 					pre.setString(2, nhanVienBEAN.getPassword());
-					pre.setString(3, nhanVienBEAN.getHoTen());
+					pre.setNString(3, nhanVienBEAN.getHoTen());
 					pre.setString(4, nhanVienBEAN.getNgaySinh());
 					pre.setInt(5, nhanVienBEAN.getIdChucVu());
 					int rowEffect = pre.executeUpdate();
