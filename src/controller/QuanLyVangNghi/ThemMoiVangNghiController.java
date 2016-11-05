@@ -70,7 +70,7 @@ public class ThemMoiVangNghiController extends HttpServlet {
 			msg.setAttribute("messages", "Thêm mới nhân viên vắng nghỉ thành công!");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-vang-nghi");
 		} else {
-			msg.setAttribute("errors", "Có lỗi xảy ra. Vui lòng liên hệ với nhà cung cấp dịch vụ!");
+			msg.setAttribute("errors", "Ngày đã nhập trước ngày hiện tại !");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-vang-nghi");
 		}
 		
