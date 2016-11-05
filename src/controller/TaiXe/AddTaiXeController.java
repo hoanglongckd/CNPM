@@ -55,7 +55,7 @@ public class AddTaiXeController extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");		
 		}
 		else {
-			msg.setAttribute("messages", "<ul><li>Thêm tài xế không thành công!</li></ul>");
+			msg.setAttribute("errors", "<ul><li>Thêm tài xế không thành công!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");		
 		}
 	}

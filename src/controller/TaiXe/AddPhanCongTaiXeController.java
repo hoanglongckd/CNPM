@@ -16,7 +16,7 @@ import model.bo.TaiXeBO;
 /**
  * Servlet implementation class AddBaoDuongXeController
  */
-//@WebServlet("/them-nhan-vien")
+
 public class AddPhanCongTaiXeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
