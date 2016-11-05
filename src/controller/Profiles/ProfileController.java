@@ -74,6 +74,9 @@ public class ProfileController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("maNV")!=null){
+			if(request.getParameter("change-password")!=null){
+				response.sendRedirect(request.getContextPath()+"/doi-mat-khau");
+			}
 			String maNV = (String) session.getAttribute("maNV");
 			System.out.println("cmnr");
 			//click change-password button

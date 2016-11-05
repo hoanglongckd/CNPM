@@ -63,7 +63,7 @@ if(request.getAttribute("msg")!=null)
 					<input type="password" class="form-control" name="password" id="password" placeholder="" value="<%=nv.getPassword() %>"readonly="readonly" />
 				</div>
 				<button type="submit" class="btn btn-default" value="edit" name="edit">OK</button>
-				<button type="" class="btn btn-default" value="change-password" name="change-password"><a href="<%=request.getContextPath()%>/doi-mat-khau">Change Password</a></button>
+				<button type="submit" class="btn btn-default" value="change-password" name="change-password">Change Password</button>
 				<button type="reset" class="btn btn-default">Reset</button>
 				</form>
 			</div>
