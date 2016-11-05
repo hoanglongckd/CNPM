@@ -2,6 +2,7 @@ package model.bo;
 
 import java.util.ArrayList;
 
+import model.bean.ChucVuBEAN;
 import model.bean.NhanVienBEAN;
 import model.bean.PhanCongNhanVienBEAN;
 import model.dao.NhanVienDAO;
@@ -40,5 +41,10 @@ public class NhanVienBO {
 	}
 	public boolean updatePassword (NhanVienBEAN nv){
 		return nhanVienDAO.updatePassword(nv);
+	}
+
+	public static ChucVuBEAN getChucVu() {
+		// TODO Auto-generated method stub
+		return nhanVienDAO.getChucVu();
 	}
 }

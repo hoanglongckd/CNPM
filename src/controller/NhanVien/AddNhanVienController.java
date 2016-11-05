@@ -1,6 +1,9 @@
-	package controller.NhanVien;
+package controller.NhanVien;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.bean.ChucVuBEAN;
 import model.bean.NhanVienBEAN;
 import model.bo.NhanVienBO;
 
@@ -39,11 +43,15 @@ public class AddNhanVienController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		//Lay ma chuc vu nhan vien
+		ChucVuBEAN chucVuBEAN = NhanVienBO.getChucVu();
+		System.out.println(chucVuBEAN.getMaChucVu()+"|"+chucVuBEAN.getId());
+		//Lay thong tin nhan vien tu form add
 		request.setCharacterEncoding("UTF-8");
 		HttpSession msg = request.getSession();
 		String maNV = request.getParameter("ma-nhan-vien");
 		String hoTen = request.getParameter("ho-va-ten");
-		int idChucVu = 1; //nhan vien la 1, admin la 1
+		int idChucVu = chucVuBEAN.getId();
 		String ngaySinh = request.getParameter("ngay-sinh");
 		String password = "123456"; //Mat khau mac dinh la 123456
 		

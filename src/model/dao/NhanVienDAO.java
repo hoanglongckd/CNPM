@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.bean.BaoDuongXeBEAN;
+import model.bean.ChucVuBEAN;
 import model.bean.NhanVienBEAN;
 import model.bean.PhanCongNhanVienBEAN;
 import utils.SQLServerConnUtils;
@@ -40,7 +41,7 @@ public class NhanVienDAO {
 	public ArrayList<NhanVienBEAN> getDanhSachNhanVien() {
 		ArrayList<NhanVienBEAN> listNhanVien = new ArrayList<>();
 		try {
-			String sql = "select * from NHANVIEN";
+			String sql = "select * from NHANVIEN where NHANVIEN.idChucVu = (select id from CHUCVU where TenChucVu = 'Nhân Viên')";
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()){
@@ -148,6 +149,21 @@ public class NhanVienDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	public ChucVuBEAN getChucVu() {
+		try {
+			String sql = "select * from CHUCVU where TenChucVu = 'Nhân Viên'";
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()){
+				ChucVuBEAN chucVu = new ChucVuBEAN(rs.getInt("id"),rs.getString("MaChucVu"), rs.getString("TenChucVu"));
+				return chucVu;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 }
