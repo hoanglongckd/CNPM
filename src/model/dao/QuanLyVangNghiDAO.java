@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import model.bean.QuanLyVangNghiBEAN;
 import utils.SQLServerConnUtils;
@@ -34,6 +37,21 @@ public class QuanLyVangNghiDAO {
 	}
 	
 	public boolean themMoiVangNghi (QuanLyVangNghiBEAN item) {
+		Date current = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		System.out.println("Hom nay: " +sdf.format(current));
+		
+		try {
+			Date nhapzo  = sdf.parse(item.getNgayNghi());
+			System.out.println("Nhap zo: " +sdf.format(nhapzo));
+			
+			if(nhapzo.before(current)){
+				return false;
+			}
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		
 		try {
 			String sql = "INSERT INTO THEODOINHANVIEN (Ngay, CoPhep, LyDo, idNhanVien) VALUES (?, ?, ?, ?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
