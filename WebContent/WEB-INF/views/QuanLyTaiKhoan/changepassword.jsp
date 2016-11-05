@@ -31,17 +31,6 @@ if(request.getAttribute("msg")!=null)
 			<jsp:include page="../_message-block.jsp" />
 			<div class="col-lg-7" style="padding-bottom:120px">
 				<form action="<%=request.getContextPath()%>/doi-mat-khau" method="POST">
-					<%
-						if("1".equals(msg)){
-					%>
-						<div class="form-group">
-							<label style="color:green">Sửa thành công</label>
-						</div>
-					<%}else if("2".equals(msg)){ %>
-						<div class="form-group">
-							<label style="color:red">Sửa thất bại</label>
-						</div>
-					<%} %>
 				<div class="form-group">
 					<label> Tên nhân viên:</label>
 					<input type="text" class="form-control" name="ten" id="ten" value="<%=nv.getHoTen()%>" readonly="read-only"/>

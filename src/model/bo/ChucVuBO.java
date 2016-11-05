@@ -21,4 +21,8 @@ public class ChucVuBO {
 	public boolean xoaChucVu(int idChucVu){
 		return chucVuDAO.xoaChucVu(idChucVu);
 	}
+	
+	public String getMaChucVuOfNhanVien(int idChucVu){
+		return chucVuDAO.getMaChucVuOfNhanVien(idChucVu);
+	}
 }

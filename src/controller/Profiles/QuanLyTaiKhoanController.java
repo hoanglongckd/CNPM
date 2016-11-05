@@ -49,7 +49,7 @@ public class QuanLyTaiKhoanController extends HttpServlet {
 				response.sendRedirect(request.getContextPath()+"/dashboard");
 			}else{
 				//la admin
-				ArrayList<NhanVienBEAN> listNhanVien = nhanVienBO.getDanhSachNhanVien();
+				ArrayList<NhanVienBEAN> listNhanVien = nhanVienBO.getDanhSachNhanVienNguyen();
 				request.setAttribute("listNhanVien", listNhanVien);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/QuanLyTaiKhoan/quanlytaikhoan.jsp");
 				dispatcher.forward(request, response);

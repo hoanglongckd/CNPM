@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.bean.ChucVuBEAN;
 import model.bean.NhanVienBEAN;
+import model.bo.ChucVuBO;
 import model.bo.NhanVienBO;
 
 /**
@@ -53,11 +55,13 @@ public class LoginController extends HttpServlet {
 		NhanVienBO nhanVienBO = new NhanVienBO();
 		//kiem tra MaNV
 		NhanVienBEAN nhanVien = nhanVienBO.getNhanVienByMaNV(maNV);
+		ChucVuBO chucVuBO = new ChucVuBO();
 		if(nhanVien!=null){	
 			//kiem tra password
 			if(nhanVien.getPassword().equals(password)){
 				//tao session
 				session.setAttribute("maNV", maNV);
+				session.setAttribute("maChucVu", chucVuBO.getMaChucVuOfNhanVien(nhanVien.getIdChucVu()));
 				session.setMaxInactiveInterval(-1);
 				//chuyen sang trang dashboardController
 				response.sendRedirect(request.getContextPath() + "/dashboard");

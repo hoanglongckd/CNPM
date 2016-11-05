@@ -36,10 +36,9 @@ public class ProfileController extends HttpServlet {
     ChucVuBO chucVuBO = new ChucVuBO();  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String maNV = null;
-		if(session.getAttribute("maNV")==null){
-			response.sendRedirect(request.getContextPath()+"/login");
-		}else {
+		
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			String maNV = null;
 			String msg =  "";
 			if(request.getParameter("msg")!=null){
 				msg = (request.getParameter("msg"));
@@ -59,13 +58,16 @@ public class ProfileController extends HttpServlet {
 					break;
 				}
 			}
-			System.out.println(msg);
 			if(msg!="") request.setAttribute("msg", msg);
 			request.setAttribute("nhanVien", nhanVien);
 			request.setAttribute("chucVu", chucVu);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/QuanLyTaiKhoan/profile.jsp");
 			dispatcher.forward(request, response);
+		//neu khong phai admin	
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
 		}
+		//----end---
 	}
 
 	/**
@@ -73,34 +75,38 @@ public class ProfileController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("maNV")!=null){
-			if(request.getParameter("change-password")!=null){
-				response.sendRedirect(request.getContextPath()+"/doi-mat-khau");
-			}
-			String maNV = (String) session.getAttribute("maNV");
-			System.out.println("cmnr");
-			//click change-password button
-			if(request.getParameter("change-password")!=null){
-				System.out.println("change-password");
-				//response.sendRedirect(request.getContextPath()+"/change-password");
-			}else{
-				//click edit-button
-				if(request.getParameter("edit")!=null){
-					System.out.println("edit");
-					//get
-					String ten = (String) request.getParameter("ten"); 
-					String ngaySinh = (request.getParameter("ngaySinh"));
-					NhanVienBEAN nhanVien = new NhanVienBEAN(0, maNV, ten, ngaySinh, 0,"");
-					
-					if(nhanVienBO.setSuaNhanVien(nhanVien)){
-						response.sendRedirect(request.getContextPath()+"/profile?msg=1");
-					}else{
-						response.sendRedirect(request.getContextPath()+"/profile?msg=2");
+		if(session.getAttribute("maChucVu").toString().equals("AD")){
+			if(session.getAttribute("maNV")!=null){
+				if(request.getParameter("change-password")!=null){
+					response.sendRedirect(request.getContextPath()+"/doi-mat-khau");
+				}
+				String maNV = (String) session.getAttribute("maNV");
+				System.out.println("cmnr");
+				//click change-password button
+				if(request.getParameter("change-password")!=null){
+					System.out.println("change-password");
+					//response.sendRedirect(request.getContextPath()+"/change-password");
+				}else{
+					//click edit-button
+					if(request.getParameter("edit")!=null){
+						System.out.println("edit");
+						//get
+						String ten = (String) request.getParameter("ten"); 
+						String ngaySinh = (request.getParameter("ngaySinh"));
+						NhanVienBEAN nhanVien = new NhanVienBEAN(0, maNV, ten, ngaySinh, 0,"");
+						
+						if(nhanVienBO.setSuaNhanVien(nhanVien)){
+							response.sendRedirect(request.getContextPath()+"/profile?msg=1");
+						}else{
+							response.sendRedirect(request.getContextPath()+"/profile?msg=2");
+						}
 					}
 				}
+			}else{
+				response.sendRedirect(request.getContextPath()+"/login");
 			}
 		}else{
-			response.sendRedirect(request.getContextPath()+"/login");
+			response.sendRedirect(request.getContextPath()+"/dashboard");
 		}
 	}
 

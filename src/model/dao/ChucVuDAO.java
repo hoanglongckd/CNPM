@@ -95,5 +95,21 @@ public class ChucVuDAO {
 		return item	;
 	}
 	
+	public String getMaChucVuOfNhanVien(int idChucVu) {
+		try {
+			String sql = "select ChucVu.MaChucVu from ChucVu, NhanVien where ChucVu.id = "+idChucVu +" group by ChucVu.MaChucVu  ";
+			
+			System.out.println(sql);
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()){
+				String item = rs.getString("MaChucVu");
+				return item;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null	;
+	}
 	
 }
