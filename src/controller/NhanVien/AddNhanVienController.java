@@ -45,7 +45,6 @@ public class AddNhanVienController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		//Lay ma chuc vu nhan vien
 		ChucVuBEAN chucVuBEAN = NhanVienBO.getChucVu();
-		
 		//Lay thong tin nhan vien tu form add
 		request.setCharacterEncoding("UTF-8");
 		HttpSession msg = request.getSession();
