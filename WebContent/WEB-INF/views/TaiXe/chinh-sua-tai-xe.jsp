@@ -32,15 +32,15 @@
 					<input type="hidden" name="id" id="id" value="<%=taiXe.getId()%>">
 					<div class="form-group">
 						<label>Mã tài xế: </label> <input class="form-control"
-							type="text" name="ma-nhan-vien" value=<%=taiXe.getMaTaiXe()%> readonly="readonly" />
+							type="text" name="ma-nhan-vien" value="<%=taiXe.getMaTaiXe()%>" readonly="readonly" />
 					</div>
 					<div class="form-group">
 						<label>Họ và tên: </label> <input class="form-control" type="text"
-							name="ho-va-ten" value=<%=taiXe.getHoTen()%>/>
+							name="ho-va-ten" value="<%=taiXe.getHoTen()%>"/>
 					</div>
 					<div class="form-group">
 						<label>Ngày sinh: </label> <input class="form-control" type="text"
-							name="ngay-sinh"  value=<%=taiXe.getNgaySinh()%>/> 
+							name="ngay-sinh"  value="<%=taiXe.getNgaySinh()%>"/> 
 					</div>
 					<button type="submit" class="btn btn-default">Save</button>
 					<a href="<%=request.getContextPath()%>/danh-sach-tai-xe" class = "btn btn-default">Cancel</a>
