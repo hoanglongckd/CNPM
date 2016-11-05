@@ -55,7 +55,7 @@ public class AddPhanCongTaiXeController extends HttpServlet {
 		phanCongTaiXeBEAN.setIdXe(idXe);
 		
 		if (TaiXeBO.addPhanCongTaiXe(phanCongTaiXeBEAN)) {
-			msg.setAttribute("messages", "<ul><li>Thêm phân công tài xế thành công!</li></ul>");
+			msg.setAttribute("messages", "<ul><li>Thêm phân công tài xế thành công</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");		
 			}
 		else {

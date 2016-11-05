@@ -48,6 +48,8 @@ public class PhanCongNhanVienController extends HttpServlet {
 		ArrayList<ThuNgayBEAN> listThuNgay = ThuNgayBO.getDanhSachThuNgay();
 		request.setAttribute("listThuNgay", listThuNgay);
 
+		System.out.println("dâfafa" + listNhanVien.isEmpty());
+		
 		RequestDispatcher dispatcher = this.getServletContext()
 				.getRequestDispatcher("/WEB-INF/views/NhanVien/them-phan-cong-nhan-vien.jsp");
 		dispatcher.forward(request, response);
@@ -73,10 +75,10 @@ public class PhanCongNhanVienController extends HttpServlet {
 		phanCongNhanVienBEAN.setIdNhanVien(idNhanVien);
 		phanCongNhanVienBEAN.setIdThuNgay(idThuNgay);
 		if (PhanCongNhanVienBO.themPhanCongNhanVien(phanCongNhanVienBEAN)) {
-			msg.setAttribute("messages", "<ul><li>ThÃªm phÃ¢n cÃ´ng cho nhÃ¢n viÃªn thÃ nh cÃ´ng!</li></ul>");
+			msg.setAttribute("messages", "<ul><li>Thêm phân công nhân viên thành công!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");
 		} else {
-			msg.setAttribute("errors", "<ul><li>ThÃªm phÃ¢n cÃ´ng cho nhÃ¢n viÃªn tháº¥t báº¡i!</li></ul>");
+			msg.setAttribute("errors", "<ul><li>Thêm phân công nhân viên không thành công!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");
 		}
 

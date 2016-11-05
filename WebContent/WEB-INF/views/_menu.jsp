@@ -23,7 +23,7 @@
 					<ul class="nav nav-second-level">
 						<li><a href="<%=request.getContextPath()%>/them-nhan-vien">Thêm nhân viên</a></li>
 						<li><a href="<%=request.getContextPath()%>/danh-sach-nhan-vien">Danh sách nhân viên</a></li>
-						<li><a href="<%=request.getContextPath()%>/them-phan-cong-nhan-vien">Phân công nhân viên</a></li>
+						<li><a href="<%=request.getContextPath()%>/phan-cong-nhan-vien">Phân công nhân viên</a></li>
 <%-- 						<li><a href="<%=request.getContextPath()%>/phan-cong-nhan-vien">Bảng phân công nhân viên</a></li> --%>
 					</ul>
 					<!-- /.nav-second-level -->

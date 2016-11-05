@@ -58,7 +58,7 @@
 							<%	}
 								}else{
 									%>
-							<option value="">ERRORS!</option>
+							<option value="">Null!</option>
 							<%
 								}
 							%>
@@ -78,7 +78,7 @@
 									}
 								}else{
 									%>
-							<option value="">ERRORS!</option>
+							<option value="">Null!</option>
 							<%
 								}
 							%>
@@ -98,7 +98,7 @@
 									}
 								}else{
 									%>
-							<option value="">ERRORS!</option>
+							<option value="">Null!</option>
 							<%
 								}
 							%>
