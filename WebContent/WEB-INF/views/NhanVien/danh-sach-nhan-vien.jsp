@@ -36,8 +36,8 @@
 							<th>Mã Nhân viên</th>
 							<th>Họ và tên</th>
 							<th>Ngày sinh</th>
-							<th>Delete</th>
 							<th>Edit</th>
+							<th>Delete</th>
 						</tr>
 					</thead>
 					<tbody>
