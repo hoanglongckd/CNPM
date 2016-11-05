@@ -73,13 +73,11 @@ public class XeDAO {
 	public ArrayList<XeBEAN> lietKeListXe() {
 		ArrayList<XeBEAN> listXe = new ArrayList<>();
 		try {
-			String sql = "select xe.id, xe.BienSoXe, xe.Model, TAIXE.Ten, xe.SoCho, xe.Hang " + "From PHANCONGTX "
-					+ "Join XE" + " On xe.id = PHANCONGTX.idXe" + " Join TAIXE " + "On TAIXE.id = PHANCONGTX.idTaiXe";
+			String sql = "select xe.id, xe.BienSoXe, xe.Model, xe.SoCho, xe.Hang From XE";
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while (rs.next()) {
-				XeBEAN xe = new XeBEAN(rs.getInt("id"), rs.getString("BienSoXe"), rs.getString("Model"),
-						rs.getString("Ten"), rs.getInt("SoCho"), rs.getString("Hang"));
+				XeBEAN xe = new XeBEAN(rs.getInt("id"), rs.getString("BienSoXe"), rs.getString("Model"), rs.getInt("SoCho"), rs.getString("Hang"));
 				listXe.add(xe);
 			}
 		} catch (Exception e) {
@@ -107,14 +105,12 @@ public class XeDAO {
 	public XeBEAN getCapNhatXe(int id) {
 		XeBEAN xebean = null;
 		try {
-			String sql = "SELECT XE.id, XE.BienSoXe, TAIXE.Ten, XE.Model, XE.SoCho, XE.hang, XE.GhiChu, TAIXE.id "
-					+ "FROM PHANCONGTX " + "JOIN TAIXE " + "ON TAIXE.id = PHANCONGTX.idTaiXe " + "JOIN XE "
-					+ "ON PHANCONGTX.idXe = XE.id " + "WHERE XE.id = " + id;
+			String sql = "SELECT XE.id, XE.BienSoXe, XE.Model, XE.SoCho, XE.hang, XE.GhiChu"
+					+ " FROM XE 	WHERE XE.id = " + id;
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while (rs.next()) {
-				xebean = new XeBEAN(rs.getInt("id"), rs.getString("BienSoXe"), rs.getString("Ten"),
-						rs.getString("Model"), rs.getInt("SoCho"), rs.getString("Hang"), rs.getString("GhiChu"), rs.getInt(8));
+				xebean = new XeBEAN(rs.getInt("id"), rs.getString("BienSoXe"), rs.getString("Model"), rs.getInt("SoCho"), rs.getString("Hang"), rs.getString("GhiChu"));
 				
 			}
 		} catch (Exception e) {

@@ -33,7 +33,9 @@ public class ShowListXeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		ArrayList<XeBEAN> listXe = XeBO.lietKeListXe();
+		
 		request.setAttribute("danhSachXe", listXe);
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/Xe/ListXe.jsp");
 		dispatcher.forward(request, response);

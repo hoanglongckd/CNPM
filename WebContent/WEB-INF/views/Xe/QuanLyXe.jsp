@@ -34,11 +34,8 @@
 					<div class="form-group">
 						<label>Số chổ ngồi</label> <select class="form-control"
 							name="sochongoi" id="sochongoi" required>
-							
 							<option value="4">4</option>
-							<option value="5">5</option>
 							<option value="7">7</option>
-							<option value="8">8</option>
 						</select>
 					</div>
 					<div class="form-group">

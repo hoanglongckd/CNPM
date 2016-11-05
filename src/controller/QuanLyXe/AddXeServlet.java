@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.bean.TaiXeBEAN;
 import model.bean.XeBEAN;
 import model.bo.XeBO;
 
@@ -53,8 +52,7 @@ public class AddXeServlet extends HttpServlet {
 		HttpSession msg = request.getSession();
 
 		XeBEAN xe = new XeBEAN();
-		TaiXeBEAN taixe = new TaiXeBEAN();
-		taixe.setId(Integer.parseInt(request.getParameter("tentx")));
+		
 		xe.setBienSoXe(request.getParameter("biensoxe"));
 		xe.setModel(request.getParameter("model"));
 		xe.setSoCho(Integer.parseInt(request.getParameter("sochongoi")));
@@ -62,13 +60,7 @@ public class AddXeServlet extends HttpServlet {
 		xe.setGhiChu(request.getParameter("ghichu"));
 		xe.setTinhTrangHoatDong(false);
 
-		boolean check = XeBO.themXe(xe);
-
-		xe.setId(XeBO.getMaxXeId());
-		boolean check2 = XeBO.themPhanCongTX(taixe, xe);
-
-		if (check) {
-			if (check2)
+		if (XeBO.themXe(xe)) {
 				msg.setAttribute("messages", "<ul><li>Thêm xe thành công!</li></ul>");
 				response.sendRedirect(request.getContextPath() + "/list-xe");
 		} else {

@@ -17,7 +17,7 @@ public class XeBEAN {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public XeBEAN(int id, String bienSoXe, String model, int soCho, String hang, boolean tinhTrangHoatDong) {
 		super();
 		this.id = id;
@@ -26,6 +26,25 @@ public class XeBEAN {
 		this.soCho = soCho;
 		this.hang = hang;
 		this.tinhTrangHoatDong = tinhTrangHoatDong;
+	}
+	
+	public XeBEAN(int id, String bienSoXe, String model, int soCho, String hang) {
+		super();
+		this.id = id;
+		this.bienSoXe = bienSoXe;
+		this.model = model;
+		this.soCho = soCho;
+		this.hang = hang;
+	}
+
+	public XeBEAN(int id, String bienSoXe, String model, int soCho, String hang, String ghiChu) {
+		super();
+		this.id = id;
+		this.bienSoXe = bienSoXe;
+		this.model = model;
+		this.soCho = soCho;
+		this.hang = hang;
+		this.ghiChu = ghiChu;
 	}
 	
 	public XeBEAN(int id, String bienSoXe, String model, String taiXe, int soCho, String hang){
