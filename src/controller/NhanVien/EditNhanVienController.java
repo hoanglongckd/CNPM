@@ -82,11 +82,11 @@ public class EditNhanVienController extends HttpServlet {
 			nhanVienBEAN.setNgaySinh(ngaySinh);
 			nhanVienBEAN.setHoTen(hoTen);
 			if (NhanVienBO.setSuaNhanVien(nhanVienBEAN)) {
-				msg.setAttribute("messages", "<ul><li>Chỉnh sửa nhân viên thành công!</li></ul>");
+				msg.setAttribute("messages", "<ul><li>Chỉnh sửa nhân viên thành công</li></ul>");
 				response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");
 			} 
 			else {
-				msg.setAttribute("errors", "<ul><li>Chỉnh sửa nhân viên không thành công!</li></ul>");
+				msg.setAttribute("errors", "<ul><li>Chỉnh sửa nhân viên không thành công</li></ul>");
 				response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");
 			}
 		} catch (Exception e) {

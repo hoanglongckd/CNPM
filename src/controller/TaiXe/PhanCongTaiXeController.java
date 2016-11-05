@@ -81,10 +81,10 @@ public class PhanCongTaiXeController extends HttpServlet {
 		phanCongTaiXeBEAN.setIdXe(idXe);
 		phanCongTaiXeBEAN.setIdThuNgay(idThuNgay);
 		if (PhanCongTaiXeBO.themPhanCongTaiXe(phanCongTaiXeBEAN)) {
-			msg.setAttribute("messages", "<ul><li>ThĂªm phĂ¢n cĂ´ng cho tài xế thĂ nh cĂ´ng!</li></ul>");
+			msg.setAttribute("messages", "<ul><li>Thêm phân công tài xế thành công!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");
 		} else {
-			msg.setAttribute("errors", "<ul><li>ThĂªm phĂ¢n cĂ´ng cho tài xế tháº¥t báº¡i!</li></ul>");
+			msg.setAttribute("errors", "<ul><li>Thêm phân công tài xế không thành công!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");
 		}
 

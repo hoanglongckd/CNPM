@@ -82,7 +82,7 @@ public class EditTaiXeController extends HttpServlet {
 			taiXeBEAN.setNgaySinh(ngaySinh);
 			taiXeBEAN.setHoTen(hoTen);
 			if (TaiXeBO.setSuaTaiXe(taiXeBEAN)) {
-				msg.setAttribute("messages", "<ul><li>Chỉnh sửa tài xế thành công!</li></ul>");
+				msg.setAttribute("messages", "<ul><li>Chỉnh sửa tài xế thành công! </li></ul>");
 				response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");
 			} 
 			else {
