@@ -36,7 +36,7 @@ public class ProfileController extends HttpServlet {
     ChucVuBO chucVuBO = new ChucVuBO();  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		
+		///kiem tra chuc vu admin 
 		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
 			String maNV = null;
 			String msg =  "";

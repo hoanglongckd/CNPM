@@ -123,14 +123,6 @@
 					<!-- /.nav-second-level -->
 				</li>
 				<li>
-					<a href="#"><i class="fa fa-calendar"></i> Quản lý vắng nghỉ<span class="fa arrow"></span></a>
-						<ul class="nav nav-second-level">
-							<li><a href="<%=request.getContextPath()%>/them-nhan-vien-nghi">Thêm nhân viên vắng</a></li>
-							<li><a href="<%=request.getContextPath()%>/danh-sach-vang-nghi">Báo cáo tình hình vắng</a></li>
-						</ul>
-					<!-- /.nav-second-level -->
-				</li>
-				<li>
 					<a href="<%=request.getContextPath()%>/gia-lap-xe"><i class="fa fa-paper-plane"></i> Giả lập taxi<span class="fa arrow"></span></a>
 				</li>
 				</ul>
