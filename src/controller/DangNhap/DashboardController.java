@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.bean.DashBoardBEAN;
+import model.bo.DashBoardBO;
+
 /**
  * Servlet implementation class dashboardController
  */
@@ -27,14 +30,14 @@ public class DashboardController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		HttpSession session = request.getSession();
 		if(session.getAttribute("maNV")==null){
 			response.sendRedirect(request.getContextPath()+"/login");
 		}else{
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/login/dashboard.jsp");
-		dispatcher.forward(request, response);
+			DashBoardBEAN dbb = DashBoardBO.demSoLuongThanhPhanMoiChucNang();
+			request.setAttribute("dbb", dbb);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/login/dashboard.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 
