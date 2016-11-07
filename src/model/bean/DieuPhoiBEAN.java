@@ -8,6 +8,9 @@ public class DieuPhoiBEAN {
 	private String thoiGianBatDau;
 	private String thoiGianKetThuc;
 	private int idPhanCong;
+	private String bienSoXe;
+	private int soKM;
+	private int thanhTien;
 	
 	public DieuPhoiBEAN() {
 		super();
@@ -76,6 +79,30 @@ public class DieuPhoiBEAN {
 
 	public void setLoaiXe(int loaiXe) {
 		this.loaiXe = loaiXe;
+	}
+
+	public String getBienSoXe() {
+		return bienSoXe;
+	}
+
+	public void setBienSoXe(String bienSoXe) {
+		this.bienSoXe = bienSoXe;
+	}
+
+	public int getSoKM() {
+		return soKM;
+	}
+
+	public void setSoKM(int soKM) {
+		this.soKM = soKM;
+	}
+
+	public int getThanhTien() {
+		return thanhTien;
+	}
+
+	public void setThanhTien(int thanhTien) {
+		this.thanhTien = thanhTien;
 	}
 	
 

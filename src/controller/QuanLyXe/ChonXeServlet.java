@@ -60,7 +60,7 @@ public class ChonXeServlet extends HttpServlet {
 		HttpSession msg = request.getSession();
 		
 		String param = request.getParameter("accept");
-//		System.out.println(param);
+
 		int id = 0;
 		try {
 			id = Integer.parseInt(param);

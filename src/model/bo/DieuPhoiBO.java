@@ -42,4 +42,17 @@ public class DieuPhoiBO {
 		return dieuPhoiDAO.getListDieuPhoi();
 	}
 
+	public static ArrayList<DieuPhoiBEAN> getDieuPhoi() {
+		return dieuPhoiDAO.getDieuPhoi();
+	}
+
+	public static boolean ketThucDieuPhoi(DieuPhoiBEAN dieuPhoiXe) {
+		return dieuPhoiDAO.ketThucDieuPhoi(dieuPhoiXe);
+	}
+
+	public static boolean tinhTien(DieuPhoiBEAN dieuPhoiXe) {
+		return dieuPhoiDAO.tinhTien(dieuPhoiXe);
+		
+	}
+
 }
