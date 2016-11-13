@@ -17,7 +17,6 @@ import model.bean.DieuPhoiBEAN;
 import model.bean.XeBEAN;
 import model.bo.DieuPhoiBO;
 
-
 /**
  * Servlet implementation class ChonXeServlet
  */
@@ -39,11 +38,11 @@ public class ChonXeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		int id = DieuPhoiBO.getMaxIDDieuPhoi();
-		
+
 		int loaiXe = DieuPhoiBO.getLoaiXe(id);
-		
+
 		ArrayList<XeBEAN> listXe = DieuPhoiBO.lietKeListXeDieuPhoi(loaiXe);
 		request.setAttribute("danhSachXe", listXe);
 		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/Xe/ChonXe.jsp");
@@ -56,9 +55,9 @@ public class ChonXeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
+
 		HttpSession msg = request.getSession();
-		
+
 		String param = request.getParameter("accept");
 
 		int id = 0;
@@ -67,20 +66,22 @@ public class ChonXeServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss aa");
 		Date d = new Date();
-		
+
 		DieuPhoiBEAN dieuphoi = new DieuPhoiBEAN();
 		dieuphoi.setIdPhanCong(DieuPhoiBO.getIDPhanCong(id));
 		dieuphoi.setId(DieuPhoiBO.getMaxIDDieuPhoi());
 		dieuphoi.setThoiGianBatDau(sdf.format(d));
-//		System.out.println(sdf.format(d));
-		
+		// System.out.println(sdf.format(d));
+
 		boolean check = DieuPhoiBO.updateIDPhanCong(dieuphoi);
 		if (check) {
-			msg.setAttribute("messages", "<ul><li>Điều phối xe thành công!</li></ul>");
-			response.sendRedirect(request.getContextPath() + "/danh-sach-dieu-phoi");
+			if (DieuPhoiBO.updateTrangThai(dieuphoi)) {
+				msg.setAttribute("messages", "<ul><li>Điều phối xe thành công!</li></ul>");
+				response.sendRedirect(request.getContextPath() + "/danh-sach-dieu-phoi");
+			}
 		} else {
 			msg.setAttribute("errors", "<ul><li>Lỗi cơ sở dữ liệu!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/chon-xe");

@@ -70,7 +70,7 @@ public class DieuPhoiDAO {
 		try {
 			String sql = "select xe.id, TAIXE.Ten, xe.BienSoXe, xe.SoCho " + "From PHANCONGTX " + "Join XE"
 					+ " On xe.id = PHANCONGTX.idXe" + " Join TAIXE " + "On TAIXE.id = PHANCONGTX.idTaiXe "
-					+ "Where xe.SoCho = " + loaiXe;
+					+ "Where xe.SoCho = " + loaiXe + " And xe.TinhTrangHoatDong = 'False'";
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while (rs.next()) {
@@ -108,6 +108,40 @@ public class DieuPhoiDAO {
 			ps.setInt(1, dieuphoi.getIdPhanCong());
 			ps.setString(2, dieuphoi.getThoiGianBatDau());
 			ps.setInt(3, dieuphoi.getId());
+			int rowEffect = ps.executeUpdate();
+			if (rowEffect != 0)
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean updateTrangThai(DieuPhoiBEAN dieuphoi) {
+		String sql = "UPDATE XE SET TinhTrangHoatDong = 'True' "
+				+ "WHERE id = (SELECT XE.id FROM PHANCONGTX "
+				+ "JOIN DIEUPHOI ON DIEUPHOI.idPhanCong=PHANCONGTX.id "
+				+ "JOIN XE ON XE.id = PHANCONGTX.idXe WHERE DIEUPHOI.id=?)";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, dieuphoi.getId());
+			int rowEffect = ps.executeUpdate();
+			if (rowEffect != 0)
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean updateTTFalse(DieuPhoiBEAN dieuPhoiXe) {
+		String sql = "UPDATE XE SET TinhTrangHoatDong = 'False' "
+				+ "WHERE id = (SELECT XE.id FROM PHANCONGTX "
+				+ "JOIN DIEUPHOI ON DIEUPHOI.idPhanCong=PHANCONGTX.id "
+				+ "JOIN XE ON XE.id = PHANCONGTX.idXe WHERE DIEUPHOI.id=?)";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, dieuPhoiXe.getId());
 			int rowEffect = ps.executeUpdate();
 			if (rowEffect != 0)
 				return true;

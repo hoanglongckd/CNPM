@@ -55,4 +55,12 @@ public class DieuPhoiBO {
 		
 	}
 
+	public static boolean updateTrangThai(DieuPhoiBEAN dieuphoi) {
+		return dieuPhoiDAO.updateTrangThai(dieuphoi);
+	}
+
+	public static boolean updateTTFalse(DieuPhoiBEAN dieuPhoiXe) {
+		return dieuPhoiDAO.updateTTFalse(dieuPhoiXe);
+	}
+
 }

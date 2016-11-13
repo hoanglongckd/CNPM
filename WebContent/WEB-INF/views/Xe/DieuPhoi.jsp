@@ -38,7 +38,7 @@
 					</div>
 										
 					<button type="submit" class="btn btn-default">  Next  </button>
-					<a href="list-xe" class="btn btn-default" role="button">Cancel</a>
+					<a href="dashboard" class="btn btn-default" role="button">Cancel</a>
 					
 				</form>
 			</div>

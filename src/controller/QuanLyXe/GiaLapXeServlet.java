@@ -1,26 +1,17 @@
 package controller.QuanLyXe;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.bean.BaoDuongXeBEAN;
 import model.bean.DieuPhoiBEAN;
-import model.bean.XeBEAN;
-import model.bo.BaoDuongXeBO;
 import model.bo.DieuPhoiBO;
-import model.bo.XeBO;
 
 /**
  * Servlet implementation class GiaLapXeServlet
@@ -43,8 +34,8 @@ public class GiaLapXeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession ses = request.getSession();
-		String maNV = ses.getAttribute("maNV").toString();
+		// HttpSession ses = request.getSession();
+		// String maNV = ses.getAttribute("maNV").toString();
 
 		ArrayList<DieuPhoiBEAN> dieuPhoiBEAN = DieuPhoiBO.getDieuPhoi();
 		// for (DieuPhoiBEAN dieuphoi : dieuPhoiBEAN){
@@ -78,8 +69,10 @@ public class GiaLapXeServlet extends HttpServlet {
 		if (request.getParameter("date-started").compareTo(request.getParameter("date-ended")) < 0) {
 			if (DieuPhoiBO.ketThucDieuPhoi(dieuPhoiXe)) {
 				if (DieuPhoiBO.tinhTien(dieuPhoiXe)) {
-					msg.setAttribute("messages", "<ul><li>Kết thúc điều phối thành công!</li></ul>");
-					response.sendRedirect(request.getContextPath() + "/danh-sach-dieu-phoi");
+					if (DieuPhoiBO.updateTTFalse(dieuPhoiXe)) {
+						msg.setAttribute("messages", "<ul><li>Kết thúc điều phối thành công!</li></ul>");
+						response.sendRedirect(request.getContextPath() + "/danh-sach-dieu-phoi");
+					}
 				} else {
 					msg.setAttribute("errors", "<ul><li>Lỗi khi tính tiền!</li></ul>");
 					response.sendRedirect(request.getContextPath() + "/gia-lap-xe");
