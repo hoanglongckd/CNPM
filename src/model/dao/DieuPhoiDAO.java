@@ -209,8 +209,8 @@ public class DieuPhoiDAO {
 
 	public ArrayList<DonGiaBEAN> getDonGia(int soCho, int soKM) {
 		ArrayList<DonGiaBEAN> giaTien = new ArrayList<DonGiaBEAN>();
-		String sql = "SELECT DONGIA.id, DONGIA.SoTien FROM DONGIA" + " WHERE SoCho = " + soCho + " AND DinhMucKmToiThieu < " + soKM
-				+ " AND DinhMucKmToiDa > " + soKM;
+		String sql = "SELECT DONGIA.id, DONGIA.SoTien FROM DONGIA" + " WHERE SoCho = " + soCho + " AND DinhMucKmToiThieu <= " + soKM
+				+ " AND DinhMucKmToiDa >= " + soKM;
 		try {
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(sql);
