@@ -72,6 +72,9 @@ public class GiaLapXeServlet extends HttpServlet {
 					if (DieuPhoiBO.updateTTFalse(dieuPhoiXe)) {
 						msg.setAttribute("messages", "<ul><li>Kết thúc điều phối thành công!</li></ul>");
 						response.sendRedirect(request.getContextPath() + "/danh-sach-dieu-phoi");
+					} else {
+						msg.setAttribute("errors", "<ul><li>Lỗi khi cập nhật trạng thái xe!</li></ul>");
+						response.sendRedirect(request.getContextPath() + "/gia-lap-xe");
 					}
 				} else {
 					msg.setAttribute("errors", "<ul><li>Lỗi khi tính tiền!</li></ul>");

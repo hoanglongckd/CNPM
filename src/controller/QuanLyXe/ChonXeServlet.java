@@ -81,6 +81,9 @@ public class ChonXeServlet extends HttpServlet {
 			if (DieuPhoiBO.updateTrangThai(dieuphoi)) {
 				msg.setAttribute("messages", "<ul><li>Điều phối xe thành công!</li></ul>");
 				response.sendRedirect(request.getContextPath() + "/danh-sach-dieu-phoi");
+			} else {
+				msg.setAttribute("errors", "<ul><li>Lỗi khi update trạng thái!</li></ul>");
+				response.sendRedirect(request.getContextPath() + "/chon-xe");
 			}
 		} else {
 			msg.setAttribute("errors", "<ul><li>Lỗi cơ sở dữ liệu!</li></ul>");
