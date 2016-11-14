@@ -41,7 +41,7 @@ if(request.getAttribute("msg")!=null)
 				</div>
 				<div class="form-group">
 					<label>Password mới</label>
-					<input class="form-control" type="password" name="new-password" value=""/>
+					<input class="form-control" type="password" name="new-password" value="" required/>
 				</div>
 <!-- 				<div class="form-group"> -->
 <!-- 						<label> Nhập lại password mới -->

@@ -56,11 +56,11 @@
 	                                </div>
 	                                <%}else {%>
 	                                 <div class="form-group">
-	                                	<input class="form-control" placeholder="Ma Nhan Vien" name="maNV" type="text" autofocus>
+	                                	<input class="form-control" placeholder="Ma Nhan Vien" name="maNV" type="text" autofocus required>
 	                                </div>
 	                                <%} %>
 	                                <div class="form-group">
-	                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+	                                    <input class="form-control" placeholder="Password" name="password" type="password" value="" required>
 	                                	
 	                                </div>
 	                                <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>

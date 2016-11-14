@@ -84,12 +84,12 @@ public class NhanVienDAO {
 
 	public boolean setSuaNhanVien(NhanVienBEAN nhanVienBEAN) {
 		String sql = "UPDATE NHANVIEN SET "
-				+ "Ten = ?, NgaySinh = ? WHERE id = ?";
+				+ "Ten = ?, NgaySinh = ? WHERE MaNV = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, nhanVienBEAN.getHoTen());
 			ps.setString(2, nhanVienBEAN.getNgaySinh());
-			ps.setInt(3, nhanVienBEAN.getId());
+			ps.setString(3, nhanVienBEAN.getMaNhanVien());
 				int rowEffect = ps.executeUpdate();
 			if (rowEffect != 0) return true;
 		} catch (Exception e) {

@@ -44,11 +44,11 @@ if(request.getAttribute("msg")!=null)
 					<%} %>
 					<div class="form-group">
 						<label>Mã Nhân Viên</label>
-						<input class="form-control" name="maNV" id="maNV" placeholder="" value="<%=nv.getMaNhanVien() %>" readonly="readonly"/>
+						<input class="form-control" name="maNV" id="maNV" placeholder="" value="<%=nv.getMaNhanVien() %>" readonly="readonly" required/>
 					</div>
 				<div class="form-group">
 					<label>Tên</label>
-					<input class="form-control" name="ten" id="ten" placeholder="Nhập mới tên của bạn" value="<%=nv.getHoTen()%>"/>
+					<input class="form-control" required name="ten" id="ten" placeholder="Nhập mới tên của bạn" value="<%=nv.getHoTen()%>"/>
 				</div>
 				<div class="form-group">
 					<label>Ngày sinh</label>

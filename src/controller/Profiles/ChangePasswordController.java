@@ -88,7 +88,7 @@ public class ChangePasswordController extends HttpServlet {
 			}else{
 				NhanVienBEAN nhanVien = new NhanVienBEAN(0,idUser,"","",0,newPassword);
 				if(nhanVienBO.updatePassword(nhanVien)){
-					session.setAttribute("messages", "<ul><li>Sửa xe bảo dưỡng thành công!</li></ul>");
+					session.setAttribute("messages", "<ul><li>Đổi mật khẩu thành công!</li></ul>");
 				response.sendRedirect(request.getContextPath()+"/doi-mat-khau");
 				}
 				else {
