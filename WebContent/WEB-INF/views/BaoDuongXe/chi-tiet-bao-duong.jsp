@@ -52,7 +52,7 @@
 						><%=chiTietBaoDuong.getChiTiet()%></textarea>
 					</div>
 					<a href="<%=request.getContextPath()%>/sua-xe-bao-duong?id=<%=chiTietBaoDuong.getId()%>" class="btn btn-default">Sửa</a>
-					<a href="<%=request.getContextPath()%>/bao-cao-xe-bao-duong" class="btn btn-default">Back</a>
+					<a href="<%=request.getContextPath()%>/bao-cao-xe-bao-duong" class="btn btn-default">Quay về</a>
 				</form>
 			</div>
 		</div>

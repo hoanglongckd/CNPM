@@ -55,11 +55,11 @@
 					</div>
 				<div class="form-group">
 					<label>Ngày bảo dưỡng hiện tại</label>
-					<input class="form-control" type="text" name="current-date"/>
+					<input class="form-control" type="text" name="current-date" required />
 				</div>
 				<div class="form-group">
 					<label>Ngày bảo dưỡng tiếp theo</label>
-					<input class="form-control" type="text" name="next-date" />
+					<input class="form-control" type="text" name="next-date" required />
 				</div>
 				<div class="form-group">
 					<label>Chi phí bảo dưỡng</label>

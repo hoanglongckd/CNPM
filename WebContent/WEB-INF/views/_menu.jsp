@@ -90,6 +90,10 @@
 						</ul>
 					<!-- /.nav-second-level -->
 				</li>
+				<li>
+					<a href="<%=request.getContextPath()%>/gia-lap-xe"><i class="fa fa-paper-plane"></i> Giả lập điều phối<span class="fa arrow"></span></a>
+					<!-- /.nav-second-level -->
+				</li>
 			</ul>
 		</div>
 	<!-- /.sidebar-collapse -->

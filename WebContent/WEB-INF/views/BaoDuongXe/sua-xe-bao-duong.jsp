@@ -38,25 +38,26 @@
 					<div class="form-group">
 						<label for="current-date">Ngày bảo dưỡng hiện tại</label>
 						<input class="form-control" type="text" name="current-date" 
-						id="current-date" value="<%=xeDaBaoDuong.getNgayBaoDuong()%>" />
+						id="current-date" value="<%=xeDaBaoDuong.getNgayBaoDuong()%>" required />
 					</div>
 					<div class="form-group">
 						<label for="next-date">Ngày bảo dưỡng tiếp theo</label>
 						<input class="form-control" type="text" name="next-date"
-						id="next-date" value="<%=xeDaBaoDuong.getNgayBaoDuongTiepTheo()%>" />
+						id="next-date" value="<%=xeDaBaoDuong.getNgayBaoDuongTiepTheo()%>" required />
 					</div>
 					<div class="form-group">
 						<label for="cost">Chi phí bảo dưỡng</label>
 						<input type="number" class="form-control" name="cost" 
-						id="cost" value="<%=xeDaBaoDuong.getSoTien()%>" />
+						id="cost" value="<%=xeDaBaoDuong.getSoTien()%>" required />
 					</div>
 					<div class="form-group">
 						<label for="chi-tiet">Chi tiết</label>
 						<textarea class="form-control" rows="4" name="detail" id="chi-tiet"
-						placeholder="Nhập chi tiết các phần bảo dưỡng ứng với số tiền..."><%=xeDaBaoDuong.getChiTiet()%></textarea>
+						placeholder="Nhập chi tiết các phần bảo dưỡng ứng với số tiền..." required><%=xeDaBaoDuong.getChiTiet()%></textarea>
 					</div>
 					<button type="submit" class="btn btn-default">Sửa</button>
 					<button type="reset" class="btn btn-default">Reset</button>
+					<a href="<%=request.getContextPath()%>/bao-cao-xe-bao-duong" class="btn btn-default">Hủy</a>
 				</form>
 			</div>
 		</div>

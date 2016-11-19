@@ -15,7 +15,7 @@ public class ThuNgayDAO {
 	public ArrayList<ThuNgayBEAN> getDanhSachThuNgay() {
 		ArrayList<ThuNgayBEAN> listThuNgay = new ArrayList<>();
 		try {
-			String sql = "select * from THUNGAY";
+			String sql = "select * from THUNGAY order by id";
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()){
