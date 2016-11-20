@@ -50,7 +50,7 @@
 			<jsp:include page="../_message-block.jsp" />
 
 			<div class="col-lg-7" style="padding-bottom: 120px">
-				<form action="${pageContext.request.contextPath}/them-phan-cong-tai-xe"
+				<form action="${pageContext.request.contextPath}/phan-cong-tai-xe"
 					method="POST">
 					<div class="form-group">
 						<label>Tài xế: </label> <select class="form-control"
