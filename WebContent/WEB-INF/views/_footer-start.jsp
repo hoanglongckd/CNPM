@@ -6,6 +6,7 @@
 	
 	    <!-- jQuery -->
 	    <script src="<%=request.getContextPath()%>/public/bower_components/jquery/dist/jquery.min.js"></script>
+	    <script src="<%=request.getContextPath()%>/public/bower_components/jquery/dist/jquery.validate.min.js"></script>
 	    
 	    <!-- DateTimePicker -->
 	    <script src="<%=request.getContextPath()%>/public/datetimepicker/js/moment.min.js"></script>

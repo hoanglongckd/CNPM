@@ -28,7 +28,7 @@
 			<jsp:include page="../_message-block.jsp" />
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom: 120px">
-				<form action="<%=request.getContextPath()%>/cap-nhat-xe" method="POST">
+				<form action="<%=request.getContextPath()%>/cap-nhat-xe" id = "form_capnhatxe" method="POST">
 					<input type="hidden" name="id" value="<%=xe.getId() %>">
 					<div class="form-group">
 						<label>Biển số xe</label> <input class="form-control"
@@ -72,4 +72,82 @@
 <!-- /#page-wrapper -->
 
 <jsp:include page="../_footer-start.jsp" />
+<script type="text/javascript">
+	$.validator.addMethod('whitespace', function(str) {
+		if (str.indexOf(' ') > -1) {
+			for (var i = 0; i < str.length; i++) {
+				if (str[i] != ' ')
+					return true;
+			}
+			return false;
+		} else {
+			return true;
+		}
+	})
+	$.validator.addMethod('maxlength20', function(str){
+		if (str.length > 20) return false;
+		else return true;
+	})
+	$.validator.addMethod('maxlength50', function(str){
+		if (str.length > 50) return false;
+		else return true;
+	})
+	$.validator.addMethod('specialcharacter', function(str){
+		var pattern = /^[a-zA-Z0-9\-\.]+$/;
+		if(pattern.test(str)) return true;
+		else return false;
+	})
+	$(function() {
+		$('#form_capnhatxe').validate(
+				{
+					rules : {
+						model : {
+							required : true,
+							whitespace : true,
+							maxlength50: true,
+							specialcharacter: true
+						},
+						hang : {
+							required : true,
+							whitespace : true,
+							maxlength20 : true,
+							specialcharacter: true
+						}
+					},
+					messages : {
+						model : {
+							required : 'Vui lòng điền vào trường này.',
+							whitespace : 'Không được nhập toàn ký tự trắng',
+							maxlength50: 'Không được vượt quá 50 ký tự',
+							specialcharacter: 'Không được nhập ký tự đặc biệt'
+						},
+						hang : {
+							required : 'Vui lòng điền vào trường này.',
+							whitespace : 'Không được nhập toàn ký tự trắng',
+							maxlength20: 'Không được vượt quá 20 ký tự',
+							specialcharacter: 'Không được nhập ký tự đặc biệt'
+						}
+					},
+					errorElement : "em",
+					errorPlacement : function(error, element) {
+						// Add the `help-block` class to the error element
+						error.addClass("help-block");
+
+						if (element.prop("type") === "checkbox") {
+							error.insertAfter(element.parent("label"));
+						} else {
+							error.insertAfter(element);
+						}
+					},
+					highlight : function(element, errorClass, validClass) {
+						$(element).closest(".form-group").addClass("has-error")
+								.removeClass("has-success");
+					},
+					unhighlight : function(element, errorClass, validClass) {
+						$(element).closest(".form-group").removeClass(
+								"has-error");
+					}
+				})
+	});
+</script>
 <jsp:include page="../_footer-end.jsp" />
