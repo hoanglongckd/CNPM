@@ -9,13 +9,14 @@ public class PhanCongTaiXeDAO {
 	static Connection conn = SQLServerConnUtils.getSQLServerConnection();
 	public static boolean themPhanCongTaiXe(PhanCongTaiXeBEAN phanCongTaiXeBEAN) {
 		try {
-			String sql = "INSERT INTO PHANCONGTX(idTaiXe, idCa, idThuNgay) "
-					+ "VALUES(?, ?, ?)";
+			String sql = "INSERT INTO PHANCONGTX(idTaiXe, idXe, idCa, idThuNgay) "
+					+ "VALUES(?, ?, ?, ?)";
 			//System.out.println(nhanVienBEAN.getMaNhanVien() + nhanVienBEAN.getHoTen() + nhanVienBEAN.getIdChucVu());
 			PreparedStatement pre = conn.prepareStatement(sql);
 			pre.setInt(1, phanCongTaiXeBEAN.getIdTaiXe());
-			pre.setInt(2, phanCongTaiXeBEAN.getIdCa());
-			pre.setInt(3, phanCongTaiXeBEAN.getIdThuNgay());
+			pre.setInt(2, phanCongTaiXeBEAN.getIdXe());
+			pre.setInt(3, phanCongTaiXeBEAN.getIdCa());
+			pre.setInt(4, phanCongTaiXeBEAN.getIdThuNgay());
 			int rowEffect = pre.executeUpdate();
 			if (rowEffect != 0)
 				return true;

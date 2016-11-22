@@ -41,7 +41,7 @@
 								if(listXe!=null){
 									for(XeBEAN xe : listXe){
 										%>
-										<option value="<%=i%>"><%=xe.getBienSoXe() %></option>
+										<option value="<%=xe.getId()%>"><%=xe.getBienSoXe() %></option>
 										<%
 										i++;
 									}

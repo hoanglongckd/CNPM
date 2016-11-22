@@ -42,6 +42,15 @@
                 </h1>
             </div>
             
+            <div class="col-lg-4" style="margin-left: -0.1em; padding-left:0px;">
+            <form method="POST">
+            	<div class="form-inline" class="form-group">
+            		<label>Tổng lợi nhuận</label>
+            		<input class="form-control" type="text" name="totalcost" value="0" readonly>
+            	</div>
+            	</form>
+            </div>
+            
             <div class="col-lg-4 col-lg-offset-4">
 	            <form class="form-inline" method="POST">
 	            	<div class="form-group">
@@ -61,6 +70,7 @@
 					</div>
 				</form>
             </div>
+            
             
             <jsp:include page="../_message-block.jsp" />
             
