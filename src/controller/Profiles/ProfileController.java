@@ -38,6 +38,7 @@ public class ProfileController extends HttpServlet {
 		HttpSession session = request.getSession();
 			String maNV = null;
 			String msg =  "";
+			
 			if(request.getParameter("msg")!=null){
 				msg = (request.getParameter("msg"));
 			}

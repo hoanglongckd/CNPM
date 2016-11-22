@@ -37,6 +37,7 @@ public class NhanVienDAO {
 			}
 			return false;
 	}
+	
 
 	public ArrayList<NhanVienBEAN> getDanhSachNhanVien() {
 		ArrayList<NhanVienBEAN> listNhanVien = new ArrayList<>();
