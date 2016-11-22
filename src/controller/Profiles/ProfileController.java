@@ -51,7 +51,7 @@ public class ProfileController extends HttpServlet {
 			ArrayList<ChucVuBEAN> listChucVu = chucVuBO.listChucVu();
 			String chucVu = null;
 			for(ChucVuBEAN cv : listChucVu){
-				if (nhanVien.getId()==cv.getId()){
+				if (nhanVien.getIdChucVu()==cv.getId()){
 					chucVu = cv.getTenChucVu();
 					break;
 				}
@@ -69,7 +69,6 @@ public class ProfileController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("maChucVu").toString().equals("AD")){
 			if(session.getAttribute("maNV")!=null){
 				if(request.getParameter("change-password")!=null){
 					response.sendRedirect(request.getContextPath()+"/doi-mat-khau");
@@ -90,18 +89,17 @@ public class ProfileController extends HttpServlet {
 						NhanVienBEAN nhanVien = new NhanVienBEAN(0, maNV, ten, ngaySinh, 0,"");
 						
 						if(nhanVienBO.setSuaNhanVien(nhanVien)){
-							response.sendRedirect(request.getContextPath()+"/profile?msg=1");
+							session.setAttribute("messages", "<ul><li> Cập nhập thành công!</li></ul>");
+							response.sendRedirect(request.getContextPath()+"/profile");
 						}else{
-							response.sendRedirect(request.getContextPath()+"/profile?msg=2");
+							session.setAttribute("errors", "<ul><li>Có lỗi xảy ra! Vui lòng liên hệ với nhà cung cấp dịch vụ!</li></ul>");
+							response.sendRedirect(request.getContextPath()+"/profile");
 						}
 					}
 				}
 			}else{
 				response.sendRedirect(request.getContextPath()+"/login");
 			}
-		}else{
-			response.sendRedirect(request.getContextPath()+"/dashboard");
-		}
 	}
 
 }

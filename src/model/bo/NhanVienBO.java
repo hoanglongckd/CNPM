@@ -30,6 +30,7 @@ public class NhanVienBO {
 	public static NhanVienBEAN getNhanVien(String idNhanVien) {
 		return nhanVienDAO.getNhanVien(idNhanVien);
 	}
+	
 
 	public static boolean setSuaNhanVien(NhanVienBEAN nhanVienBEAN) {
 		return nhanVienDAO.setSuaNhanVien(nhanVienBEAN);
