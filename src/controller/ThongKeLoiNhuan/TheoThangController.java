@@ -60,11 +60,14 @@ public class TheoThangController extends HttpServlet {
 				Date date = simpleDateFormat1.parse(filter);
 				year = simpleDateFormat2.format(date);
 				month = simpleDateFormat3.format(date);
-				System.out.println("date: " + date + ", year: " + year + ", month: " + month);
+//				System.out.println("date: " + date + ", year: " + year + ", month: " + month);
+				long profit = ThongKeLoiNhuanBO.getTotalProfitByMonth(year, month);
+				long fee = ThongKeLoiNhuanBO.getTotalFeeByMonth(year, month);
 				ArrayList<ThongKeLoiNhuanBEAN> thongKeLoiNhuanBEANs = ThongKeLoiNhuanBO.thongKeTheoThang(year, month);
 				request.setAttribute("list", thongKeLoiNhuanBEANs);
 				request.setAttribute("month", month);
 				request.setAttribute("year", year);
+				request.setAttribute("cost", profit - fee);
 				RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/ThongKeLoiNhuan/thong-ke-theo-thang.jsp");
 				dispatcher.forward(request, response);
 			} catch (Exception e) {

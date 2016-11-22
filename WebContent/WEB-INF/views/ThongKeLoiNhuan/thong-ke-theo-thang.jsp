@@ -12,12 +12,16 @@
 <%
 	ArrayList<ThongKeLoiNhuanBEAN> list = null;
 	String month = "", year = "";
+	long cost = 0;
 	if (request.getAttribute("list") != null) {
 		list = (ArrayList<ThongKeLoiNhuanBEAN>) request.getAttribute("list");
 	}
 	if (request.getAttribute("month") != null && request.getAttribute("year") != null) {
 		month = (String) request.getAttribute("month");
 		year = (String) request.getAttribute("year");
+	}
+	if (request.getAttribute("cost") != null) {
+		cost = (Long) request.getAttribute("cost");
 	}
 %>
 
@@ -46,7 +50,7 @@
             <form method="POST">
             	<div class="form-inline" class="form-group">
             		<label>Tổng lợi nhuận</label>
-            		<input class="form-control" type="text" name="totalcost" value="0" readonly>
+            		<input class="form-control" type="text" name="totalcost" value="<%=cost %>" readonly>
             	</div>
             	</form>
             </div>

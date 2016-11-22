@@ -16,4 +16,20 @@ public class ThongKeLoiNhuanBO {
 	public static ArrayList<ThongKeLoiNhuanBEAN> thongKeTheoNam (String year) {
 		return thongKeLoiNhuanDAO.thongKeTheoNam(year);
 	}
+	
+	public static long getTotalProfitByMonth (String year, String month) {
+		return thongKeLoiNhuanDAO.getTotalProfitByMonth(year, month);
+	}
+	
+	public static long getTotalFeeByMonth (String year, String month) {
+		return thongKeLoiNhuanDAO.getTotalFeeByMonth(year, month);
+	}
+	
+	public static long getTotalProfitByYear(String year) {
+		return thongKeLoiNhuanDAO.getTotalProfitByYear(year);
+	}
+	
+	public static long getTotalFeeByYear (String year) {
+		return thongKeLoiNhuanDAO.getTotalFeeByYear(year);
+	}
 }

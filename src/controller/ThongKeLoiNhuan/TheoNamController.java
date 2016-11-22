@@ -40,9 +40,12 @@ public class TheoNamController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String year = request.getParameter("year");
+		long profit = ThongKeLoiNhuanBO.getTotalProfitByYear(year);
+		long fee = ThongKeLoiNhuanBO.getTotalFeeByYear(year);
 		ArrayList<ThongKeLoiNhuanBEAN> list = ThongKeLoiNhuanBO.thongKeTheoNam(year);
 		request.setAttribute("year", year);
 		request.setAttribute("list", list);
+		request.setAttribute("cost", profit - fee);
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/ThongKeLoiNhuan/thong-ke-theo-nam.jsp");
 		dispatcher.forward(request, response);
 	}
