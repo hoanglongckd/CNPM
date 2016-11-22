@@ -17,15 +17,23 @@ public class ThongKeLoiNhuanDAO {
 	public ArrayList<ThongKeLoiNhuanBEAN> thongKeTheoThang(String year, String month) {
 		ArrayList<ThongKeLoiNhuanBEAN> lists = new ArrayList<>();
 		try {
-			String sql = "SELECT XE.BienSoXe, SUM(GIATIEN.ThanhTien) as Cost, SUM(BAODUONGXE.SoTien) as Spending "
-					+ "FROM GIATIEN "
-					+ "FULL JOIN DIEUPHOI ON GIATIEN.idDieuPhoi = DIEUPHOI.id "
-					+ "FULL JOIN PHANCONGTX ON DIEUPHOI.idPhanCong = PHANCONGTX.id "
-					+ "FULL JOIN XE ON XE.id = PHANCONGTX.idXe "
-					+ "FULL JOIN BAODUONGXE ON XE.id = BAODUONGXE.idXe "
-					+ "WHERE (YEAR(DIEUPHOI.ThoiGianBatDau) = ? AND MONTH(DIEUPHOI.ThoiGianBatDau) = ?) "
-					+ "OR (YEAR(BAODUONGXE.NgayBaoDuong) = ? AND MONTH(BAODUONGXE.NgayBaoDuong) = ?) "
-					+ "GROUP BY XE.BienSoXe";
+			String sql = "SELECT * FROM "
+						+ "(SELECT XE.BienSoXe as Xe1, SUM(GIATIEN.ThanhTien) as Cost "
+						+ "FROM XE JOIN PHANCONGTX "
+						+ "ON XE.id = PHANCONGTX.idXe "
+						+ "JOIN DIEUPHOI "
+						+ "ON PHANCONGTX.id = DIEUPHOI.idPhanCong "
+						+ "JOIN GIATIEN "
+						+ "ON DIEUPHOI.id = GIATIEN.idDieuPhoi "
+						+ "WHERE YEAR(DIEUPHOI.ThoiGianKetThuc) = ? AND MONTH(DIEUPHOI.ThoiGianKetThuc) = ? "
+						+ "GROUP BY Xe.BienSoXe) as i "
+						+ "FULL JOIN "
+						+ "(SELECT XE.BienSoXe as Xe2, SUM(BAODUONGXE.SoTien) as Fee "
+						+ "FROM XE JOIN BAODUONGXE "
+						+ "ON XE.id = BAODUONGXE.idXe "
+						+ "WHERE YEAR(BAODUONGXE.NgayBaoDuong) = ? AND MONTH(BAODUONGXE.NgayBaoDuong) = ? "
+						+ "GROUP BY XE.BienSoXe) as j "
+						+ "ON i.Xe1 = j.Xe2";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, year);
 			ps.setString(2, month);
@@ -33,11 +41,19 @@ public class ThongKeLoiNhuanDAO {
 			ps.setString(4, month);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				ThongKeLoiNhuanBEAN list = new ThongKeLoiNhuanBEAN(
-						rs.getString("BienSoXe"), 
-						rs.getLong("Cost"), 
-						rs.getLong("Spending"));
-				lists.add(list);
+				if (rs.getString("Xe1") != null) {
+					ThongKeLoiNhuanBEAN item = new ThongKeLoiNhuanBEAN(
+							rs.getString("Xe1"), 
+							rs.getLong("Cost"), 
+							rs.getLong("Fee"));
+					lists.add(item);
+				} else {
+					ThongKeLoiNhuanBEAN item = new ThongKeLoiNhuanBEAN(
+							rs.getString("Xe2"), 
+							rs.getLong("Cost"), 
+							rs.getLong("Fee"));
+					lists.add(item);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,14 +89,14 @@ public class ThongKeLoiNhuanDAO {
 				if (rs.getString("Xe1") != null) {
 					ThongKeLoiNhuanBEAN item = new ThongKeLoiNhuanBEAN(
 							rs.getString("Xe1"), 
-							rs.getLong("Fee"), 
-							rs.getLong("Cost"));
+							rs.getLong("Cost"), 
+							rs.getLong("Fee"));
 					list.add(item);
 				} else {
 					ThongKeLoiNhuanBEAN item = new ThongKeLoiNhuanBEAN(
 							rs.getString("Xe2"), 
-							rs.getLong("Fee"), 
-							rs.getLong("Cost"));
+							rs.getLong("Cost"), 
+							rs.getLong("Fee"));
 					list.add(item);
 				}
 			}
