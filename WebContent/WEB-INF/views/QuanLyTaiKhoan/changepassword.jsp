@@ -14,8 +14,7 @@
 NhanVienBEAN nv = null;
 nv = (NhanVienBEAN)request.getAttribute("nhanVien");
 String msg = null;
-if(request.getAttribute("msg")!=null)
-	msg =(String)request.getAttribute("msg");
+
 
 %>
 
@@ -43,11 +42,6 @@ if(request.getAttribute("msg")!=null)
 					<label>Password mới</label>
 					<input class="form-control" type="password" name="new-password" value="" required/>
 				</div>
-<!-- 				<div class="form-group"> -->
-<!-- 						<label> Nhập lại password mới -->
-<!-- 						</label> -->
-<!-- 						<input type="password" class="form-control" name="renew-password" value="" /> -->
-<!-- 					</div> -->
 				<div hidden>
 					<input type="text" class="form-control" name="maNhanVien"  value="<%=nv.getMaNhanVien()%>" />
 				</div>
