@@ -32,28 +32,36 @@ public class SuaXeBaoDuongController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String param = request.getParameter("id");
-		int id = 0;
-		try {
-			id = Integer.parseInt(param);
-		} catch (Exception e) {
-			e.printStackTrace();
+		HttpSession session = request.getSession();
+		///kiem tra chuc vu admin 
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			String param = request.getParameter("id");
+			int id = 0;
+			try {
+				id = Integer.parseInt(param);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			BaoDuongXeBEAN baoDuongXeBEAN = BaoDuongXeBO.getSuaXe(id);
+			SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+			try {
+				Date date1 = simpleDateFormat1.parse(baoDuongXeBEAN.getNgayBaoDuong());
+				SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
+				baoDuongXeBEAN.setNgayBaoDuong(simpleDateFormat2.format(date1));
+				
+				Date date2 = simpleDateFormat1.parse(baoDuongXeBEAN.getNgayBaoDuongTiepTheo());
+				baoDuongXeBEAN.setNgayBaoDuongTiepTheo(simpleDateFormat2.format(date2));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("xeDaBaoDuong", baoDuongXeBEAN);
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/BaoDuongXe/sua-xe-bao-duong.jsp");
+			dispatcher.forward(request, response);
+		//neu khong phai admin	
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
 		}
-		BaoDuongXeBEAN baoDuongXeBEAN = BaoDuongXeBO.getSuaXe(id);
-		SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			Date date1 = simpleDateFormat1.parse(baoDuongXeBEAN.getNgayBaoDuong());
-			SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
-			baoDuongXeBEAN.setNgayBaoDuong(simpleDateFormat2.format(date1));
-			
-			Date date2 = simpleDateFormat1.parse(baoDuongXeBEAN.getNgayBaoDuongTiepTheo());
-			baoDuongXeBEAN.setNgayBaoDuongTiepTheo(simpleDateFormat2.format(date2));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		request.setAttribute("xeDaBaoDuong", baoDuongXeBEAN);
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/BaoDuongXe/sua-xe-bao-duong.jsp");
-		dispatcher.forward(request, response);
+		//----end---
 	}
 
 	/**

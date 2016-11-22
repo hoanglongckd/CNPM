@@ -29,21 +29,29 @@ public class XoaXeBaoDuongController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession msg = request.getSession();
-		String param = request.getParameter("id");
-		int id = 0;
-		try {
-			id = Integer.parseInt(param);
-		} catch (Exception e) {
-			e.printStackTrace();
+		HttpSession session = request.getSession();
+		///kiem tra chuc vu admin 
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			HttpSession msg = request.getSession();
+			String param = request.getParameter("id");
+			int id = 0;
+			try {
+				id = Integer.parseInt(param);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			boolean valid = BaoDuongXeBO.xoaXeBaoDuong(id);
+			if (valid) {
+				msg.setAttribute("messages", "<ul><li>Xóa xe bảo dưỡng thành công!</li></ul>");
+			} else {
+				msg.setAttribute("errors", "<ul><li>Có lỗi xảy ra! Vui lòng liên hệ với nhà cung cấp dịch vụ!</li></ul>");
+			}
+			response.sendRedirect(request.getContextPath() + "/bao-cao-xe-bao-duong");
+		//neu khong phai admin	
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
 		}
-		boolean valid = BaoDuongXeBO.xoaXeBaoDuong(id);
-		if (valid) {
-			msg.setAttribute("messages", "<ul><li>Xóa xe bảo dưỡng thành công!</li></ul>");
-		} else {
-			msg.setAttribute("errors", "<ul><li>Có lỗi xảy ra! Vui lòng liên hệ với nhà cung cấp dịch vụ!</li></ul>");
-		}
-		response.sendRedirect(request.getContextPath() + "/bao-cao-xe-bao-duong");
+		//----end---
 	}
 
 	/**

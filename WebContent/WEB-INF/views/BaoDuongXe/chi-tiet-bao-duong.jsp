@@ -1,3 +1,4 @@
+<%@page import="utils.FormatMoneyUtils"%>
 <%@page import="model.bean.BaoDuongXeBEAN"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -44,7 +45,7 @@
 					<div class="form-group">
 						<label>Tổng chi phí</label>
 						<input type="number" class="form-control" name="cost"
-						value="<%=chiTietBaoDuong.getSoTien()%>" readonly />
+						value="<%=FormatMoneyUtils.convertToMoney(chiTietBaoDuong.getSoTien())%>" readonly />
 					</div>
 					<div class="form-group">
 						<label>Chi tiết</label>

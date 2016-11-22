@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.bean.BaoDuongXeBEAN;
 import model.bo.BaoDuongXeBO;
@@ -31,10 +32,18 @@ public class BaoCaoXeBaoDuongController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<BaoDuongXeBEAN> baoDuongXeBEANs = BaoDuongXeBO.lietKeDanhSachBaoDuong();
-		request.setAttribute("danhSachBaoDuongXe", baoDuongXeBEANs);
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/BaoDuongXe/bao-cao-xe-bao-duong.jsp");
-		dispatcher.forward(request, response);
+		HttpSession session = request.getSession();
+		///kiem tra chuc vu admin 
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			ArrayList<BaoDuongXeBEAN> baoDuongXeBEANs = BaoDuongXeBO.lietKeDanhSachBaoDuong();
+			request.setAttribute("danhSachBaoDuongXe", baoDuongXeBEANs);
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/BaoDuongXe/bao-cao-xe-bao-duong.jsp");
+			dispatcher.forward(request, response);
+		//neu khong phai admin	
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
+		}
+		//----end---
 	}
 
 	/**

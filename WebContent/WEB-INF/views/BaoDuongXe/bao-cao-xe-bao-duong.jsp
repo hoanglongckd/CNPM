@@ -1,3 +1,4 @@
+<%@page import="utils.FormatMoneyUtils"%>
 <%@page import="model.bean.BaoDuongXeBEAN"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,6 +16,7 @@
 	if(request.getAttribute("danhSachBaoDuongXe")!=null){
 		danhSachBaoDuongXe = (ArrayList<BaoDuongXeBEAN>)request.getAttribute("danhSachBaoDuongXe");
 	}
+	
 %>
 <!-- Page Content -->
 <div id="page-wrapper">
@@ -53,7 +55,7 @@
                         <td><%=xeBaoDuong.getBienSoXe()%></td>
                         <td><%=xeBaoDuong.getNgayBaoDuong()%></td>
                         <td><%=xeBaoDuong.getNgayBaoDuongTiepTheo()%></td>
-                        <td><%=xeBaoDuong.getSoTien()%></td>
+                        <td><%=FormatMoneyUtils.convertToMoney(xeBaoDuong.getSoTien())%></td>
                         <td class="center">
                         	<i class="fa fa-eye fa-fw"></i>
                         	<a href="<%=request.getContextPath()%>/chi-tiet-bao-duong?id=<%=xeBaoDuong.getId()%>"> Xem</a>

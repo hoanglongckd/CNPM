@@ -1,3 +1,4 @@
+<%@page import="utils.FormatMoneyUtils"%>
 <%@page import="model.bean.ThongKeLoiNhuanBEAN"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -49,7 +50,7 @@
             <form method="POST">
             	<div class="form-inline" class="form-group">
             		<label>Tổng lợi nhuận</label>
-            		<input class="form-control" type="text" name="totalcost" value="<%=cost %>" readonly>
+            		<input class="form-control" type="text" name="totalcost" value="<%=FormatMoneyUtils.convertToMoney(cost) %>" readonly>
             	</div>
             	</form>
             </div>
@@ -99,9 +100,9 @@
                		<tr class="odd gradeX" align="center">
                			<td><%=stt %></td>
                			<td><%=item.getBienSoXe() %></td>
-               			<td><%=item.getTienTaiXeTra() %></td>
-               			<td><%=item.getTienBaoDuong() %></td>
-               			<td><%=item.getTienTaiXeTra() - item.getTienBaoDuong() %></td>
+               			<td><%=FormatMoneyUtils.convertToMoney(item.getTienTaiXeTra()) %></td>
+               			<td><%=FormatMoneyUtils.convertToMoney(item.getTienBaoDuong()) %></td>
+               			<td><%=FormatMoneyUtils.convertToMoney(item.getTienTaiXeTra() - item.getTienBaoDuong()) %></td>
                		</tr>
                	<%
                				

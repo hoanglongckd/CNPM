@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import model.bean.BaoDuongXeBEAN;
 import model.bean.XeBEAN;
+import utils.FormatDateUtils;
 import utils.SQLServerConnUtils;
 
 public class BaoDuongXeDAO {
@@ -65,8 +66,8 @@ public class BaoDuongXeDAO {
 				BaoDuongXeBEAN baoDuongXeBEAN = new BaoDuongXeBEAN(
 						rs.getInt("id"), 
 						rs.getLong("SoTien"), 
-						rs.getString("NgayBaoDuong"), 
-						rs.getString("NgayBaoDuongTiepTheo"), 
+						FormatDateUtils.formatToVnDate(rs.getString("NgayBaoDuong")), 
+						FormatDateUtils.formatToVnDate(rs.getString("NgayBaoDuongTiepTheo")), 
 						rs.getString("BienSoXe"));
 				baoDuongXeBEANs.add(baoDuongXeBEAN);
 			}
