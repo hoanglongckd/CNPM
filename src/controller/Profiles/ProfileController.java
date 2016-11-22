@@ -36,8 +36,6 @@ public class ProfileController extends HttpServlet {
     ChucVuBO chucVuBO = new ChucVuBO();  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		///kiem tra chuc vu admin 
-		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
 			String maNV = null;
 			String msg =  "";
 			if(request.getParameter("msg")!=null){
@@ -63,10 +61,6 @@ public class ProfileController extends HttpServlet {
 			request.setAttribute("chucVu", chucVu);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/QuanLyTaiKhoan/profile.jsp");
 			dispatcher.forward(request, response);
-		//neu khong phai admin	
-		}else{
-			response.sendRedirect(request.getContextPath()+"/dashboard");
-		}
 		//----end---
 	}
 

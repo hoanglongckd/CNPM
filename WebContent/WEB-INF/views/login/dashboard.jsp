@@ -1,3 +1,4 @@
+<%@page import="model.bo.NhanVienBO"%>
 <%@page import="model.bean.DashBoardBEAN"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="model.bean.XeBEAN"%>
@@ -14,6 +15,7 @@
 <!-- Page Content -->
 <%
 	DashBoardBEAN dbb = null;
+	String maNV = session.getAttribute("maNV").toString();
 	if (request.getAttribute("dbb") != null) {
 		dbb = (DashBoardBEAN) request.getAttribute("dbb");
 	}
@@ -25,6 +27,11 @@
 				<h1 class="page-header">DashBoard
 				</h1>
 			</div>
+<!-- 			 -->
+<%
+NhanVienBO nvBo = new NhanVienBO();
+if (nvBo.getNhanVienByMaNV(maNV).getIdChucVu()==1){
+%>
 			<div class="col-lg-4 col-md-6">
 	            <div class="panel panel-primary">
 	                <div class="panel-heading">
@@ -47,6 +54,7 @@
 	                </a>
 	            </div>
 	        </div>
+<!-- 	        v -->
 	        <div class="col-lg-4 col-md-6">
 	            <div class="panel panel-success">
 	                <div class="panel-heading">
@@ -157,6 +165,32 @@
 	                </a>
 	            </div>
 	        </div>
+	        <%
+}else {
+	        %>
+	        <div class="col-lg-4 col-md-6">
+	            <div class="panel panel-danger">
+	                <div class="panel-heading">
+	                    <div class="row">
+	                        <div class="col-xs-3">
+	                            <i class="fa fa-location-arrow fa-5x"></i>
+	                        </div>
+	                        <div class="col-xs-9 text-right">
+	                            <div class="huge"><%=dbb.getSoDieuPhoi() %></div>
+	                            <div>Quản lý điều phối</div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <a href="<%=request.getContextPath()%>/danh-sach-dieu-phoi">
+	                    <div class="panel-footer">
+	                        <span class="pull-left">Xem chi tiết</span>
+	                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+	                        <div class="clearfix"></div>
+	                    </div>
+	                </a>
+	            </div>
+	        </div>
+<%} %>
 		</div>
 		<!-- /.row -->
 	</div>

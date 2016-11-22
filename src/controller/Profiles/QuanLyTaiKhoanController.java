@@ -50,6 +50,10 @@ public class QuanLyTaiKhoanController extends HttpServlet {
 			}else{
 				//la admin
 				ArrayList<NhanVienBEAN> listNhanVien = nhanVienBO.getDanhSachNhanVienNguyen();
+				for(NhanVienBEAN nv :listNhanVien){
+					if(nv.getIdChucVu()==1) listNhanVien.remove(nv);
+					break;
+				}
 				request.setAttribute("listNhanVien", listNhanVien);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/QuanLyTaiKhoan/quanlytaikhoan.jsp");
 				dispatcher.forward(request, response);
