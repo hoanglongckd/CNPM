@@ -71,6 +71,11 @@
 		if (str.length > 5) return false;
 		else return true;
 	})
+	$.validator.addMethod('test', function(str){
+		var reg = /NV[0-9]*/
+		if (reg.test(str)) return true;
+		else return false;
+	})
 	$.validator.addMethod('maxlength50', function(str){
 		if (str.length > 50) return false;
 		else return true;
@@ -88,6 +93,7 @@
 							required : true,
 							whitespace : true,
 							maxlength5 : true,
+							test: true,
 							specialcharacter: true
 						},
 						hovaten : {
@@ -102,6 +108,7 @@
 							required : 'Vui lòng điền vào trường này.',
 							whitespace : 'Không được nhập toàn ký tự trắng',
 							maxlength5: 'Không được vượt quá 5 ký tự',
+							test: 'Mã nhân viên không đúng định dạng',	
 							specialcharacter: 'Không được nhập ký tự đặc biệt'
 						},
 						hovaten : {

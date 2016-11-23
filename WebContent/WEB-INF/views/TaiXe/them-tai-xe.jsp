@@ -55,6 +55,13 @@
 			showDropdowns : true
 		});
 	});
+
+	$.validator.addMethod('test', function(str){
+		var reg = /TX[0-9]*/
+		if (reg.test(str)) return true;
+		else return false;
+	})
+	
 	$.validator.addMethod('whitespace', function(str) {
 		if (str.indexOf(' ') > -1) {
 			for (var i = 0; i < str.length; i++) {
@@ -87,6 +94,7 @@
 							required : true,
 							whitespace : true,
 							maxlength5 : true,
+							test: true,
 							specialcharacter: true
 						},
 						hovaten : {
@@ -101,6 +109,7 @@
 							required : 'Vui lòng điền vào trường này.',
 							whitespace : 'Không được nhập toàn ký tự trắng',
 							maxlength5: 'Không được vượt quá 5 ký tự',
+							test: 'Mã tài xế không đúng định dạng',
 							specialcharacter: 'Không được nhập ký tự đặc biệt'
 						},
 						hovaten : {
