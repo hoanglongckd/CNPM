@@ -12,8 +12,10 @@ import javax.servlet.http.HttpSession;
 
 import model.bean.BaoDuongXeBEAN;
 import model.bean.NhanVienBEAN;
+import model.bean.TaiXeBEAN;
 import model.bo.BaoDuongXeBO;
 import model.bo.NhanVienBO;
+import model.bo.TaiXeBO;
 
 /**
  * Servlet implementation class SuaXeBaoDuongController
@@ -66,7 +68,7 @@ public class EditNhanVienController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		String hoTen = request.getParameter("ho-va-ten");
+		String hoTen = request.getParameter("hovaten");
 		String ngaySinh = request.getParameter("ngay-sinh");
 		
 		SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("dd/MM/yyyy");
@@ -81,6 +83,9 @@ public class EditNhanVienController extends HttpServlet {
 			nhanVienBEAN.setId(id);
 			nhanVienBEAN.setNgaySinh(ngaySinh);
 			nhanVienBEAN.setHoTen(hoTen);
+			
+			System.out.println(nhanVienBEAN.getNgaySinh()+"|"+nhanVienBEAN.getHoTen()+"|"+nhanVienBEAN.getMaNhanVien());
+			
 			if (NhanVienBO.setSuaNhanVien(nhanVienBEAN)) {
 				msg.setAttribute("messages", "<ul><li>Chỉnh sửa nhân viên thành công</li></ul>");
 				response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");

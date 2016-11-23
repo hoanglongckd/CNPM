@@ -48,8 +48,8 @@ public class AddNhanVienController extends HttpServlet {
 		//Lay thong tin nhan vien tu form add
 		request.setCharacterEncoding("UTF-8");
 		HttpSession msg = request.getSession();
-		String maNV = request.getParameter("ma-nhan-vien");
-		String hoTen = request.getParameter("ho-va-ten");
+		String maNV = request.getParameter("manhanvien");
+		String hoTen = request.getParameter("hovaten");
 		int idChucVu = chucVuBEAN.getId();
 		String ngaySinh = request.getParameter("ngay-sinh");
 		String password = "123456"; //Mat khau mac dinh la 123456

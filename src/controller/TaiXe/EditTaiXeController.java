@@ -66,7 +66,7 @@ public class EditTaiXeController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		String hoTen = request.getParameter("ho-va-ten");
+		String hoTen = request.getParameter("hovaten");
 		String ngaySinh = request.getParameter("ngay-sinh");
 		
 		SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("dd/MM/yyyy");

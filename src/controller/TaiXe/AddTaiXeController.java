@@ -40,8 +40,8 @@ public class AddTaiXeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession msg = request.getSession();
-		String maTX = request.getParameter("ma-tai-xe");
-		String hoTen = request.getParameter("ho-va-ten");
+		String maTX = request.getParameter("mataixe");
+		String hoTen = request.getParameter("hovaten");
 		String ngaySinh = request.getParameter("ngay-sinh");
 		
 		TaiXeBEAN taiXeBEAN = new TaiXeBEAN();
