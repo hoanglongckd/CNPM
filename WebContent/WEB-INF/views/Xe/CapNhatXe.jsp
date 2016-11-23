@@ -93,7 +93,7 @@
 		else return true;
 	})
 	$.validator.addMethod('specialcharacter', function(str){
-		var pattern = /^[a-zA-Z0-9\-\.]+$/;
+		var pattern = /^[^~!@#$%^&\*()/\\<>;:{}\|?\[\]+=]+$/;
 		if(pattern.test(str)) return true;
 		else return false;
 	})
@@ -128,7 +128,7 @@
 							specialcharacter: 'Không được nhập ký tự đặc biệt'
 						}
 					},
-					errorElement : "em",
+					errorElement : "b",
 					errorPlacement : function(error, element) {
 						// Add the `help-block` class to the error element
 						error.addClass("help-block");
