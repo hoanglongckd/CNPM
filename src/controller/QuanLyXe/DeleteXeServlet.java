@@ -49,7 +49,7 @@ public class DeleteXeServlet extends HttpServlet {
 			msg.setAttribute("messages", "<ul><li>Xóa xe thành công!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/list-xe");
 		} else {
-			msg.setAttribute("errors", "<ul><li>Lỗi cơ sở dữ liệu!</li></ul>");
+			msg.setAttribute("errors", "<ul><li>Xe này đã đi vào hoạt động, không thể xóa!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/list-xe");
 		}
 	

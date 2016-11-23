@@ -22,7 +22,7 @@
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom: 120px">
 				<form action="<%=request.getContextPath()%>/dieu-phoi"
-					method="POST">
+					method="POST" id = "form_dieuphoi">
 					
 					<div class="form-group">
 						<label>Địa điểm</label>
@@ -50,4 +50,66 @@
 <!-- /#page-wrapper -->
 
 <jsp:include page="../_footer-start.jsp" />
+<script type="text/javascript">
+	$.validator.addMethod('whitespace', function(str) {
+		if (str.indexOf(' ') > -1) {
+			for (var i = 0; i < str.length; i++) {
+				if (str[i] != ' ')
+					return true;
+			}
+			return false;
+		} else {
+			return true;
+		}
+	})
+	$.validator.addMethod('maxlength255', function(str){
+		if (str.length > 255) return false;
+		else return true;
+	})
+	$.validator.addMethod('specialcharacter', function(str){
+		var pattern = /^[^~!@#$%^&\*()/\\<>;:{}\|?\[\]+=]+$/;
+		if(pattern.test(str)) return true;
+		else return false;
+	})
+	$(function() {
+		$('#form_dieuphoi').validate(
+				{
+					rules : {
+						diadiem : {
+							required : true,
+							whitespace : true,
+							maxlength255 : true,
+							specialcharacter: true
+						},
+					},
+					messages : {
+						diadiem : {
+							required : 'Vui lòng điền vào trường này.',
+							whitespace : 'Không được nhập toàn ký tự trắng',
+							maxlength255: 'Không được vượt quá 255 ký tự',
+							specialcharacter: 'Không được nhập ký tự đặc biệt'
+						},
+					},
+					errorElement : "b",
+					errorPlacement : function(error, element) {
+						// Add the `help-block` class to the error element
+						error.addClass("help-block");
+
+						if (element.prop("type") === "checkbox") {
+							error.insertAfter(element.parent("label"));
+						} else {
+							error.insertAfter(element);
+						}
+					},
+					highlight : function(element, errorClass, validClass) {
+						$(element).closest(".form-group").addClass("has-error")
+								.removeClass("has-success");
+					},
+					unhighlight : function(element, errorClass, validClass) {
+						$(element).closest(".form-group").removeClass(
+								"has-error");
+					}
+				})
+	});
+</script>
 <jsp:include page="../_footer-end.jsp" />
