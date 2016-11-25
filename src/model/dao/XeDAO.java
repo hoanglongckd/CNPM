@@ -12,11 +12,12 @@ import utils.SQLServerConnUtils;
 
 public class XeDAO {
 
-	// Connection conn = ConnectionUtils.getConnection();
+	// Connect database
 	Connection conn = SQLServerConnUtils.getSQLServerConnection();
 	ResultSet rs;
 	Statement st;
 
+	//insert xe to xe table in databse
 	public boolean themXe(XeBEAN xe) {
 		String sql = "insert into xe values(?,?,?,?,?,?)";
 		try {
@@ -36,6 +37,7 @@ public class XeDAO {
 		return false;
 	}
 
+	//insert to phancongtx table
 	public boolean themPhanCongTX(TaiXeBEAN taixe, XeBEAN xe) {
 		String sql = "insert into phancongtx(idTaiXe, idXe) values(?,?)";
 		try {
@@ -51,8 +53,8 @@ public class XeDAO {
 		return false;
 	}
 
+	//get max idxe
 	public int getMaxXeId() {
-
 		String sql = "select max(id) from XE";
 		try {
 			Statement st = conn.createStatement();
@@ -62,13 +64,12 @@ public class XeDAO {
 				max = rs.getInt(1);
 			}
 			return max;
-
 		} catch (Exception e) {
 			return 0;
 		}
-
 	}
 
+	//get list xe
 	public ArrayList<XeBEAN> lietKeListXe() {
 		ArrayList<XeBEAN> listXe = new ArrayList<>();
 		try {
@@ -83,10 +84,10 @@ public class XeDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return listXe;
 	}
 
+	//delete xe
 	public boolean xoaXe(int id) {
 		try {
 			String sql = "DELETE FROM XE WHERE id = " + id;
@@ -102,6 +103,7 @@ public class XeDAO {
 		return false;
 	}
 
+	//get xe to display to update form
 	public XeBEAN getCapNhatXe(int id) {
 		XeBEAN xebean = null;
 		try {
@@ -120,6 +122,7 @@ public class XeDAO {
 		return xebean;
 	}
 
+	//update xe
 	public boolean setCapNhatXe(XeBEAN xe) {
 		String sql = "UPDATE XE SET " + "Model = ?, SoCho = ?" + ", Hang = ?, GhiChu = ? WHERE id = ?";
 		try {
@@ -140,6 +143,7 @@ public class XeDAO {
 		return false;
 	}
 
+	//update phancongtx
 	public boolean setCapNhatPhanCongTX(TaiXeBEAN taixe, XeBEAN xe) {
 		String sql = "UPDATE PHANCONGTX SET idTaiXe = ? WHERE idXe = ?";
 		try {

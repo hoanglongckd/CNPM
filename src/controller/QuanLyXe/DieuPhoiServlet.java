@@ -41,23 +41,19 @@ public class DieuPhoiServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
-
 		HttpSession msg = request.getSession();
 		
+		//set diachi and loaixe to dieuphoi
 		DieuPhoiBEAN dieuphoi = new DieuPhoiBEAN();
-		
 		dieuphoi.setDiaChi(request.getParameter("diadiem"));
 		dieuphoi.setLoaiXe(Integer.parseInt(request.getParameter("loaixe")));
 		
+		//check if dieuphoi successful or not
 		if(DieuPhoiBO.themDieuPhoi(dieuphoi)){
-			
 			response.sendRedirect(request.getContextPath() + "/chon-xe");
 		} else {
 			msg.setAttribute("errors", "<ul><li>Lỗi cơ sở dữ liệu khi thêm điều phối!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/dieu-phoi");
 		}
-		
-		
 	}
-
 }

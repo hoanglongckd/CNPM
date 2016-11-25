@@ -33,7 +33,7 @@ public class ShowListXeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		//show list xe
 		ArrayList<XeBEAN> listXe = XeBO.lietKeListXe();
 		
 		request.setAttribute("danhSachXe", listXe);

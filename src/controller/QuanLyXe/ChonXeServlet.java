@@ -38,11 +38,11 @@ public class ChonXeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		//get max iddieuphoi and loaixe after add dieu phoi at dieuphoi form
 		int id = DieuPhoiBO.getMaxIDDieuPhoi();
-
 		int loaiXe = DieuPhoiBO.getLoaiXe(id);
-
+		
+		//show list xe phu hop
 		ArrayList<XeBEAN> listXe = DieuPhoiBO.lietKeListXeDieuPhoi(loaiXe);
 		request.setAttribute("danhSachXe", listXe);
 		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/Xe/ChonXe.jsp");
@@ -57,9 +57,9 @@ public class ChonXeServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession msg = request.getSession();
-
+		
+		//get id xe after click accept at chonxe page
 		String param = request.getParameter("accept");
-
 		int id = 0;
 		try {
 			id = Integer.parseInt(param);
@@ -69,15 +69,15 @@ public class ChonXeServlet extends HttpServlet {
 
 		DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss aa");
 		Date d = new Date();
-
+		
+		//set information dieu phoi
 		DieuPhoiBEAN dieuphoi = new DieuPhoiBEAN();
 		dieuphoi.setIdPhanCong(DieuPhoiBO.getIDPhanCong(id));
 		dieuphoi.setId(DieuPhoiBO.getMaxIDDieuPhoi());
 		dieuphoi.setThoiGianBatDau(sdf.format(d));
-		// System.out.println(sdf.format(d));
 
-		boolean check = DieuPhoiBO.updateIDPhanCong(dieuphoi);
-		if (check) {
+		//check dieuphoi successful or not
+		if (DieuPhoiBO.updateIDPhanCong(dieuphoi)) {
 			if (DieuPhoiBO.updateTrangThai(dieuphoi)) {
 				msg.setAttribute("messages", "<ul><li>Điều phối xe thành công!</li></ul>");
 				response.sendRedirect(request.getContextPath() + "/danh-sach-dieu-phoi");

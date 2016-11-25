@@ -33,7 +33,7 @@ public class AddXeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		//Display form add xe
 		RequestDispatcher dispatcher = request.getServletContext()
 				.getRequestDispatcher("/WEB-INF/views/Xe/QuanLyXe.jsp");
 		dispatcher.forward(request, response);
@@ -48,11 +48,10 @@ public class AddXeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
-
 		HttpSession msg = request.getSession();
-
-		XeBEAN xe = new XeBEAN();
 		
+		//set information to add dao
+		XeBEAN xe = new XeBEAN();
 		xe.setBienSoXe(request.getParameter("biensoxe"));
 		xe.setModel(request.getParameter("model"));
 		xe.setSoCho(Integer.parseInt(request.getParameter("sochongoi")));
@@ -67,10 +66,5 @@ public class AddXeServlet extends HttpServlet {
 			msg.setAttribute("errors", "<ul><li>Biển số xe đã tồn tại!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/them-xe");
 		}
-
-		// }catch(Exception e){
-		// response.sendRedirect(request.getContextPath() + "/listXe");
-		// }
 	}
-
 }

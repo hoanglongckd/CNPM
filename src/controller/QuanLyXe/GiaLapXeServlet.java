@@ -34,14 +34,8 @@ public class GiaLapXeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// HttpSession ses = request.getSession();
-		// String maNV = ses.getAttribute("maNV").toString();
-
+		
 		ArrayList<DieuPhoiBEAN> dieuPhoiBEAN = DieuPhoiBO.getDieuPhoi();
-		// for (DieuPhoiBEAN dieuphoi : dieuPhoiBEAN){
-		// System.out.println(dieuphoi.getBienSoXe());
-		// }
-
 		request.setAttribute("dieuPhoiBEAN", dieuPhoiBEAN);
 
 		RequestDispatcher dispatcher = request.getServletContext()
@@ -59,13 +53,14 @@ public class GiaLapXeServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession msg = request.getSession();
 
+		//set dieuphoi final
 		DieuPhoiBEAN dieuPhoiXe = new DieuPhoiBEAN();
-
 		dieuPhoiXe.setId(Integer.parseInt(request.getParameter("bien-so-xe")));
 		dieuPhoiXe.setThoiGianBatDau(request.getParameter("date-started"));
 		dieuPhoiXe.setThoiGianKetThuc(request.getParameter("date-ended"));
 		dieuPhoiXe.setSoKM(Integer.parseInt(request.getParameter("kilomet")));
 
+		//check if dieuphoi successful or not
 		if (request.getParameter("date-started").compareTo(request.getParameter("date-ended")) < 0) {
 			if (DieuPhoiBO.ketThucDieuPhoi(dieuPhoiXe)) {
 				if (DieuPhoiBO.tinhTien(dieuPhoiXe)) {

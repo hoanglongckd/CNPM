@@ -32,6 +32,7 @@ public class ShowListDieuPhoi extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//show lich su dieu phoi
 		ArrayList<XeBEAN> listXe = DieuPhoiBO.getListDieuPhoi();
 		request.setAttribute("danhSachXe", listXe);
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/Xe/ListDieuPhoi.jsp");

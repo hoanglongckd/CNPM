@@ -37,7 +37,7 @@ public class DeleteXeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
 		HttpSession msg = request.getSession();
-		
+		//get id xe selected
 		String param = request.getParameter("id");
 		int id = 0;
 		try {
@@ -45,6 +45,8 @@ public class DeleteXeServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		//check if xoaxe successful or not
 		if(XeBO.xoaXe(id)){
 			msg.setAttribute("messages", "<ul><li>Xóa xe thành công!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/list-xe");
@@ -52,7 +54,5 @@ public class DeleteXeServlet extends HttpServlet {
 			msg.setAttribute("errors", "<ul><li>Xe này đã đi vào hoạt động, không thể xóa!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/list-xe");
 		}
-	
 	}
-
 }

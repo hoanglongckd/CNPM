@@ -33,7 +33,7 @@ public class UpdateXeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		//get id xe to show information of xe
 		String param = request.getParameter("id");
 		
 		int id = 0;
@@ -58,7 +58,8 @@ public class UpdateXeServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		HttpSession msg = request.getSession();
-
+		
+		//get id xe to update
 		String param = request.getParameter("id");
 
 		int id = 0;
@@ -68,14 +69,15 @@ public class UpdateXeServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
+		//set update xe
 		XeBEAN xe = new XeBEAN();
-
 		xe.setId(id);
 		xe.setModel(request.getParameter("model"));
 		xe.setSoCho(Integer.parseInt(request.getParameter("sochongoi")));
 		xe.setHang(request.getParameter("hang"));
 		xe.setGhiChu(request.getParameter("ghichu"));
 
+		//check if update xe successful or not
 		if (XeBO.setCapNhatXe(xe)) {
 				msg.setAttribute("messages", "<ul><li>Cập nhật xe thành công!</li></ul>");
 				response.sendRedirect(request.getContextPath() + "/list-xe");
