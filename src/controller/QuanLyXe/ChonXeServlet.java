@@ -86,7 +86,7 @@ public class ChonXeServlet extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/chon-xe");
 			}
 		} else {
-			msg.setAttribute("errors", "<ul><li>Lỗi cơ sở dữ liệu!</li></ul>");
+			msg.setAttribute("errors", "<ul><li>Lỗi khi update điều phối!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/chon-xe");
 		}
 	}

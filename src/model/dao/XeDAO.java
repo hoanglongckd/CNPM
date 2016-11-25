@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-
 import model.bean.TaiXeBEAN;
 import model.bean.XeBEAN;
 import utils.SQLServerConnUtils;
@@ -51,22 +50,22 @@ public class XeDAO {
 		}
 		return false;
 	}
-	
+
 	public int getMaxXeId() {
 
-		String sql ="select max(id) from XE";
-		   try{
-			   Statement st = conn.createStatement();
-			   ResultSet rs = st.executeQuery(sql);
-			   int max= 0;
-			   while(rs.next()){
-				   max = rs.getInt(1);
-			   }
-			   return max;
-			   
-		   }catch(Exception e){
-			   return 0;
-		   }
+		String sql = "select max(id) from XE";
+		try {
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			int max = 0;
+			while (rs.next()) {
+				max = rs.getInt(1);
+			}
+			return max;
+
+		} catch (Exception e) {
+			return 0;
+		}
 
 	}
 
@@ -77,7 +76,8 @@ public class XeDAO {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while (rs.next()) {
-				XeBEAN xe = new XeBEAN(rs.getInt("id"), rs.getString("BienSoXe"), rs.getString("Model"), rs.getInt("SoCho"), rs.getString("Hang"));
+				XeBEAN xe = new XeBEAN(rs.getInt("id"), rs.getString("BienSoXe"), rs.getString("Model"),
+						rs.getInt("SoCho"), rs.getString("Hang"));
 				listXe.add(xe);
 			}
 		} catch (Exception e) {
@@ -105,13 +105,14 @@ public class XeDAO {
 	public XeBEAN getCapNhatXe(int id) {
 		XeBEAN xebean = null;
 		try {
-			String sql = "SELECT XE.id, XE.BienSoXe, XE.Model, XE.SoCho, XE.hang, XE.GhiChu"
-					+ " FROM XE 	WHERE XE.id = " + id;
+			String sql = "SELECT XE.id, XE.BienSoXe, XE.Model, XE.SoCho, XE.hang, XE.GhiChu" + " FROM XE WHERE XE.id = "
+					+ id;
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while (rs.next()) {
-				xebean = new XeBEAN(rs.getInt("id"), rs.getString("BienSoXe"), rs.getString("Model"), rs.getInt("SoCho"), rs.getString("Hang"), rs.getString("GhiChu"));
-				
+				xebean = new XeBEAN(rs.getInt("id"), rs.getString("BienSoXe"), rs.getString("Model"),
+						rs.getInt("SoCho"), rs.getString("Hang"), rs.getString("GhiChu"));
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -153,6 +154,5 @@ public class XeDAO {
 		}
 		return false;
 	}
-
 
 }

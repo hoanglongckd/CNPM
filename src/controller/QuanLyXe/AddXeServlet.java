@@ -64,7 +64,7 @@ public class AddXeServlet extends HttpServlet {
 				msg.setAttribute("messages", "<ul><li>Thêm xe thành công!</li></ul>");
 				response.sendRedirect(request.getContextPath() + "/list-xe");
 		} else {
-			msg.setAttribute("errors", "<ul><li>Lỗi cơ sở dữ liệu!</li></ul>");
+			msg.setAttribute("errors", "<ul><li>Biển số xe đã tồn tại!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/them-xe");
 		}
 
