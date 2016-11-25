@@ -57,7 +57,7 @@
 	});
 
 	$.validator.addMethod('test', function(str){
-		var reg = /TX[0-9]*/
+		var reg = /^[TX[0-9]+]*$/
 		if (reg.test(str)) return true;
 		else return false;
 	})

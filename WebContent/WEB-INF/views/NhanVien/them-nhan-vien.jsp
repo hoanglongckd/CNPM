@@ -72,7 +72,7 @@
 		else return true;
 	})
 	$.validator.addMethod('test', function(str){
-		var reg = /NV[0-9]*/
+		var reg = /^[NV[0-9]+]*$/
 		if (reg.test(str)) return true;
 		else return false;
 	})
