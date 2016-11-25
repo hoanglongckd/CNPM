@@ -1,7 +1,10 @@
 package controller.Profiles;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,8 +49,14 @@ public class ProfileController extends HttpServlet {
 			
 			NhanVienBEAN nhanVien = nhanVienBO.getNhanVienByMaNV(maNV);
 			//doi kieu ngay thang nam
-			String[] chuoi = nhanVien.getNgaySinh().split("-");
-			nhanVien.setNgaySinh(chuoi[1]+"/"+chuoi[2]+"/"+chuoi[0]);
+			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+			try {
+				Date date1 = sdf1.parse(nhanVien.getNgaySinh());
+				nhanVien.setNgaySinh(sdf2.format(date1)) ;
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 			//
 			ArrayList<ChucVuBEAN> listChucVu = chucVuBO.listChucVu();
 			String chucVu = null;
@@ -73,22 +82,26 @@ public class ProfileController extends HttpServlet {
 			if(session.getAttribute("maNV")!=null){
 				if(request.getParameter("change-password")!=null){
 					response.sendRedirect(request.getContextPath()+"/doi-mat-khau");
-				}
-				String maNV = (String) session.getAttribute("maNV");
-				System.out.println("cmnr");
-				//click change-password button
-				if(request.getParameter("change-password")!=null){
-					System.out.println("change-password");
-					//response.sendRedirect(request.getContextPath()+"/change-password");
 				}else{
+					String maNV = (String) session.getAttribute("maNV");
+				
 					//click edit-button
 					if(request.getParameter("edit")!=null){
 						System.out.println("edit");
 						//get
 						String ten = (String) request.getParameter("ten"); 
 						String ngaySinh = (request.getParameter("ngaySinh"));
-						NhanVienBEAN nhanVien = new NhanVienBEAN(0, maNV, ten, ngaySinh, 0,"");
+						SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+						SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+						try {
+							Date date1 = sdf2.parse(ngaySinh);
+							ngaySinh = sdf1.format(date1);
+						} catch (ParseException e) {
+							e.printStackTrace();
+						}
 						
+						NhanVienBEAN nhanVien = new NhanVienBEAN(0, maNV, ten,ngaySinh, 0,"");
+						System.out.println("chuan bi sua:"+ten+"/"+ngaySinh+"/"+maNV);
 						if(nhanVienBO.setSuaNhanVien(nhanVien)){
 							session.setAttribute("messages", "<ul><li> Cập nhập thành công!</li></ul>");
 							response.sendRedirect(request.getContextPath()+"/profile");

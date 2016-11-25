@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import model.bean.BaoDuongXeBEAN;
 import model.bean.ChucVuBEAN;
 import model.bean.NhanVienBEAN;
 import model.bean.PhanCongNhanVienBEAN;
@@ -85,12 +84,12 @@ public class NhanVienDAO {
 
 	public boolean setSuaNhanVien(NhanVienBEAN nhanVienBEAN) {
 		String sql = "UPDATE NHANVIEN SET "
-				+ "Ten = ?, NgaySinh = ? WHERE id = ?";
+				+ "Ten = ?, NgaySinh = ? WHERE maNV = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setNString(1, nhanVienBEAN.getHoTen());
 			ps.setString(2, nhanVienBEAN.getNgaySinh());
-			ps.setInt(3, nhanVienBEAN.getId());
+			ps.setString(3, nhanVienBEAN.getMaNhanVien());
 				int rowEffect = ps.executeUpdate();
 			if (rowEffect != 0) return true;
 		} catch (Exception e) {
