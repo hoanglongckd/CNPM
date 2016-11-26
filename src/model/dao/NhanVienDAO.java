@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import model.bean.ChucVuBEAN;
 import model.bean.NhanVienBEAN;
 import model.bean.PhanCongNhanVienBEAN;
+import model.bean.TaiXeBEAN;
 import utils.SQLServerConnUtils;
 
 public class NhanVienDAO {
@@ -85,12 +86,12 @@ public class NhanVienDAO {
 
 	public boolean setSuaNhanVien(NhanVienBEAN nhanVienBEAN) {
 		String sql = "UPDATE NHANVIEN SET "
-				+ "Ten = ?, NgaySinh = ? WHERE maNV = ?";
+				+ "Ten = ?, NgaySinh = ? WHERE id = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setNString(1, nhanVienBEAN.getHoTen());
 			ps.setString(2, nhanVienBEAN.getNgaySinh());
-			ps.setString(3, nhanVienBEAN.getMaNhanVien());
+			ps.setInt(3, nhanVienBEAN.getId());
 				int rowEffect = ps.executeUpdate();
 			if (rowEffect != 0) return true;
 		} catch (Exception e) {
@@ -98,8 +99,6 @@ public class NhanVienDAO {
 		}
 		return false;
 	}
-	
-	
 
 	public boolean addPhanCongNhanVien(PhanCongNhanVienBEAN phanCongNhanVienBEAN) {
 		try {

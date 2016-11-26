@@ -61,6 +61,7 @@ public class AddNhanVienController extends HttpServlet {
 		nhanVienBEAN.setNgaySinh(ngaySinh);
 		nhanVienBEAN.setPassword(password);
 		nhanVienBEAN.setIdChucVu(idChucVu);
+		System.out.println("Add NV "+nhanVienBEAN.getNgaySinh()+"|"+nhanVienBEAN.getHoTen()+"|"+nhanVienBEAN.getMaNhanVien());
 		
 		if (NhanVienBO.addNhanVien(nhanVienBEAN)) {
 			msg.setAttribute("messages", "<ul><li>Thêm nhân viên thành công!</li></ul>");
