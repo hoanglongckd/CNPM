@@ -99,6 +99,22 @@ public class NhanVienDAO {
 		}
 		return false;
 	}
+	
+	public boolean setProfile(NhanVienBEAN nhanVienBEAN) {
+		String sql = "UPDATE NHANVIEN SET "
+				+ "Ten = ?, NgaySinh = ? WHERE MaNV = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setNString(1, nhanVienBEAN.getHoTen());
+			ps.setString(2, nhanVienBEAN.getNgaySinh());
+			ps.setString(3, nhanVienBEAN.getMaNhanVien());
+				int rowEffect = ps.executeUpdate();
+			if (rowEffect != 0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 	public boolean addPhanCongNhanVien(PhanCongNhanVienBEAN phanCongNhanVienBEAN) {
 		try {

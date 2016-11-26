@@ -78,6 +78,7 @@ public class ProfileController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 			if(session.getAttribute("maNV")!=null){
 				if(request.getParameter("change-password")!=null){
@@ -102,7 +103,7 @@ public class ProfileController extends HttpServlet {
 						
 						NhanVienBEAN nhanVien = new NhanVienBEAN(0, maNV, ten,ngaySinh, 0,"");
 						System.out.println("chuan bi sua:"+ten+"/"+ngaySinh+"/"+maNV);
-						if(nhanVienBO.setSuaNhanVien(nhanVien)){
+						if(nhanVienBO.setProfile(nhanVien)){
 							session.setAttribute("messages", "<ul><li> Cập nhập thành công!</li></ul>");
 							response.sendRedirect(request.getContextPath()+"/profile");
 						}else{

@@ -35,6 +35,10 @@ public class NhanVienBO {
 	public static boolean setSuaNhanVien(NhanVienBEAN nhanVienBEAN) {
 		return nhanVienDAO.setSuaNhanVien(nhanVienBEAN);
 	}
+	
+	public static boolean setProfile(NhanVienBEAN nhanVienBEAN) {
+		return nhanVienDAO.setProfile(nhanVienBEAN);
+	}
 
 	public static boolean addPhanCongNhanVien(PhanCongNhanVienBEAN phanCongNhanVienBEAN) {
 		return nhanVienDAO.addPhanCongNhanVien(phanCongNhanVienBEAN);
