@@ -62,6 +62,7 @@ public class NhanVienDAO {
 			if(preparedStatement.executeUpdate()<1) return false;
 		}catch(SQLException e){
 			e.printStackTrace();
+			return false;
 		}
 		return true;
 	}
