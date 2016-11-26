@@ -45,10 +45,10 @@ public class PhanCongTaiXeController extends HttpServlet {
 			throws ServletException, IOException {
 		ArrayList<TaiXeBEAN> listTaiXe = TaiXeBO.getDanhSachTaiXe();
 		request.setAttribute("listTaiXe", listTaiXe);
-		
+
 		ArrayList<XeBEAN> listXe = TaiXeBO.getListXe();
 		request.setAttribute("listXe", listXe);
-		
+
 		ArrayList<CaLamViecBEAN> listCaLamViec = CaLamViecBO.getDanhSachCaLamViec();
 		request.setAttribute("listCaLamViec", listCaLamViec);
 		ArrayList<ThuNgayBEAN> listThuNgay = ThuNgayBO.getDanhSachThuNgay();
@@ -73,8 +73,7 @@ public class PhanCongTaiXeController extends HttpServlet {
 		int idXe = Integer.parseInt(request.getParameter("idXe"));
 		int idCa = Integer.parseInt(request.getParameter("idCaLamViec"));
 		int idThuNgay = Integer.parseInt(request.getParameter("idThuNgay"));
-		System.out.println(idTaiXe+"|"+idCa+"|"+ idThuNgay);
-		
+
 		PhanCongTaiXeBEAN phanCongTaiXeBEAN = new PhanCongTaiXeBEAN();
 		phanCongTaiXeBEAN.setIdCa(idCa);
 		phanCongTaiXeBEAN.setIdTaiXe(idTaiXe);

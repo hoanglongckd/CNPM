@@ -17,46 +17,50 @@ import model.bo.TaiXeBO;
  */
 public class AddTaiXeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddTaiXeController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/TaiXe/them-tai-xe.jsp");
+	public AddTaiXeController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		RequestDispatcher dispatcher = this.getServletContext()
+				.getRequestDispatcher("/WEB-INF/views/TaiXe/them-tai-xe.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession msg = request.getSession();
 		String maTX = request.getParameter("mataixe");
 		String hoTen = request.getParameter("hovaten");
 		String ngaySinh = request.getParameter("ngay-sinh");
-		
+
 		TaiXeBEAN taiXeBEAN = new TaiXeBEAN();
-		
+
 		taiXeBEAN.setMaTaiXe(maTX);
 		taiXeBEAN.setHoTen(hoTen);
 		taiXeBEAN.setNgaySinh(ngaySinh);
-		
+
 		if (TaiXeBO.addTaiXe(taiXeBEAN)) {
 			msg.setAttribute("messages", "<ul><li>Thêm tài xế thành công!</li></ul>");
-			response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");		
-		}
-		else {
+			response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");
+		} else {
 			msg.setAttribute("errors", "<ul><li>Thêm tài xế không thành công!</li></ul>");
-			response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");		
+			response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");
 		}
 	}
 

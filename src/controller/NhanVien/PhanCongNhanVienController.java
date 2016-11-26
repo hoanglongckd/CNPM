@@ -47,9 +47,6 @@ public class PhanCongNhanVienController extends HttpServlet {
 		request.setAttribute("listCaLamViec", listCaLamViec);
 		ArrayList<ThuNgayBEAN> listThuNgay = ThuNgayBO.getDanhSachThuNgay();
 		request.setAttribute("listThuNgay", listThuNgay);
-
-		System.out.println("d�fafa" + listNhanVien.isEmpty());
-		
 		RequestDispatcher dispatcher = this.getServletContext()
 				.getRequestDispatcher("/WEB-INF/views/NhanVien/them-phan-cong-nhan-vien.jsp");
 		dispatcher.forward(request, response);
@@ -68,8 +65,6 @@ public class PhanCongNhanVienController extends HttpServlet {
 		int idNhanVien = Integer.parseInt(request.getParameter("idNhanVien"));
 		int idCa = Integer.parseInt(request.getParameter("idCaLamViec"));
 		int idThuNgay = Integer.parseInt(request.getParameter("idThuNgay"));
-		System.out.println(idNhanVien+"|"+idCa+"|"+ idThuNgay);
-		
 		PhanCongNhanVienBEAN phanCongNhanVienBEAN = new PhanCongNhanVienBEAN();
 		phanCongNhanVienBEAN.setIdCa(idCa);
 		phanCongNhanVienBEAN.setIdNhanVien(idNhanVien);

@@ -23,11 +23,11 @@
 					method="POST" id="form_themtaixe">
 					<div class="form-group">
 						<label>Mã tài xế: </label> <input class="form-control"
-							type="text" name="mataixe" required/>
+							type="text" name="mataixe" required placeholder="TX001"/>
 					</div>
 					<div class="form-group">
 						<label>Họ và tên: </label> <input class="form-control" type="text"
-							name="hovaten" required />
+							name="hovaten" required placeholder="Họ và tên" />
 					</div>
 					<div class="form-group">
 						<label>Ngày sinh: </label> <input class="form-control" type="text"

@@ -23,11 +23,11 @@
 					method="POST" id="form_themnhanvien">
 					<div class="form-group">
 						<label>Mã nhân viên: </label> <input class="form-control"
-							type="text" name="manhanvien" id="manhanvien" required />
+							type="text" name="manhanvien" id="manhanvien" required placeholder="NV001" />
 					</div>
 					<div class="form-group">
 						<label>Họ và tên: </label> <input class="form-control" type="text"
-							name="hovaten" id="hovaten" required/>
+							name="hovaten" id="hovaten" required placeholder="Họ và tên"/>
 					</div>
 					<div class="form-group">
 						<label>Ngày sinh: </label> <input class="form-control" type="text"

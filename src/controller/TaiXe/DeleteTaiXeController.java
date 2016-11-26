@@ -19,37 +19,40 @@ import model.bo.TaiXeBO;
 
 public class DeleteTaiXeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DeleteTaiXeController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public DeleteTaiXeController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession msg = request.getSession();
 		TaiXeBO taiXeBO = new TaiXeBO();
-		
-		String idTaiXe= request.getParameter("idTaiXe");
-		
-		if(taiXeBO.isTaiXeDeleted(idTaiXe)){
-			msg.setAttribute("messages", "<ul><li>Xóa tài xế thành công!</li></ul>");			
+
+		String idTaiXe = request.getParameter("idTaiXe");
+
+		if (taiXeBO.isTaiXeDeleted(idTaiXe)) {
+			msg.setAttribute("messages", "<ul><li>Xóa tài xế thành công!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");
-		}
-		else{
+		} else {
 			msg.setAttribute("errors", "<ul><li>Xóa tài xế không thành công!</li></ul>");
 			response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");
 		}

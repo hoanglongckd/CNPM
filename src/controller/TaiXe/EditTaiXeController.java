@@ -19,47 +19,48 @@ import model.bo.TaiXeBO;
 
 public class EditTaiXeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public EditTaiXeController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public EditTaiXeController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		String idTaiXe = request.getParameter("idTaiXe");
 
 		TaiXeBEAN taiXeBEAN = TaiXeBO.getTaiXe(idTaiXe);
-		System.out.println(idTaiXe);
-		System.out.println(taiXeBEAN.getNgaySinh()+"|"+taiXeBEAN.getHoTen()+"|"+taiXeBEAN.getMaTaiXe());
 		SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			Date date1 = simpleDateFormat1.parse(taiXeBEAN.getNgaySinh());
 			SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
 			taiXeBEAN.setNgaySinh(simpleDateFormat2.format(date1));
-			System.out.println(taiXeBEAN.getNgaySinh()+"|");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		request.setAttribute("taiXe", taiXeBEAN);
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/TaiXe/chinh-sua-tai-xe.jsp");
+		RequestDispatcher dispatcher = this.getServletContext()
+				.getRequestDispatcher("/WEB-INF/views/TaiXe/chinh-sua-tai-xe.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession msg = request.getSession();
 		String param = request.getParameter("id");
-		System.out.println(param);
 		int id = 0;
 		try {
 			id = Integer.parseInt(param);
@@ -68,15 +69,15 @@ public class EditTaiXeController extends HttpServlet {
 		}
 		String hoTen = request.getParameter("hovaten");
 		String ngaySinh = request.getParameter("ngay-sinh");
-		
+
 		SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("dd/MM/yyyy");
-		
+
 		try {
 			Date date1 = simpleDateFormat1.parse(ngaySinh);
 			SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy/MM/dd");
 			ngaySinh = simpleDateFormat2.format(date1);
 			Date date11 = simpleDateFormat2.parse(ngaySinh);
-			
+
 			TaiXeBEAN taiXeBEAN = new TaiXeBEAN();
 			taiXeBEAN.setId(id);
 			taiXeBEAN.setNgaySinh(ngaySinh);
@@ -84,8 +85,7 @@ public class EditTaiXeController extends HttpServlet {
 			if (TaiXeBO.setSuaTaiXe(taiXeBEAN)) {
 				msg.setAttribute("messages", "<ul><li>Chỉnh sửa tài xế thành công! </li></ul>");
 				response.sendRedirect(request.getContextPath() + "/danh-sach-tai-xe");
-			} 
-			else {
+			} else {
 				msg.setAttribute("errors", "<ul><li>Chỉnh sửa tài xế không thành công!</li></ul>");
 			}
 		} catch (Exception e) {

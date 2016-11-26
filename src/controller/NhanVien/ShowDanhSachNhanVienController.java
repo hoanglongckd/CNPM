@@ -16,22 +16,24 @@ import model.bo.NhanVienBO;
 /**
  * Servlet implementation class ShowDanhSachNhanVienController
  */
-//@WebServlet("/ShowDanhSachNhanVienController")
+// @WebServlet("/ShowDanhSachNhanVienController")
 public class ShowDanhSachNhanVienController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ShowDanhSachNhanVienController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ShowDanhSachNhanVienController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		NhanVienBO nhanVienBO = new NhanVienBO();
 
 		ArrayList<NhanVienBEAN> listNhanVien = nhanVienBO.getDanhSachNhanVien();
@@ -41,9 +43,11 @@ public class ShowDanhSachNhanVienController extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
