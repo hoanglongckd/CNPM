@@ -38,21 +38,30 @@ public class EditNhanVienController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String idNhanVien = request.getParameter("idNhanVien");
+		HttpSession session = request.getSession();
+		///kiem tra chuc vu admin 
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			String idNhanVien = request.getParameter("idNhanVien");
 
-		NhanVienBEAN nhanVienBEAN = NhanVienBO.getNhanVien(idNhanVien);
-		SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			Date date1 = simpleDateFormat1.parse(nhanVienBEAN.getNgaySinh());
-			SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
-			nhanVienBEAN.setNgaySinh(simpleDateFormat2.format(date1));
-		} catch (Exception e) {
-			e.printStackTrace();
+			NhanVienBEAN nhanVienBEAN = NhanVienBO.getNhanVien(idNhanVien);
+			SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+			try {
+				Date date1 = simpleDateFormat1.parse(nhanVienBEAN.getNgaySinh());
+				SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
+				nhanVienBEAN.setNgaySinh(simpleDateFormat2.format(date1));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("nhanVien", nhanVienBEAN);
+			RequestDispatcher dispatcher = this.getServletContext()
+					.getRequestDispatcher("/WEB-INF/views/NhanVien/chinh-sua-nhan-vien.jsp");
+			dispatcher.forward(request, response);
+		//neu khong phai admin	
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
 		}
-		request.setAttribute("nhanVien", nhanVienBEAN);
-		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/WEB-INF/views/NhanVien/chinh-sua-nhan-vien.jsp");
-		dispatcher.forward(request, response);
+		//----end---
+		
 	}
 
 	/**

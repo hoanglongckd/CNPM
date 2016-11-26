@@ -34,22 +34,26 @@ public class EditTaiXeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			String idTaiXe = request.getParameter("idTaiXe");
 
-		String idTaiXe = request.getParameter("idTaiXe");
-
-		TaiXeBEAN taiXeBEAN = TaiXeBO.getTaiXe(idTaiXe);
-		SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			Date date1 = simpleDateFormat1.parse(taiXeBEAN.getNgaySinh());
-			SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
-			taiXeBEAN.setNgaySinh(simpleDateFormat2.format(date1));
-		} catch (Exception e) {
-			e.printStackTrace();
+			TaiXeBEAN taiXeBEAN = TaiXeBO.getTaiXe(idTaiXe);
+			SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+			try {
+				Date date1 = simpleDateFormat1.parse(taiXeBEAN.getNgaySinh());
+				SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
+				taiXeBEAN.setNgaySinh(simpleDateFormat2.format(date1));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("taiXe", taiXeBEAN);
+			RequestDispatcher dispatcher = this.getServletContext()
+					.getRequestDispatcher("/WEB-INF/views/TaiXe/chinh-sua-tai-xe.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
 		}
-		request.setAttribute("taiXe", taiXeBEAN);
-		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/WEB-INF/views/TaiXe/chinh-sua-tai-xe.jsp");
-		dispatcher.forward(request, response);
 	}
 
 	/**

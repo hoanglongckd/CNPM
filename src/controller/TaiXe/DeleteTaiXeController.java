@@ -34,8 +34,12 @@ public class DeleteTaiXeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request, response);
+		HttpSession session = request.getSession();
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			doPost(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
+		}
 	}
 
 	/**

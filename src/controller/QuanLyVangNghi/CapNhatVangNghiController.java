@@ -35,24 +35,32 @@ public class CapNhatVangNghiController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = 0;
-		try {
-			id = Integer.parseInt(request.getParameter("id"));
-		} catch (Exception e) {
-			e.printStackTrace();
+		HttpSession session = request.getSession();
+		///kiem tra chuc vu admin 
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			int id = 0;
+			try {
+				id = Integer.parseInt(request.getParameter("id"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			QuanLyVangNghiBEAN item = QuanLyVangNghiBO.getCapNhapVangNghi(id);
+			try {
+				SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+				Date date1 = simpleDateFormat1.parse(item.getNgayNghi());
+				SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
+				item.setNgayNghi(simpleDateFormat2.format(date1));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("item", item);
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/VangNghi/update-vang-nghi.jsp");
+			dispatcher.forward(request, response);
+		//neu khong phai admin	
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
 		}
-		QuanLyVangNghiBEAN item = QuanLyVangNghiBO.getCapNhapVangNghi(id);
-		try {
-			SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
-			Date date1 = simpleDateFormat1.parse(item.getNgayNghi());
-			SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
-			item.setNgayNghi(simpleDateFormat2.format(date1));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		request.setAttribute("item", item);
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/VangNghi/update-vang-nghi.jsp");
-		dispatcher.forward(request, response);
+		//----end---
 	}
 
 	/**

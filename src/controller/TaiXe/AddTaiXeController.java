@@ -32,9 +32,14 @@ public class AddTaiXeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/WEB-INF/views/TaiXe/them-tai-xe.jsp");
-		dispatcher.forward(request, response);
+		HttpSession session = request.getSession();
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			RequestDispatcher dispatcher = this.getServletContext()
+					.getRequestDispatcher("/WEB-INF/views/TaiXe/them-tai-xe.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
+		}
 	}
 
 	/**

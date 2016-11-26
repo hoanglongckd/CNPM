@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.bean.NhanVienBEAN;
 import model.bo.NhanVienBO;
@@ -34,12 +35,20 @@ public class ShowDanhSachNhanVienController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		NhanVienBO nhanVienBO = new NhanVienBO();
+		HttpSession session = request.getSession();
+		///kiem tra chuc vu admin 
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			NhanVienBO nhanVienBO = new NhanVienBO();
 
-		ArrayList<NhanVienBEAN> listNhanVien = nhanVienBO.getDanhSachNhanVien();
-		request.setAttribute("listNhanVien", listNhanVien);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/NhanVien/danh-sach-nhan-vien.jsp");
-		rd.forward(request, response);
+			ArrayList<NhanVienBEAN> listNhanVien = nhanVienBO.getDanhSachNhanVien();
+			request.setAttribute("listNhanVien", listNhanVien);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/NhanVien/danh-sach-nhan-vien.jsp");
+			rd.forward(request, response);
+		//neu khong phai admin	
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
+		}
+		//----end---
 	}
 
 	/**

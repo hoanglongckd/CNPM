@@ -36,10 +36,18 @@ public class ThemMoiVangNghiController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<QuanLyVangNghiBEAN> list = QuanLyVangNghiBO.lietKeMaNV();
-		request.setAttribute("list", list);
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/VangNghi/them-vang-nghi.jsp");
-		dispatcher.forward(request, response);
+		HttpSession session = request.getSession();
+		///kiem tra chuc vu admin 
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			ArrayList<QuanLyVangNghiBEAN> list = QuanLyVangNghiBO.lietKeMaNV();
+			request.setAttribute("list", list);
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/VangNghi/them-vang-nghi.jsp");
+			dispatcher.forward(request, response);
+		//neu khong phai admin	
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
+		}
+		//----end---
 	}
 
 	/**

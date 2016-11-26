@@ -33,20 +33,25 @@ public class UpdateXeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//get id xe to show information of xe
-		String param = request.getParameter("id");
-		
-		int id = 0;
-		try {
-			id = Integer.parseInt(param);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		XeBEAN xebean = XeBO.getCapNhatXe(id);
-		request.setAttribute("xeduocchon", xebean);
+		HttpSession session = request.getSession();
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			//get id xe to show information of xe
+			String param = request.getParameter("id");
+			
+			int id = 0;
+			try {
+				id = Integer.parseInt(param);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			XeBEAN xebean = XeBO.getCapNhatXe(id);
+			request.setAttribute("xeduocchon", xebean);
 
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/Xe/CapNhatXe.jsp");
-		dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/Xe/CapNhatXe.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
+		}
 	}
 
 	/**

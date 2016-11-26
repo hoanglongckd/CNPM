@@ -43,20 +43,25 @@ public class PhanCongTaiXeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ArrayList<TaiXeBEAN> listTaiXe = TaiXeBO.getDanhSachTaiXe();
-		request.setAttribute("listTaiXe", listTaiXe);
+		HttpSession session = request.getSession();
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			ArrayList<TaiXeBEAN> listTaiXe = TaiXeBO.getDanhSachTaiXe();
+			request.setAttribute("listTaiXe", listTaiXe);
 
-		ArrayList<XeBEAN> listXe = TaiXeBO.getListXe();
-		request.setAttribute("listXe", listXe);
+			ArrayList<XeBEAN> listXe = TaiXeBO.getListXe();
+			request.setAttribute("listXe", listXe);
 
-		ArrayList<CaLamViecBEAN> listCaLamViec = CaLamViecBO.getDanhSachCaLamViec();
-		request.setAttribute("listCaLamViec", listCaLamViec);
-		ArrayList<ThuNgayBEAN> listThuNgay = ThuNgayBO.getDanhSachThuNgay();
-		request.setAttribute("listThuNgay", listThuNgay);
+			ArrayList<CaLamViecBEAN> listCaLamViec = CaLamViecBO.getDanhSachCaLamViec();
+			request.setAttribute("listCaLamViec", listCaLamViec);
+			ArrayList<ThuNgayBEAN> listThuNgay = ThuNgayBO.getDanhSachThuNgay();
+			request.setAttribute("listThuNgay", listThuNgay);
 
-		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/WEB-INF/views/TaiXe/them-phan-cong-tai-xe.jsp");
-		dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = this.getServletContext()
+					.getRequestDispatcher("/WEB-INF/views/TaiXe/them-phan-cong-tai-xe.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
+		}
 	}
 
 	/**

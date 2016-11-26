@@ -38,15 +38,20 @@ public class ChonXeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//get max iddieuphoi and loaixe after add dieu phoi at dieuphoi form
-		int id = DieuPhoiBO.getMaxIDDieuPhoi();
-		int loaiXe = DieuPhoiBO.getLoaiXe(id);
-		
-		//show list xe phu hop
-		ArrayList<XeBEAN> listXe = DieuPhoiBO.lietKeListXeDieuPhoi(loaiXe);
-		request.setAttribute("danhSachXe", listXe);
-		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/Xe/ChonXe.jsp");
-		dispatcher.forward(request, response);
+		HttpSession session = request.getSession();
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			//get max iddieuphoi and loaixe after add dieu phoi at dieuphoi form
+			int id = DieuPhoiBO.getMaxIDDieuPhoi();
+			int loaiXe = DieuPhoiBO.getLoaiXe(id);
+			
+			//show list xe phu hop
+			ArrayList<XeBEAN> listXe = DieuPhoiBO.lietKeListXeDieuPhoi(loaiXe);
+			request.setAttribute("danhSachXe", listXe);
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/Xe/ChonXe.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
+		}
 	}
 
 	/**

@@ -34,13 +34,17 @@ public class GiaLapXeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		ArrayList<DieuPhoiBEAN> dieuPhoiBEAN = DieuPhoiBO.getDieuPhoi();
-		request.setAttribute("dieuPhoiBEAN", dieuPhoiBEAN);
+		HttpSession session = request.getSession();
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			ArrayList<DieuPhoiBEAN> dieuPhoiBEAN = DieuPhoiBO.getDieuPhoi();
+			request.setAttribute("dieuPhoiBEAN", dieuPhoiBEAN);
 
-		RequestDispatcher dispatcher = request.getServletContext()
-				.getRequestDispatcher("/WEB-INF/views/Xe/GiaLapXe.jsp");
-		dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = request.getServletContext()
+					.getRequestDispatcher("/WEB-INF/views/Xe/GiaLapXe.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
+		}
 	}
 
 	/**

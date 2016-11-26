@@ -41,15 +41,23 @@ public class PhanCongNhanVienController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ArrayList<NhanVienBEAN> listNhanVien = NhanVienBO.getDanhSachNhanVien();
-		request.setAttribute("listNhanVien", listNhanVien);
-		ArrayList<CaLamViecBEAN> listCaLamViec = CaLamViecBO.getDanhSachCaLamViec();
-		request.setAttribute("listCaLamViec", listCaLamViec);
-		ArrayList<ThuNgayBEAN> listThuNgay = ThuNgayBO.getDanhSachThuNgay();
-		request.setAttribute("listThuNgay", listThuNgay);
-		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/WEB-INF/views/NhanVien/them-phan-cong-nhan-vien.jsp");
-		dispatcher.forward(request, response);
+		HttpSession session = request.getSession();
+		///kiem tra chuc vu admin 
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			ArrayList<NhanVienBEAN> listNhanVien = NhanVienBO.getDanhSachNhanVien();
+			request.setAttribute("listNhanVien", listNhanVien);
+			ArrayList<CaLamViecBEAN> listCaLamViec = CaLamViecBO.getDanhSachCaLamViec();
+			request.setAttribute("listCaLamViec", listCaLamViec);
+			ArrayList<ThuNgayBEAN> listThuNgay = ThuNgayBO.getDanhSachThuNgay();
+			request.setAttribute("listThuNgay", listThuNgay);
+			RequestDispatcher dispatcher = this.getServletContext()
+					.getRequestDispatcher("/WEB-INF/views/NhanVien/them-phan-cong-nhan-vien.jsp");
+			dispatcher.forward(request, response);
+		//neu khong phai admin	
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
+		}
+		//----end---
 	}
 
 	/**

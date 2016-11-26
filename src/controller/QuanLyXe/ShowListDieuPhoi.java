@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.bean.XeBEAN;
 import model.bo.DieuPhoiBO;
@@ -31,12 +32,16 @@ public class ShowListDieuPhoi extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//show lich su dieu phoi
-		ArrayList<XeBEAN> listXe = DieuPhoiBO.getListDieuPhoi();
-		request.setAttribute("danhSachXe", listXe);
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/Xe/ListDieuPhoi.jsp");
-		dispatcher.forward(request, response);
+		HttpSession session = request.getSession();
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			//show lich su dieu phoi
+			ArrayList<XeBEAN> listXe = DieuPhoiBO.getListDieuPhoi();
+			request.setAttribute("danhSachXe", listXe);
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/Xe/ListDieuPhoi.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
+		}
 	}
 
 	/**

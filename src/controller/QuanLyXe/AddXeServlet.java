@@ -33,11 +33,15 @@ public class AddXeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//Display form add xe
-		RequestDispatcher dispatcher = request.getServletContext()
-				.getRequestDispatcher("/WEB-INF/views/Xe/QuanLyXe.jsp");
-		dispatcher.forward(request, response);
-
+		HttpSession session = request.getSession();
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			//Display form add xe
+			RequestDispatcher dispatcher = request.getServletContext()
+					.getRequestDispatcher("/WEB-INF/views/Xe/QuanLyXe.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
+		}
 	}
 
 	/**

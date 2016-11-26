@@ -33,23 +33,31 @@ public class ChiTietVangNghiController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession msg = request.getSession();
-		
-		int idNhanVien = 0;
-		try {
-			idNhanVien = Integer.parseInt(request.getParameter("id"));
-		} catch (Exception e) {
-			msg.setAttribute("errors", "Vui lòng không chỉnh sửa đường dẫn.");
-			response.sendRedirect(request.getContextPath() + "/danh-sach-vang-nghi");
-			e.printStackTrace();
+		HttpSession session = request.getSession();
+		///kiem tra chuc vu admin 
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			HttpSession msg = request.getSession();
+			
+			int idNhanVien = 0;
+			try {
+				idNhanVien = Integer.parseInt(request.getParameter("id"));
+			} catch (Exception e) {
+				msg.setAttribute("errors", "Vui lòng không chỉnh sửa đường dẫn.");
+				response.sendRedirect(request.getContextPath() + "/danh-sach-vang-nghi");
+				e.printStackTrace();
+			}
+			QuanLyVangNghiBEAN nhanVien = QuanLyVangNghiBO.layChiTietNV(idNhanVien);
+			ArrayList<QuanLyVangNghiBEAN> list = QuanLyVangNghiBO.lietKeVangNghiMotNV(idNhanVien);
+			request.setAttribute("nhanVien", nhanVien);
+			request.setAttribute("list", list);
+			request.setAttribute("idNV", idNhanVien);
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/VangNghi/chi-tiet-vang-nghi.jsp");
+			dispatcher.forward(request, response);
+		//neu khong phai admin	
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
 		}
-		QuanLyVangNghiBEAN nhanVien = QuanLyVangNghiBO.layChiTietNV(idNhanVien);
-		ArrayList<QuanLyVangNghiBEAN> list = QuanLyVangNghiBO.lietKeVangNghiMotNV(idNhanVien);
-		request.setAttribute("nhanVien", nhanVien);
-		request.setAttribute("list", list);
-		request.setAttribute("idNV", idNhanVien);
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/VangNghi/chi-tiet-vang-nghi.jsp");
-		dispatcher.forward(request, response);
+		//----end---
 	}
 
 	/**

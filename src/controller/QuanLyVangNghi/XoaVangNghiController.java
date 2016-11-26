@@ -1,6 +1,8 @@
 package controller.QuanLyVangNghi;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,26 +30,34 @@ public class XoaVangNghiController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession msg = request.getSession();
-		String idParam = request.getParameter("id");
-		String idNVParam = request.getParameter("idNV");
-		int id = 0;
-		int idNV = 0;
-		try {
-			id = Integer.parseInt(idParam);
-			idNV = Integer.parseInt(idNVParam);
-		} catch (Exception e) {
-			msg.setAttribute("errors", "<ul><li>Vui lòng không sửa đường dẫn!</li></ul>");
-			response.sendRedirect(request.getContextPath() + "/chi-tiet-vang-nghi?id=" + idNV);
-			e.printStackTrace();
+		HttpSession session = request.getSession();
+		///kiem tra chuc vu admin 
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			HttpSession msg = request.getSession();
+			String idParam = request.getParameter("id");
+			String idNVParam = request.getParameter("idNV");
+			int id = 0;
+			int idNV = 0;
+			try {
+				id = Integer.parseInt(idParam);
+				idNV = Integer.parseInt(idNVParam);
+			} catch (Exception e) {
+				msg.setAttribute("errors", "<ul><li>Vui lòng không sửa đường dẫn!</li></ul>");
+				response.sendRedirect(request.getContextPath() + "/chi-tiet-vang-nghi?id=" + idNV);
+				e.printStackTrace();
+			}
+			if (QuanLyVangNghiBO.xoaVangNghi(id)) {
+				msg.setAttribute("messages", "<ul><li>Xóa thành công!</li></ul>");
+				response.sendRedirect(request.getContextPath() + "/chi-tiet-vang-nghi?id=" + idNV);
+			} else {
+				msg.setAttribute("errors", "<ul><li>Có lỗi xảy ra. Vui lòng liên hệ với nhà cung cấp dịch vụ!</li></ul>");
+				response.sendRedirect(request.getContextPath() + "/chi-tiet-vang-nghi?id=" + idNV);
+			}
+		//neu khong phai admin	
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
 		}
-		if (QuanLyVangNghiBO.xoaVangNghi(id)) {
-			msg.setAttribute("messages", "<ul><li>Xóa thành công!</li></ul>");
-			response.sendRedirect(request.getContextPath() + "/chi-tiet-vang-nghi?id=" + idNV);
-		} else {
-			msg.setAttribute("errors", "<ul><li>Có lỗi xảy ra. Vui lòng liên hệ với nhà cung cấp dịch vụ!</li></ul>");
-			response.sendRedirect(request.getContextPath() + "/chi-tiet-vang-nghi?id=" + idNV);
-		}
+		//----end---
 	}
 
 	/**

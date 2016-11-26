@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.bo.NhanVienBO;
 import model.bo.TaiXeBO;
@@ -36,12 +37,17 @@ public class ShowDanhSachTaiXeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		TaiXeBO taiXeBO = new TaiXeBO();
+		HttpSession session = request.getSession();
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			TaiXeBO taiXeBO = new TaiXeBO();
 
-		ArrayList<TaiXeBEAN> listTaiXe = taiXeBO.getDanhSachTaiXe();
-		request.setAttribute("listTaiXe", listTaiXe);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/TaiXe/danh-sach-tai-xe.jsp");
-		rd.forward(request, response);
+			ArrayList<TaiXeBEAN> listTaiXe = taiXeBO.getDanhSachTaiXe();
+			request.setAttribute("listTaiXe", listTaiXe);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/TaiXe/danh-sach-tai-xe.jsp");
+			rd.forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
+		}
 	}
 
 	/**
