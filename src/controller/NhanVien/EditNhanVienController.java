@@ -84,7 +84,7 @@ public class EditNhanVienController extends HttpServlet {
 			nhanVienBEAN.setNgaySinh(ngaySinh);
 			nhanVienBEAN.setHoTen(hoTen);
 			
-			System.out.println(nhanVienBEAN.getNgaySinh()+"|"+nhanVienBEAN.getHoTen()+"|"+nhanVienBEAN.getMaNhanVien());
+			System.out.println(nhanVienBEAN.getNgaySinh()+"|"+nhanVienBEAN.getHoTen()+"|"+nhanVienBEAN.getId());
 			
 			if (NhanVienBO.setSuaNhanVien(nhanVienBEAN)) {
 				msg.setAttribute("messages", "<ul><li>Chỉnh sửa nhân viên thành công</li></ul>");
