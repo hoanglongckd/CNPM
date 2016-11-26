@@ -78,7 +78,10 @@ if(request.getAttribute("msg")!=null)
 <script type="text/javascript">
 	$(function() {
 	    $('input[name="ngaySinh"]').daterangepicker({
-	    	
+	    	locale: 
+	    	{
+    	    	format: 'DD/MM/YYYY'
+    	    },
 	    	singleDatePicker: true,
 	        showDropdowns: true
 	    });
