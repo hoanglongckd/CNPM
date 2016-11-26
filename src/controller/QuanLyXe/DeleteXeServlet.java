@@ -1,0 +1,65 @@
+package controller.QuanLyXe;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.bo.XeBO;
+
+/**
+ * Servlet implementation class XoaXe
+ */
+//@WebServlet("/xoa-xe")
+public class DeleteXeServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public DeleteXeServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("maChucVu").toString().equals("AD")){// kiem tra chuc vu admin 
+			doPost(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/dashboard");
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+				
+		HttpSession msg = request.getSession();
+		//get id xe selected
+		String param = request.getParameter("id");
+		int id = 0;
+		try {
+			id = Integer.parseInt(param);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		//check if xoaxe successful or not
+		if(XeBO.xoaXe(id)){
+			msg.setAttribute("messages", "<ul><li>Xóa xe thành công!</li></ul>");
+			response.sendRedirect(request.getContextPath() + "/list-xe");
+		} else {
+			msg.setAttribute("errors", "<ul><li>Xe này đã đi vào hoạt động, không thể xóa!</li></ul>");
+			response.sendRedirect(request.getContextPath() + "/list-xe");
+		}
+	}
+}
